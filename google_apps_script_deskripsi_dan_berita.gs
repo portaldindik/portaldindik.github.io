@@ -1,6 +1,6 @@
 /**
  * ==============================================================================
- * GOOGLE APPS SCRIPT: SPREADSHEET KHUSUS DESKRIPSI SUB MODUL & BERITA RESMI
+ * GOOGLE APPS SCRIPT: SPREADSHEET KHUSUS DESKRIPSI SUB MODUL, 15 INDIKATOR & BERITA RESMI
  * Dinas Pendidikan dan Kebudayaan Kabupaten Madiun
  * ==============================================================================
  * SCRIPT MANDIRI & BERDIRI SENDIRI:
@@ -10,11 +10,23 @@
  * 1. Sheet "Deskripsi_Sub_Modul":
  *    - Kelola E-Kinerja (SPM #01)
  *    - Kelola Presensi Online (SPM #01)
+ *    - 15 Indikator Target Kinerja (SPM #01)
  *    - Kelola Ijin Operasional (Lembaga Sekolah #02)
  *    - Laporan RPJMD (2025 - 2029)
  *    Yang diambil HANYA: "Nama Sub Modul" & "Deskripsi Lengkap Sub Bagian".
  *
- * 2. Sheet "Berita_Pengumuman":
+ * 2. Sheet "Indikator_SPM_15":
+ *    - Data Tabel 15 Indikator Target Kinerja (SPM - Standar Pelayanan Minimal)
+ *    Yang diambil:
+ *    - No
+ *    - Indikator SPM
+ *    - Satuan
+ *    - Capaian Tahun 2025
+ *    - Target Tahun 2026
+ *    - Target Tahun 2027
+ *    - Waktu Pembaruan
+ *
+ * 3. Sheet "Berita_Pengumuman":
  *    - Kelola Berita & Pengumuman (Publikasi Informasi Resmi)
  *    Yang diambil:
  *    - Judul Berita / Pengumuman *
@@ -25,7 +37,7 @@
  *    - Tautan Sumber Luar / Link Lengkap (Opsional)
  *
  * FITUR UTAMA:
- * - Otomatis membuat 2 sheet dan header kolom secara instan
+ * - Otomatis membuat 3 sheet dan header kolom secara instan
  * - Metode TIMPA DATA TERBARU (Overwrite): Data lama dibersihkan dan diganti data mutakhir
  * - Keamanan sel: Proteksi batas karakter sel Google Sheet (maksimal 50.000 karakter)
  * - Dukungan penuh JSON CORS (GET untuk tarik data & POST untuk kirim data)
@@ -43,6 +55,19 @@ var CONFIG_SHEET_MANDIRI = {
       "Kategori Modul",
       "Nama Sub Modul",
       "Deskripsi Lengkap Sub Bagian",
+      "Waktu Pembaruan"
+    ]
+  },
+  INDIKATOR_SPM: {
+    sheetName: "Indikator_SPM_15",
+    headerBg: "#1E3A8A", // Dark Blue Elegan
+    headers: [
+      "No",
+      "Indikator SPM",
+      "Satuan",
+      "Capaian Tahun 2025",
+      "Target Tahun 2026",
+      "Target Tahun 2027",
       "Waktu Pembaruan"
     ]
   },
@@ -64,16 +89,16 @@ var CONFIG_SHEET_MANDIRI = {
 };
 
 /**
- * FUNGSI SEKALI KLIK: Inisialisasi Otomatis 2 Sheet dan Header Kolom
+ * FUNGSI SEKALI KLIK: Inisialisasi Otomatis 3 Sheet dan Header Kolom
  * Jalankan fungsi ini dari editor Apps Script saat pertama kali menggunakan Spreadsheet.
  */
 function initSheetDeskripsiDanBerita() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var nowStr = Utilities.formatDate(new Date(), "GMT+7", "yyyy-MM-dd HH:mm:ss");
 
   // 1. Buat dan siapkan Sheet Deskripsi_Sub_Modul
   var sheetDeskripsi = ensureSheetOtomatis(ss, CONFIG_SHEET_MANDIRI.DESKRIPSI);
   if (sheetDeskripsi.getLastRow() <= 1) {
-    var nowStr = Utilities.formatDate(new Date(), "GMT+7", "yyyy-MM-dd HH:mm:ss");
     var defaultSubModul = [
       [
         "1",
@@ -93,6 +118,14 @@ function initSheetDeskripsiDanBerita() {
       ],
       [
         "3",
+        "indikator-spm-15",
+        "SPM (Standar Pelayanan Minimal)",
+        "15 Indikator Target Kinerja",
+        "Target Kinerja Dinas Pendidikan dan Kebudayaan Kabupaten Madiun pada Standar Pelayanan Minimal (SPM) Bidang Pendidikan Tahun 2025 s/d 2027.",
+        nowStr
+      ],
+      [
+        "4",
         "ijin-operasional",
         "Lembaga Sekolah (Lembaga #02)",
         "Ijin Operasional",
@@ -100,7 +133,7 @@ function initSheetDeskripsiDanBerita() {
         nowStr
       ],
       [
-        "4",
+        "5",
         "rpjmd",
         "Laporan RPJMD 2025 - 2029",
         "RPJMD ( Rencana Pembangunan Jangka Menengah Daerah ) Tahun 2025 - 2029",
@@ -114,10 +147,35 @@ function initSheetDeskripsiDanBerita() {
     }
   }
 
-  // 2. Buat dan siapkan Sheet Berita_Pengumuman
+  // 2. Buat dan siapkan Sheet Indikator_SPM_15 (15 Indikator Target Kinerja)
+  var sheetIndikator = ensureSheetOtomatis(ss, CONFIG_SHEET_MANDIRI.INDIKATOR_SPM);
+  if (sheetIndikator.getLastRow() <= 1) {
+    var defaultIndikator = [
+      ["1", "Angka Partisipasi Sekolah (5-6) - Partisipasi anak usia 5-6 tahun dalam pendidikan prasekolah.", "%", "100", "100", "100", nowStr],
+      ["2", "Angka Partisipasi Sekolah (7-15) - Partisipasi penduduk usia 7-15 tahun dalam pendidikan dasar.", "%", "99,6", "99,61", "99,62", nowStr],
+      ["3", "Angka Partisipasi Sekolah (7-18) - Partisipasi penduduk usia 7-18 tahun dalam seluruh jenjang pendidikan.", "%", "36,07", "38,38", "40,74", nowStr],
+      ["4", "Kemampuan Literasi SD - Kemampuan membaca dan memahami teks pada siswa Sekolah Dasar.", "Skor", "69,11", "71,36", "73,61", nowStr],
+      ["5", "Kemampuan Literasi SMP - Kemampuan membaca dan memahami teks pada siswa Sekolah Menengah Pertama.", "Skor", "79,03", "79,53", "80,03", nowStr],
+      ["6", "Kemampuan Numerasi SD - Kemampuan berhitung, memahami angka dan memecahkan masalah matematika pada siswa Sekolah Dasar.", "Skor", "65,58", "67,83", "70,08", nowStr],
+      ["7", "Kemampuan Numerasi SMP - Kemampuan berhitung, memahami angka dan memecahkan masalah matematika pada siswa Sekolah Menengah Pertama.", "Skor", "67,84", "68,84", "69,84", nowStr],
+      ["8", "Iklim inklusivitas SD - Iklim pembelajaran yang inklusif dan ramah bagi seluruh peserta didik di jenjang Sekolah Dasar.", "Skor", "65,53", "67,03", "68,53", nowStr],
+      ["9", "Iklim inklusivitas SMP - Iklim pembelajaran yang inklusif dan ramah bagi seluruh peserta didik di jenjang Sekolah Menengah Pertama.", "Skor", "63,77", "65,27", "66,77", nowStr],
+      ["10", "Iklim Keamanan SD - Lingkungan sekolah yang aman, tertib, dan bebas dari kekerasan di jenjang Sekolah Dasar.", "Skor", "79,17", "80,37", "81,57", nowStr],
+      ["11", "Iklim Keamanan SMP - Lingkungan sekolah yang aman, tertib, dan bebas dari kekerasan di jenjang Sekolah Menengah Pertama.", "Skor", "74,53", "75,73", "76,93", nowStr],
+      ["12", "Iklim Kebinekaan SD - Sikap toleransi, penghargaan atas keberagaman, dan penguatan persatuan di jenjang Sekolah Dasar.", "Skor", "71,35", "72,25", "73,35", nowStr],
+      ["13", "Iklim Kebinekaan SMP - Sikap toleransi, penghargaan atas keberagaman, dan penguatan persatuan di jenjang Sekolah Menengah Pertama.", "Skor", "70,07", "71,07", "72,07", nowStr],
+      ["14", "Proporsi Jumlah Satuan PAUD Terakreditasi Minimal B - Persentase satuan PAUD yang telah terakreditasi minimal predikat B.", "%", "78.48", "78.72", "81.87", nowStr],
+      ["15", "Proporsi Guru PAUD dengan Kualifikasi S1/D4 - Persentase pendidik PAUD dengan kualifikasi pendidikan minimal S1 atau D4.", "%", "90.02", "94.07", "97.83", nowStr]
+    ];
+    sheetIndikator.getRange(2, 1, defaultIndikator.length, defaultIndikator[0].length).setValues(defaultIndikator);
+    for (var c = 1; c <= CONFIG_SHEET_MANDIRI.INDIKATOR_SPM.headers.length; c++) {
+      sheetIndikator.autoResizeColumn(c);
+    }
+  }
+
+  // 3. Buat dan siapkan Sheet Berita_Pengumuman
   var sheetBerita = ensureSheetOtomatis(ss, CONFIG_SHEET_MANDIRI.BERITA);
   if (sheetBerita.getLastRow() <= 1) {
-    var nowStr = Utilities.formatDate(new Date(), "GMT+7", "yyyy-MM-dd HH:mm:ss");
     var defaultBerita = [
       [
         "1",
@@ -138,9 +196,9 @@ function initSheetDeskripsiDanBerita() {
   }
 
   try {
-    SpreadsheetApp.getUi().alert("Inisialisasi Berhasil!\n\n2 Sheet Baru:\n1. Deskripsi_Sub_Modul\n2. Berita_Pengumuman\nbeserta kolom header dan format otomatis telah selesai dibuat.");
+    SpreadsheetApp.getUi().alert("Inisialisasi Berhasil!\n\n3 Sheet Baru:\n1. Deskripsi_Sub_Modul\n2. Indikator_SPM_15\n3. Berita_Pengumuman\nbeserta kolom header dan format otomatis telah selesai dibuat.");
   } catch(e) {
-    Logger.log("Inisialisasi 2 Sheet mandiri selesai dibuat.");
+    Logger.log("Inisialisasi 3 Sheet mandiri selesai dibuat.");
   }
 }
 
@@ -181,6 +239,7 @@ function doGet(e) {
     var action = params.action || "getData";
 
     ensureSheetOtomatis(ss, CONFIG_SHEET_MANDIRI.DESKRIPSI);
+    ensureSheetOtomatis(ss, CONFIG_SHEET_MANDIRI.INDIKATOR_SPM);
     ensureSheetOtomatis(ss, CONFIG_SHEET_MANDIRI.BERITA);
 
     if (action === "getData" || action === "getAll") {
@@ -189,6 +248,7 @@ function doGet(e) {
         timestamp: new Date().toISOString(),
         data: {
           infoSubModul: getSubModulFromSheet(ss),
+          indikatorSpm: getIndikatorSpmFromSheet(ss),
           berita: getBeritaFromSheet(ss)
         }
       };
@@ -223,6 +283,7 @@ function doPost(e) {
     var nowStr = Utilities.formatDate(new Date(), "GMT+7", "yyyy-MM-dd HH:mm:ss");
 
     ensureSheetOtomatis(ss, CONFIG_SHEET_MANDIRI.DESKRIPSI);
+    ensureSheetOtomatis(ss, CONFIG_SHEET_MANDIRI.INDIKATOR_SPM);
     ensureSheetOtomatis(ss, CONFIG_SHEET_MANDIRI.BERITA);
 
     var updatedList = [];
@@ -233,7 +294,13 @@ function doPost(e) {
       updatedList.push("Deskripsi Sub Modul");
     }
 
-    // 2. Simpan & Timpa Berita & Pengumuman
+    // 2. Simpan & Timpa Tabel 15 Indikator Target Kinerja SPM
+    if (payload.indikatorSpm && Array.isArray(payload.indikatorSpm)) {
+      saveIndikatorSpmToSheet(ss, payload.indikatorSpm, nowStr);
+      updatedList.push("15 Indikator Target Kinerja");
+    }
+
+    // 3. Simpan & Timpa Berita & Pengumuman
     if (payload.berita && Array.isArray(payload.berita)) {
       saveBeritaToSheet(ss, payload.berita, nowStr);
       updatedList.push("Berita & Pengumuman");
@@ -270,6 +337,24 @@ function getSubModulFromSheet(ss) {
       deskripsi: row[4] != null ? row[4].toString() : "",
       waktuUpdate: row[5] != null ? row[5].toString() : ""
     };
+  });
+}
+
+function getIndikatorSpmFromSheet(ss) {
+  var sheet = ensureSheetOtomatis(ss, CONFIG_SHEET_MANDIRI.INDIKATOR_SPM);
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 2) return [];
+
+  var values = sheet.getRange(2, 1, lastRow - 1, 6).getValues();
+  return values.map(function(row) {
+    return [
+      row[0] != null ? row[0].toString() : "",
+      row[1] != null ? row[1].toString() : "",
+      row[2] != null ? row[2].toString() : "",
+      row[3] != null ? row[3].toString() : "",
+      row[4] != null ? row[4].toString() : "",
+      row[5] != null ? row[5].toString() : ""
+    ];
   });
 }
 
@@ -349,6 +434,12 @@ function saveSubModulToSheet(ss, infoList, nowStr) {
       defaultDesc: "Rekapitulasi dan pemantauan tingkat kehadiran serta persentase absensi aparatur / pendidik dan tenaga kependidikan di lingkungan Dinas Pendidikan dan Kebudayaan Kabupaten Madiun."
     },
     {
+      id: "indikator-spm-15",
+      kategori: "SPM (Standar Pelayanan Minimal)",
+      defaultNama: "15 Indikator Target Kinerja",
+      defaultDesc: "Target Kinerja Dinas Pendidikan dan Kebudayaan Kabupaten Madiun pada Standar Pelayanan Minimal (SPM) Bidang Pendidikan Tahun 2025 s/d 2027."
+    },
+    {
       id: "ijin-operasional",
       kategori: "Lembaga Sekolah (Lembaga #02)",
       defaultNama: "Ijin Operasional",
@@ -383,6 +474,29 @@ function saveSubModulToSheet(ss, infoList, nowStr) {
   clearDataRows(sheet);
   sheet.getRange(2, 1, finalRows.length, finalRows[0].length).setValues(finalRows);
   for (var c = 1; c <= CONFIG_SHEET_MANDIRI.DESKRIPSI.headers.length; c++) {
+    sheet.autoResizeColumn(c);
+  }
+}
+
+function saveIndikatorSpmToSheet(ss, rows, nowStr) {
+  var sheet = ensureSheetOtomatis(ss, CONFIG_SHEET_MANDIRI.INDIKATOR_SPM);
+  clearDataRows(sheet);
+  if (!rows || !Array.isArray(rows) || rows.length === 0) return;
+
+  var output = rows.map(function(r, idx) {
+    return [
+      (r[0] != null && r[0].toString() !== "") ? r[0].toString() : (idx + 1).toString(),
+      r[1] != null ? r[1].toString() : "",
+      r[2] != null ? r[2].toString() : "",
+      r[3] != null ? r[3].toString() : "",
+      r[4] != null ? r[4].toString() : "",
+      r[5] != null ? r[5].toString() : "",
+      nowStr
+    ];
+  });
+
+  sheet.getRange(2, 1, output.length, output[0].length).setValues(output);
+  for (var c = 1; c <= CONFIG_SHEET_MANDIRI.INDIKATOR_SPM.headers.length; c++) {
     sheet.autoResizeColumn(c);
   }
 }

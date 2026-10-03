@@ -201,7 +201,7 @@
                         data.infoSubModul.forEach(info => {
                             const id = (info.id || '').toLowerCase().trim();
                             if (!id) return;
-                            if (id === 'ekinerja' || id === 'presensi-online') {
+                            if (id === 'ekinerja' || id === 'presensi-online' || id === 'indikator-spm-15') {
                                 const spmFeature = activeData.find(f => f.id === 'spm');
                                 if (spmFeature && Array.isArray(spmFeature.bagian)) {
                                     const sub = spmFeature.bagian.find(b => b.id === id);
@@ -232,6 +232,10 @@
                         if (Array.isArray(data.presensiOnline) && data.presensiOnline.length > 0) {
                             const presSub = spmFeature.bagian.find(b => b.id === 'presensi-online');
                             if (presSub) presSub.baris = data.presensiOnline;
+                        }
+                        if (Array.isArray(data.indikatorSpm) && data.indikatorSpm.length > 0) {
+                            const indSub = spmFeature.bagian.find(b => b.id === 'indikator-spm-15');
+                            if (indSub) indSub.baris = data.indikatorSpm;
                         }
                     }
 
@@ -338,6 +342,10 @@
                     const spmF = activeData.find(f => f.id === 'spm');
                     if (spmF) renderStandalonePresensiOnlineEditor(spmF, true);
                 }
+                if (typeof renderStandaloneIndikatorSpmEditor === 'function' && typeof isIndikatorSpmStandaloneMode !== 'undefined' && isIndikatorSpmStandaloneMode) {
+                    const spmF = activeData.find(f => f.id === 'spm');
+                    if (spmF) renderStandaloneIndikatorSpmEditor(spmF, true);
+                }
                 if (typeof renderStandaloneIjinOperasionalEditor === 'function' && typeof isIjinOperasionalStandaloneMode !== 'undefined' && isIjinOperasionalStandaloneMode) {
                     const lmbF = activeData.find(f => f.id === 'lembaga-sekolah' || f.id === 'lembaga');
                     if (lmbF) renderStandaloneIjinOperasionalEditor(lmbF, true);
@@ -347,7 +355,7 @@
                 }
 
                 if (!isSilent) {
-                    alert('✅ Sukses Tarik Data!\n\nSeluruh data E-Kinerja, Presensi Online, Ijin Operasional, Laporan RPJMD, dan Berita berhasil diperbarui dari Google Spreadsheet khusus.');
+                    alert('✅ Sukses Tarik Data!\n\nSeluruh data E-Kinerja, Presensi Online, 15 Indikator Target Kinerja, Ijin Operasional, Laporan RPJMD, dan Berita berhasil diperbarui dari Google Spreadsheet khusus.');
                 }
             } else {
                 throw new Error(json.message || 'Format data Google Spreadsheet tidak valid.');
@@ -443,6 +451,22 @@
                         kategori: 'SPM (Standar Pelayanan Minimal)',
                         nama: presSub.nama || 'Presensi Online',
                         deskripsi: presSub.deskripsi || ''
+                    });
+                }
+                const indSub = spmFeature.bagian.find(b => b.id === 'indikator-spm-15');
+                if (indSub) {
+                    // Prioritaskan nilai langsung dari elemen input DOM jika sedang diedit di layar
+                    const domName = document.getElementById('input-sub-name-indikator-spm-15') || document.querySelector('#sub-module-card-indikator-spm input[type="text"]');
+                    const domDesc = document.getElementById('input-sub-desc-indikator-spm-15') || document.querySelector('#sub-module-card-indikator-spm textarea');
+                    if (domName && domName.value && domName.value.trim()) indSub.nama = domName.value.trim();
+                    if (domDesc && domDesc.value != null) indSub.deskripsi = domDesc.value;
+
+                    if (Array.isArray(indSub.baris)) payload.indikatorSpm = indSub.baris;
+                    infoSubModulList.push({
+                        id: 'indikator-spm-15',
+                        kategori: 'SPM (Standar Pelayanan Minimal)',
+                        nama: indSub.nama || '15 Indikator Target Kinerja',
+                        deskripsi: indSub.deskripsi || ''
                     });
                 }
             }
@@ -551,6 +575,7 @@
             if (isDeskripsiBeritaAutoSync && deskripsiBeritaUrl && deskripsiBeritaUrl.startsWith('https://script.google.com/macros/s/')) {
                 const miniPayload = {
                     infoSubModul: payload.infoSubModul || [],
+                    indikatorSpm: payload.indikatorSpm || [],
                     berita: payload.berita || []
                 };
                 fetch(deskripsiBeritaUrl, {
@@ -946,7 +971,7 @@
                 filenameDisplay.className = 'text-purple-400 font-mono';
             }
             if (step3Text) {
-                step3Text.innerHTML = 'Pilih fungsi <strong>initSheetDeskripsiDanBerita</strong> lalu klik <strong>Jalankan</strong>. 2 Sheet otomatis dibuat!';
+                step3Text.innerHTML = 'Pilih fungsi <strong>initSheetDeskripsiDanBerita</strong> lalu klik <strong>Jalankan</strong>. 3 Sheet (Deskripsi Sub Modul, 15 Indikator SPM, & Berita) otomatis dibuat!';
             }
             if (codeElement) {
                 if (gasCodeDeskripsiBerita) {
@@ -978,7 +1003,7 @@
                 filenameDisplay.className = 'text-cyan-400 font-mono';
             }
             if (step3Text) {
-                step3Text.innerHTML = 'Pilih fungsi <strong>initModulKhususSheets</strong> lalu klik <strong>Jalankan</strong>. Seluruh 6 lembar sheet &amp; kolom dibuat seketika!';
+                step3Text.innerHTML = 'Pilih fungsi <strong>initModulKhususSheets</strong> lalu klik <strong>Jalankan</strong>. Seluruh 7 lembar sheet &amp; kolom dibuat seketika!';
             }
             if (codeElement) {
                 codeElement.innerText = gasCode6Sheet || EMBEDDED_MODUL_KHUSUS_GAS_CODE;
@@ -1002,7 +1027,7 @@
                     btn.classList.remove('bg-cyan-700');
                 }, 2500);
             }
-            const scriptName = currentGasModulTab === 'deskripsiberita' ? 'Khusus Deskripsi & Berita (2 Sheet)' : 'Modul Mandiri (6 Sheet)';
+            const scriptName = currentGasModulTab === 'deskripsiberita' ? 'Khusus Deskripsi, 15 Indikator & Berita (3 Sheet)' : 'Modul Mandiri (7 Sheet)';
             if (typeof showFloatingToast === 'function') {
                 showFloatingToast(`Kode Apps Script ${scriptName} berhasil disalin ke clipboard!`, 'success');
             } else {

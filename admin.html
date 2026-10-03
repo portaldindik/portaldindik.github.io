@@ -1161,12 +1161,12 @@
                             </button>
                         </div>
 
-                        <!-- Pengaturan Tambahan 1: URL Web App Khusus Deskripsi Sub Modul & Berita Resmi (2 Sheet Mandiri) -->
+                        <!-- Pengaturan Tambahan 1: URL Web App Khusus Deskripsi Sub Modul, 15 Indikator & Berita Resmi (3 Sheet Mandiri) -->
                         <div class="pt-4 border-t border-slate-200 space-y-2.5">
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                                 <label class="block text-xs font-extrabold text-slate-800">
                                     <i class="fas fa-newspaper text-purple-700 mr-1.5"></i>
-                                    Web App URL: Khusus Deskripsi Sub Modul &amp; Berita Resmi (2 Sheet Mandiri)
+                                    Web App URL: Khusus Deskripsi Sub Modul, 15 Indikator &amp; Berita Resmi (3 Sheet Mandiri)
                                 </label>
                                 <span class="text-[10px] font-black uppercase tracking-wider text-purple-700 bg-purple-100 px-2 py-0.5 rounded-full border border-purple-200 w-fit">
                                     Script Mandiri
@@ -1179,7 +1179,7 @@
                                 <input type="url" id="input-deskripsi-berita-spreadsheet-url" value="https://script.google.com/macros/s/AKfycbwTrGu0M52NM0PDLgos5O5TDl3RfpIxe2wMx8BdxhOC-9E1eS5f7RoKP0rjgSCbbzI5/exec" placeholder="https://script.google.com/macros/s/AKfycb.../exec" class="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-300 rounded-xl text-xs font-mono text-slate-800 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-purple-600 focus:border-transparent transition">
                             </div>
                             <span class="text-[11px] text-slate-500 block">
-                                * Mengambil dan menimpa otomatis HANYA: <strong>Nama Sub Modul &amp; Deskripsi Lengkap</strong> (E-Kinerja, Presensi, Ijin, RPJMD) serta <strong>Berita &amp; Pengumuman</strong>.
+                                * Mengambil dan menimpa otomatis: <strong>Nama Sub Modul &amp; Deskripsi Lengkap</strong> (E-Kinerja, Presensi, 15 Indikator, Ijin, RPJMD), <strong>15 Indikator Target Kinerja</strong>, serta <strong>Berita &amp; Pengumuman</strong>.
                             </span>
 
                             <!-- Checkbox Auto Sync Deskripsi & Berita -->
@@ -1250,7 +1250,7 @@
                                 <i class="fas fa-code"></i>
                                 Kode Apps Script Otomatis (Metode Timpa &amp; Auto Header)
                             </h4>
-                            <p class="text-xs text-slate-300 mt-0.5">Pilih script sesuai kebutuhan (6 Sheet Lengkap atau 2 Sheet Khusus Deskripsi &amp; Berita) lalu salin atau unduh.</p>
+                            <p class="text-xs text-slate-300 mt-0.5">Pilih script sesuai kebutuhan (7 Sheet Lengkap atau 3 Sheet Khusus Deskripsi, 15 Indikator &amp; Berita) lalu salin atau unduh.</p>
                         </div>
                         <div class="flex items-center gap-2">
                             <button type="button" onclick="window.downloadGasModulKhususFile()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition shadow-md flex items-center gap-1.5 cursor-pointer">
@@ -1267,10 +1267,10 @@
                     <div class="flex flex-wrap items-center justify-between gap-2 text-[11px]">
                         <div class="flex items-center gap-1.5 bg-slate-900/90 p-1 rounded-xl border border-slate-700">
                             <button type="button" id="btn-tab-gas-6sheet" onclick="window.switchGasModulTab('6sheet')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-cyan-600 text-white shadow-xs cursor-pointer transition">
-                                <i class="fas fa-layer-group mr-1.5"></i> Script 1: 6 Sheet Lengkap
+                                <i class="fas fa-layer-group mr-1.5"></i> Script 1: 7 Sheet Lengkap
                             </button>
                             <button type="button" id="btn-tab-gas-deskripsiberita" onclick="window.switchGasModulTab('deskripsiberita')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 cursor-pointer transition">
-                                <i class="fas fa-newspaper mr-1.5"></i> Script 2: 2 Sheet (Khusus Deskripsi &amp; Berita)
+                                <i class="fas fa-newspaper mr-1.5"></i> Script 2: 3 Sheet (Khusus Deskripsi, 15 Indikator &amp; Berita)
                             </button>
                         </div>
                         <div class="text-slate-400 flex items-center gap-2">
@@ -1340,7 +1340,7 @@
     <script src="data.js?v=2026.10.03.v12"></script>
     <script src="google_spreadsheet_sync.js?v=2026.10.03.v12"></script>
     <script src="google_accounts_sync.js?v=2026.10.03.v12"></script>
-    <script src="google_spreadsheet_modul_khusus_sync.js?v=2026.10.03.v10"></script>
+    <script src="google_spreadsheet_modul_khusus_sync.js?v=2026.10.03.v14"></script>
     <script>
         // ========================================================
         // HELPER KEAMANAN & SANITASI KONTEN ADMIN

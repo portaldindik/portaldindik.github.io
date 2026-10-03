@@ -197,6 +197,167 @@ const portalData = [
         ]
       },
       {
+        "id": "indikator-spm-15",
+        "nama": "15 Indikator Target Kinerja",
+        "subnama": "Dinas Pendidikan Dan Kebudayaan",
+        "tipe": "tabel",
+        "deskripsi": "Target Kinerja Dinas Pendidikan dan Kebudayaan Kabupaten Madiun pada Standar Pelayanan Minimal (SPM) Bidang Pendidikan Tahun 2025 s/d 2027.",
+        "headerTabel": {
+          "kabupaten": "KABUPATEN MADIUN",
+          "judul": "TARGET KINERJA DINAS PENDIDIKAN DAN KEBUDAYAAN PADA SPM",
+          "bidang": "BIDANG PENDIDIKAN"
+        },
+        "keteranganTambahan": [
+          "Angka Partisipasi Sekolah dinyatakan dalam persen (%)",
+          "Kemampuan Literasi dan Numerasi dinyatakan dalam skor"
+        ],
+        "spmKomitmen": "Standar Pelayanan Minimal (SPM) merupakan komitmen pemerintah dalam memberikan layanan pendidikan bermutu bagi seluruh masyarakat.",
+        "fokusKita": [
+          "Meningkatkan akses pendidikan yang merata dan berkualitas",
+          "Meningkatkan kompetensi literasi dan numerasi peserta didik",
+          "Mewujudkan lingkungan belajar yang inklusif, aman, dan berkebinekaan",
+          "Mendorong peningkatan mutu satuan dan pendidik PAUD"
+        ],
+        "slogan": "BERSAMA WUJUDKAN PENDIDIKAN BERKUALITAS UNTUK GENERASI EMAS KABUPATEN MADIUN",
+        "pilarNilai": [
+          "BERKUALITAS",
+          "INKLUSIF",
+          "AMAN",
+          "BERKEBINEKAAN",
+          "BERKELANJUTAN"
+        ],
+        "kolom": [
+          "NO",
+          "INDIKATOR SPM",
+          "SATUAN",
+          "CAPAIAN TAHUN 2025",
+          "TARGET TAHUN 2026",
+          "TARGET TAHUN 2027"
+        ],
+        "baris": [
+          [
+            "1",
+            "Angka Partisipasi Sekolah (5-6) - Partisipasi anak usia 5-6 tahun dalam pendidikan prasekolah.",
+            "%",
+            "100",
+            "100",
+            "100"
+          ],
+          [
+            "2",
+            "Angka Partisipasi Sekolah (7-15) - Partisipasi penduduk usia 7-15 tahun dalam pendidikan dasar.",
+            "%",
+            "99,6",
+            "99,61",
+            "99,62"
+          ],
+          [
+            "3",
+            "Angka Partisipasi Sekolah (7-18) - Partisipasi penduduk usia 7-18 tahun dalam seluruh jenjang pendidikan.",
+            "%",
+            "36,07",
+            "38,38",
+            "40,74"
+          ],
+          [
+            "4",
+            "Kemampuan Literasi SD - Kemampuan membaca dan memahami teks pada siswa Sekolah Dasar.",
+            "Skor",
+            "69,11",
+            "71,36",
+            "73,61"
+          ],
+          [
+            "5",
+            "Kemampuan Literasi SMP - Kemampuan membaca dan memahami teks pada siswa Sekolah Menengah Pertama.",
+            "Skor",
+            "79,03",
+            "79,53",
+            "80,03"
+          ],
+          [
+            "6",
+            "Kemampuan Numerasi SD - Kemampuan berhitung, memahami angka dan memecahkan masalah matematika pada siswa Sekolah Dasar.",
+            "Skor",
+            "65,58",
+            "67,83",
+            "70,08"
+          ],
+          [
+            "7",
+            "Kemampuan Numerasi SMP - Kemampuan berhitung, memahami angka dan memecahkan masalah matematika pada siswa Sekolah Menengah Pertama.",
+            "Skor",
+            "67,84",
+            "68,84",
+            "69,84"
+          ],
+          [
+            "8",
+            "Iklim inklusivitas SD - Iklim pembelajaran yang inklusif dan ramah bagi seluruh peserta didik di jenjang Sekolah Dasar.",
+            "Skor",
+            "65,53",
+            "67,03",
+            "68,53"
+          ],
+          [
+            "9",
+            "Iklim inklusivitas SMP - Iklim pembelajaran yang inklusif dan ramah bagi seluruh peserta didik di jenjang Sekolah Menengah Pertama.",
+            "Skor",
+            "63,77",
+            "65,27",
+            "66,77"
+          ],
+          [
+            "10",
+            "Iklim Keamanan SD - Lingkungan sekolah yang aman, tertib, dan bebas dari kekerasan di jenjang Sekolah Dasar.",
+            "Skor",
+            "79,17",
+            "80,37",
+            "81,57"
+          ],
+          [
+            "11",
+            "Iklim Keamanan SMP - Lingkungan sekolah yang aman, tertib, dan bebas dari kekerasan di jenjang Sekolah Menengah Pertama.",
+            "Skor",
+            "74,53",
+            "75,73",
+            "76,93"
+          ],
+          [
+            "12",
+            "Iklim Kebinekaan SD - Sikap toleransi, penghargaan atas keberagaman, dan penguatan persatuan di jenjang Sekolah Dasar.",
+            "Skor",
+            "71,35",
+            "72,25",
+            "73,35"
+          ],
+          [
+            "13",
+            "Iklim Kebinekaan SMP - Sikap toleransi, penghargaan atas keberagaman, dan penguatan persatuan di jenjang Sekolah Menengah Pertama.",
+            "Skor",
+            "70,07",
+            "71,07",
+            "72,07"
+          ],
+          [
+            "14",
+            "Proporsi Jumlah Satuan PAUD Terakreditasi Minimal B - Persentase satuan PAUD yang telah terakreditasi minimal predikat B.",
+            "%",
+            "78.48",
+            "78.72",
+            "81.87"
+          ],
+          [
+            "15",
+            "Proporsi Guru PAUD dengan Kualifikasi S1/D4 - Persentase pendidik PAUD dengan kualifikasi pendidikan minimal S1 atau D4.",
+            "%",
+            "90.02",
+            "94.07",
+            "97.83"
+          ]
+        ]
+      },
+      {
         "id": "ekinerja",
         "nama": "E-Kinerja",
         "tipe": "tabel",

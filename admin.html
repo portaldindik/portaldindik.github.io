@@ -329,12 +329,27 @@
                         <!-- Diisi via JS -->
                     </div>
 
-                    <!-- Bagian Khusus: E-Kinerja & Presensi Online SPM -->
+                    <!-- Bagian Khusus: 15 Indikator SPM, E-Kinerja & Presensi Online -->
                     <div class="mt-4 pt-4 border-t border-slate-200">
                         <div class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider px-2 mb-2 flex items-center justify-between">
-                            <span>E-Kinerja &amp; Capaian Dan Presensi online</span>
-                            <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold">SPM #01</span>
+                            <span>Modul Kinerja &amp; Presensi SPM</span>
+                            <span class="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-bold">SPM #01</span>
                         </div>
+                        <button type="button" id="sidebar-btn-manage-indikator-spm" onclick="window.openIndikatorSpmEditor()"
+                            class="w-full flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 border border-blue-200 text-blue-950 transition-all shadow-xs group cursor-pointer text-left mb-2">
+                            <div class="flex items-center gap-2.5 overflow-hidden">
+                                <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center text-sm shadow-xs group-hover:scale-105 transition shrink-0">
+                                    <i class="fas fa-list-check"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <div class="text-xs font-bold text-slate-800 group-hover:text-blue-800 transition truncate">15 Indikator Target Kinerja</div>
+                                    <div class="text-[10px] text-slate-500 font-medium truncate">Dinas Pendidikan Dan Kebudayaan</div>
+                                </div>
+                            </div>
+                            <span id="sidebar-indikator-spm-access-status" class="shrink-0 text-slate-400 group-hover:text-blue-600 transition ml-2">
+                                <i class="fas fa-chevron-right text-xs"></i>
+                            </span>
+                        </button>
                         <button type="button" id="sidebar-btn-manage-ekinerja" onclick="window.openEkinerjaEditor()"
                             class="w-full flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-emerald-50 to-teal-50 hover:from-emerald-100 hover:to-teal-100 border border-emerald-200 text-emerald-950 transition-all shadow-xs group cursor-pointer text-left mb-2">
                             <div class="flex items-center gap-2.5 overflow-hidden">
@@ -1348,10 +1363,10 @@
     </div>
 
     <!-- Script Data & Logic Admin -->
-    <script src="data.js?v=2026.10.03.v8"></script>
-    <script src="google_spreadsheet_sync.js?v=2026.10.03.v8"></script>
-    <script src="google_accounts_sync.js?v=2026.10.03.v8"></script>
-    <script src="google_spreadsheet_modul_khusus_sync.js?v=2026.10.03.v8"></script>
+    <script src="data.js?v=2026.10.03.v9"></script>
+    <script src="google_spreadsheet_sync.js?v=2026.10.03.v9"></script>
+    <script src="google_accounts_sync.js?v=2026.10.03.v9"></script>
+    <script src="google_spreadsheet_modul_khusus_sync.js?v=2026.10.03.v9"></script>
     <script>
         // ========================================================
         // HELPER KEAMANAN & SANITASI KONTEN ADMIN
@@ -1461,6 +1476,7 @@
         // ========================================================
         const ALL_FEATURES_CONFIG = [
             { id: "spm", title: "Standar Pelayanan Minimal (SPM)", icon: "fa-balance-scale" },
+            { id: "indikator-spm", title: "15 Indikator Target Kinerja (SPM)", icon: "fa-list-check" },
             { id: "ekinerja", title: "Kelola E-Kinerja (SPM)", icon: "fa-chart-pie" },
             { id: "presensi-online", title: "Kelola Presensi Online (SPM)", icon: "fa-user-clock" },
             { id: "lembaga-sekolah", title: "Lembaga Sekolah & Dapodik", icon: "fa-school" },
@@ -1792,6 +1808,27 @@
             }
             if (typeof window.updateModulKhususUI === 'function') {
                 window.updateModulKhususUI();
+            }
+
+            // Sinkronisasi status izin 15 Indikator SPM di sidebar
+            const canManageIndikatorSpm = hasFeatureAccess('spm') || hasFeatureAccess('indikator-spm') || (activeUser && (activeUser.role === 'superadmin' || activeUser.role === 'admin'));
+            const sidebarBtnManageIndikatorSpm = document.getElementById('sidebar-btn-manage-indikator-spm');
+            const sidebarIndikatorSpmStatus = document.getElementById('sidebar-indikator-spm-access-status');
+
+            if (sidebarBtnManageIndikatorSpm) {
+                if (canManageIndikatorSpm) {
+                    sidebarBtnManageIndikatorSpm.classList.remove('opacity-60');
+                    if (sidebarIndikatorSpmStatus) {
+                        sidebarIndikatorSpmStatus.innerHTML = '<i class="fas fa-chevron-right text-xs"></i>';
+                        sidebarIndikatorSpmStatus.className = 'shrink-0 text-slate-400 group-hover:text-blue-600 transition ml-2';
+                    }
+                } else {
+                    sidebarBtnManageIndikatorSpm.classList.add('opacity-60');
+                    if (sidebarIndikatorSpmStatus) {
+                        sidebarIndikatorSpmStatus.innerHTML = '<span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-bold flex items-center gap-1"><i class="fas fa-lock text-[8px]"></i> Terkunci</span>';
+                        sidebarIndikatorSpmStatus.className = 'shrink-0 transition ml-2';
+                    }
+                }
             }
 
             // Sinkronisasi status izin E-Kinerja di sidebar
@@ -2627,10 +2664,22 @@
         if (typeof portalData !== 'undefined') {
             let needsSave = false;
 
-            // Sinkronisasi SPM (E-Kinerja & Presensi Online)
+            // Sinkronisasi SPM (15 Indikator SPM, E-Kinerja & Presensi Online)
             const defSpm = portalData.find(f => f.id === 'spm');
             const curSpm = adminData.find(f => f.id === 'spm');
             if (defSpm && curSpm) {
+                const defIndikatorSpm = (defSpm.bagian || []).find(b => b.id === 'indikator-spm-15');
+                const curIndikatorSpm = (curSpm.bagian || []).find(b => b.id === 'indikator-spm-15');
+                if (defIndikatorSpm && !curIndikatorSpm) {
+                    const ikuIdx = curSpm.bagian.findIndex(b => b.id === 'iku');
+                    if (ikuIdx !== -1) {
+                        curSpm.bagian.splice(ikuIdx + 1, 0, JSON.parse(JSON.stringify(defIndikatorSpm)));
+                    } else {
+                        curSpm.bagian.push(JSON.parse(JSON.stringify(defIndikatorSpm)));
+                    }
+                    needsSave = true;
+                }
+
                 const defEkinerja = (defSpm.bagian || []).find(b => b.id === 'ekinerja');
                 const curEkinerja = (curSpm.bagian || []).find(b => b.id === 'ekinerja');
                 if (defEkinerja && !curEkinerja) {
@@ -2861,12 +2910,35 @@
         let isIjinOperasionalStandaloneMode = false;
         let isPresensiOnlineStandaloneMode = false;
         let isRpjmdStandaloneMode = false;
+        let isIndikatorSpmStandaloneMode = false;
 
         function renderFeatureList() {
             if (!featureListContainer) return;
             featureListContainer.innerHTML = '';
             const badgeTotal = document.getElementById('badge-total-features');
             if (badgeTotal) badgeTotal.textContent = `${adminData.length} Fitur`;
+
+            // Sinkronisasi highlight pada tombol sidebar 15 Indikator Target Kinerja (SPM)
+            const sidebarBtnManageIndikatorSpm = document.getElementById('sidebar-btn-manage-indikator-spm');
+            if (sidebarBtnManageIndikatorSpm) {
+                if (isIndikatorSpmStandaloneMode) {
+                    sidebarBtnManageIndikatorSpm.className = 'w-full flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-700 text-white border-2 border-blue-800 transition-all shadow-md group cursor-pointer text-left mb-2 ring-2 ring-blue-400';
+                    const iconBox = sidebarBtnManageIndikatorSpm.querySelector('.w-8.h-8');
+                    if (iconBox) iconBox.className = 'w-8 h-8 rounded-lg bg-white text-blue-800 flex items-center justify-center text-sm shadow-xs group-hover:scale-105 transition shrink-0';
+                    const textTitle = sidebarBtnManageIndikatorSpm.querySelector('.text-xs');
+                    if (textTitle) textTitle.className = 'text-xs font-black text-white truncate';
+                    const textSub = sidebarBtnManageIndikatorSpm.querySelector('.text-\\[10px\\]');
+                    if (textSub) textSub.className = 'text-[10px] text-blue-100 font-medium truncate';
+                } else {
+                    sidebarBtnManageIndikatorSpm.className = 'w-full flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 border border-blue-200 text-blue-950 transition-all shadow-xs group cursor-pointer text-left mb-2';
+                    const iconBox = sidebarBtnManageIndikatorSpm.querySelector('.w-8.h-8');
+                    if (iconBox) iconBox.className = 'w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center text-sm shadow-xs group-hover:scale-105 transition shrink-0';
+                    const textTitle = sidebarBtnManageIndikatorSpm.querySelector('.text-xs');
+                    if (textTitle) textTitle.className = 'text-xs font-bold text-slate-800 group-hover:text-blue-800 transition truncate';
+                    const textSub = sidebarBtnManageIndikatorSpm.querySelector('.text-\\[10px\\]');
+                    if (textSub) textSub.className = 'text-[10px] text-slate-500 font-medium truncate';
+                }
+            }
 
             // Sinkronisasi highlight pada tombol sidebar E-Kinerja
             const sidebarBtnManageEkinerja = document.getElementById('sidebar-btn-manage-ekinerja');
@@ -2957,7 +3029,7 @@
             }
 
             adminData.forEach((f, idx) => {
-                const isSelected = (!isEkinerjaStandaloneMode) && (!isIjinOperasionalStandaloneMode) && (!isPresensiOnlineStandaloneMode) && (!isRpjmdStandaloneMode) && (idx === selectedFeatureIndex);
+                const isSelected = (!isEkinerjaStandaloneMode) && (!isIjinOperasionalStandaloneMode) && (!isPresensiOnlineStandaloneMode) && (!isRpjmdStandaloneMode) && (!isIndikatorSpmStandaloneMode) && (idx === selectedFeatureIndex);
                 const canEdit = hasFeatureAccess(f.id);
 
                 const btn = document.createElement('button');
@@ -2972,7 +3044,7 @@
                 
                 let countModul = 0;
                 if (f.bagian) {
-                    if (f.id === 'spm') countModul = f.bagian.filter(b => b.id !== 'ekinerja' && b.id !== 'presensi-online').length;
+                    if (f.id === 'spm') countModul = f.bagian.filter(b => b.id !== 'ekinerja' && b.id !== 'presensi-online' && b.id !== 'indikator-spm-15').length;
                     else if (f.id === 'lembaga-sekolah') countModul = f.bagian.filter(b => b.id !== 'ijin-operasional').length;
                     else countModul = f.bagian.length;
                 }
@@ -2998,6 +3070,7 @@
                     isIjinOperasionalStandaloneMode = false;
                     isPresensiOnlineStandaloneMode = false;
                     isRpjmdStandaloneMode = false;
+                    isIndikatorSpmStandaloneMode = false;
                     selectedFeatureIndex = idx;
                     renderFeatureList();
                     loadFeatureToEditor();
@@ -3024,12 +3097,47 @@
                     ? hasFeatureAccess('ijin-operasional') 
                     : (isPresensiOnlineStandaloneMode 
                         ? hasFeatureAccess('presensi-online') 
-                        : (isRpjmdStandaloneMode ? hasFeatureAccess('rpjmd') : hasFeatureAccess(f.id))));
+                        : (isIndikatorSpmStandaloneMode
+                            ? (hasFeatureAccess('spm') || hasFeatureAccess('indikator-spm') || (activeUser && (activeUser.role === 'superadmin' || activeUser.role === 'admin')))
+                            : (isRpjmdStandaloneMode ? hasFeatureAccess('rpjmd') : hasFeatureAccess(f.id)))));
             const lockBanner = document.getElementById('lock-warning-banner');
             const lockUserName = document.getElementById('lock-active-user-name');
             const generalFields = document.getElementById('feature-general-fields');
             const subHeaderInfo = document.getElementById('sub-modules-header-info');
             const editorIconBox = document.getElementById('editor-icon-box');
+
+            if (isIndikatorSpmStandaloneMode) {
+                // Tampilan Khusus Mandiri: 15 Indikator Target Kinerja (SPM)
+                if (generalFields) generalFields.style.display = 'none';
+                if (subHeaderInfo) subHeaderInfo.style.display = 'none';
+
+                if (editorIconBox) {
+                    editorIconBox.className = 'w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center text-lg sm:text-xl shadow shrink-0';
+                    editorIconBox.innerHTML = '<i class="fas fa-list-check"></i>';
+                }
+
+                editorNumberBadge.textContent = canEdit ? 'MODUL TARGET KINERJA SPM (15 INDIKATOR)' : 'AKSES TERBATAS';
+                editorNumberBadge.className = canEdit ? 'text-xs font-bold uppercase text-blue-600' : 'text-xs font-bold uppercase text-amber-600';
+                editorTitlePreview.textContent = '15 Indikator Target Kinerja Dinas Pendidikan Dan Kebudayaan';
+
+                if (canEdit) {
+                    if (lockBanner) lockBanner.classList.add('hidden');
+                    btnSaveChanges.disabled = false;
+                    btnSaveChanges.innerHTML = '<i class="fas fa-save text-sm"></i> Simpan Perubahan';
+                    btnSaveChanges.className = 'px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition flex items-center gap-2 shadow-md cursor-pointer';
+                } else {
+                    if (lockBanner) {
+                        lockBanner.classList.remove('hidden');
+                        if (lockUserName && activeUser) lockUserName.textContent = activeUser.name;
+                    }
+                    btnSaveChanges.disabled = true;
+                    btnSaveChanges.innerHTML = '<i class="fas fa-lock text-sm"></i> Akses Terkunci (Tidak Bisa Disimpan)';
+                    btnSaveChanges.className = 'px-5 py-2.5 rounded-xl bg-slate-200 text-slate-400 border border-slate-300 text-xs font-bold flex items-center gap-2 cursor-not-allowed shadow-none';
+                }
+
+                renderStandaloneIndikatorSpmEditor(f, canEdit);
+                return;
+            }
 
             if (isRpjmdStandaloneMode) {
                 // Tampilan Khusus Mandiri: Laporan RPJMD 2025 - 2029
@@ -4055,15 +4163,15 @@
 
         window.updateTableCell = function(subIdx, rIdx, cIdx, val) {
             const f = adminData[selectedFeatureIndex];
-            const perm = isEkinerjaStandaloneMode ? 'ekinerja' : (isIjinOperasionalStandaloneMode ? 'ijin-operasional' : (isPresensiOnlineStandaloneMode ? 'presensi-online' : f.id));
-            if (!hasFeatureAccess(perm)) return;
+            const perm = isIndikatorSpmStandaloneMode ? 'spm' : (isEkinerjaStandaloneMode ? 'ekinerja' : (isIjinOperasionalStandaloneMode ? 'ijin-operasional' : (isPresensiOnlineStandaloneMode ? 'presensi-online' : f.id)));
+            if (!hasFeatureAccess(perm) && !hasFeatureAccess('indikator-spm')) return;
             f.bagian[subIdx].baris[rIdx][cIdx] = val;
         };
 
         window.addNewTableRow = function(subIdx) {
             const f = adminData[selectedFeatureIndex];
-            const perm = isEkinerjaStandaloneMode ? 'ekinerja' : (isIjinOperasionalStandaloneMode ? 'ijin-operasional' : (isPresensiOnlineStandaloneMode ? 'presensi-online' : f.id));
-            if (!hasFeatureAccess(perm)) {
+            const perm = isIndikatorSpmStandaloneMode ? 'spm' : (isEkinerjaStandaloneMode ? 'ekinerja' : (isIjinOperasionalStandaloneMode ? 'ijin-operasional' : (isPresensiOnlineStandaloneMode ? 'presensi-online' : f.id)));
+            if (!hasFeatureAccess(perm) && !hasFeatureAccess('indikator-spm')) {
                 alert('Akses Ditolak: Anda tidak memiliki izin untuk mengedit modul ini.');
                 return;
             }
@@ -4071,7 +4179,13 @@
             if (!sub.baris) sub.baris = [];
             const newRow = new Array(sub.kolom ? sub.kolom.length : 4).fill('');
             newRow[0] = String(sub.baris.length + 1);
-            if (isPresensiOnlineStandaloneMode) {
+            if (isIndikatorSpmStandaloneMode) {
+                newRow[1] = 'Indikator Baru SPM';
+                newRow[2] = '%';
+                newRow[3] = '100';
+                newRow[4] = '100';
+                newRow[5] = '100';
+            } else if (isPresensiOnlineStandaloneMode) {
                 newRow[1] = '';
                 newRow[2] = '';
                 newRow[3] = '100%';
@@ -4081,7 +4195,9 @@
                 newRow[3] = 'Sudah';
             }
             sub.baris.push(newRow);
-            if (isPresensiOnlineStandaloneMode) {
+            if (isIndikatorSpmStandaloneMode) {
+                renderStandaloneIndikatorSpmEditor(f, true);
+            } else if (isPresensiOnlineStandaloneMode) {
                 renderStandalonePresensiOnlineEditor(f, true);
             } else if (isIjinOperasionalStandaloneMode) {
                 renderStandaloneIjinOperasionalEditor(f, true);
@@ -4095,8 +4211,8 @@
 
         window.deleteTableRow = function(subIdx, rIdx) {
             const f = adminData[selectedFeatureIndex];
-            const perm = isEkinerjaStandaloneMode ? 'ekinerja' : (isIjinOperasionalStandaloneMode ? 'ijin-operasional' : (isPresensiOnlineStandaloneMode ? 'presensi-online' : f.id));
-            if (!hasFeatureAccess(perm)) {
+            const perm = isIndikatorSpmStandaloneMode ? 'spm' : (isEkinerjaStandaloneMode ? 'ekinerja' : (isIjinOperasionalStandaloneMode ? 'ijin-operasional' : (isPresensiOnlineStandaloneMode ? 'presensi-online' : f.id)));
+            if (!hasFeatureAccess(perm) && !hasFeatureAccess('indikator-spm')) {
                 alert('Akses Ditolak: Anda tidak memiliki izin untuk mengedit modul ini.');
                 return;
             }
@@ -4110,7 +4226,9 @@
                         r[0] = String(idx + 1);
                     });
                 }
-                if (isPresensiOnlineStandaloneMode) {
+                if (isIndikatorSpmStandaloneMode) {
+                    renderStandaloneIndikatorSpmEditor(f, true);
+                } else if (isPresensiOnlineStandaloneMode) {
                     renderStandalonePresensiOnlineEditor(f, true);
                 } else if (isIjinOperasionalStandaloneMode) {
                     renderStandaloneIjinOperasionalEditor(f, true);
@@ -4125,8 +4243,8 @@
 
         window.updateGoogleSheetUrl = function(subIdx, val) {
             const f = adminData[selectedFeatureIndex];
-            const perm = isEkinerjaStandaloneMode ? 'ekinerja' : f.id;
-            if (!hasFeatureAccess(perm)) return;
+            const perm = isIndikatorSpmStandaloneMode ? 'spm' : (isEkinerjaStandaloneMode ? 'ekinerja' : f.id);
+            if (!hasFeatureAccess(perm) && !hasFeatureAccess('indikator-spm')) return;
             if (f && f.bagian && f.bagian[subIdx]) {
                 f.bagian[subIdx].googleSheetUrl = (val || '').trim();
             }
@@ -4312,11 +4430,13 @@
 
         window.clearGoogleSheetUrl = function(subIdx) {
             const f = adminData[selectedFeatureIndex];
-            const perm = isEkinerjaStandaloneMode ? 'ekinerja' : f.id;
-            if (!hasFeatureAccess(perm)) return;
+            const perm = isIndikatorSpmStandaloneMode ? 'spm' : (isEkinerjaStandaloneMode ? 'ekinerja' : f.id);
+            if (!hasFeatureAccess(perm) && !hasFeatureAccess('indikator-spm')) return;
             if (f && f.bagian && f.bagian[subIdx]) {
                 f.bagian[subIdx].googleSheetUrl = '';
-                if (isEkinerjaStandaloneMode) {
+                if (isIndikatorSpmStandaloneMode) {
+                    renderStandaloneIndikatorSpmEditor(f, true);
+                } else if (isEkinerjaStandaloneMode) {
                     renderStandaloneEkinerjaEditor(f, true);
                 } else {
                     renderSubModulesEditor(f, true);
@@ -4324,10 +4444,296 @@
             }
         };
 
+        window.openIndikatorSpmEditor = function() {
+            const spmIdx = adminData.findIndex(f => f.id === 'spm');
+            if (spmIdx === -1) return;
+
+            isEkinerjaStandaloneMode = false;
+            isIjinOperasionalStandaloneMode = false;
+            isPresensiOnlineStandaloneMode = false;
+            isRpjmdStandaloneMode = false;
+            isIndikatorSpmStandaloneMode = true;
+            selectedFeatureIndex = spmIdx;
+            renderFeatureList();
+            loadFeatureToEditor();
+
+            if (window.innerWidth < 1024) {
+                const editorCard = document.getElementById('editor-card');
+                if (editorCard) {
+                    const yOffset = -70;
+                    const y = editorCard.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+            }
+        };
+
+        window.resetIndikatorSpmData = function(subIdx) {
+            if (!confirm('Apakah Anda yakin ingin mengembalikan tabel 15 Indikator Target Kinerja ke data standar awal?')) return;
+            const defaultSpm = portalData.find(f => f.id === 'spm');
+            const defaultSub = defaultSpm && Array.isArray(defaultSpm.bagian) ? defaultSpm.bagian.find(b => b.id === 'indikator-spm-15') : null;
+            if (!defaultSub) return;
+            const f = adminData[selectedFeatureIndex];
+            if (f && f.bagian && f.bagian[subIdx]) {
+                f.bagian[subIdx].nama = defaultSub.nama;
+                f.bagian[subIdx].deskripsi = defaultSub.deskripsi;
+                f.bagian[subIdx].baris = JSON.parse(JSON.stringify(defaultSub.baris));
+                renderStandaloneIndikatorSpmEditor(f, true);
+                showFloatingToast('15 Indikator Target Kinerja berhasil direset ke data standar!', 'success');
+            }
+        };
+
+        function renderStandaloneIndikatorSpmEditor(feature, canEdit = true) {
+            subModulesEditor.innerHTML = '';
+            const subIdx = feature.bagian ? feature.bagian.findIndex(b => b.id === 'indikator-spm-15') : -1;
+            if (subIdx === -1) {
+                subModulesEditor.innerHTML = '<p class="text-xs text-slate-400">Sub-modul 15 Indikator Target Kinerja tidak ditemukan pada modul SPM.</p>';
+                return;
+            }
+
+            const sub = feature.bagian[subIdx];
+            const box = document.createElement('div');
+            box.id = 'sub-module-card-indikator-spm';
+            box.className = `bg-slate-50 rounded-2xl p-4 sm:p-5 border ${canEdit ? 'border-blue-200' : 'border-amber-200 bg-amber-50/20'} shadow-sm space-y-4`;
+
+            // HTML tabel
+            let tableHTML = '';
+            if (sub.baris && sub.kolom) {
+                tableHTML = `
+                    <div class="mt-4 pt-3 border-t border-slate-200">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-700 flex items-center gap-1.5">
+                                    <i class="fas fa-table-list text-blue-600"></i>
+                                    Isi Baris Indikator Kinerja (${sub.baris.length} baris, ${sub.kolom.length} kolom)
+                                </label>
+                                <p class="text-[11px] text-slate-500 mt-0.5">
+                                    ${canEdit ? 'Ketik langsung pada kolom input untuk mengedit data. Jangan lupa klik "Simpan Perubahan" di atas.' : 'Tabel dalam mode hanya-baca (Read-Only).'}
+                                </p>
+                            </div>
+                            ${canEdit ? `
+                                <div class="flex items-center gap-1.5 self-start sm:self-auto">
+                                    <button type="button" onclick="addNewTableRow(${subIdx})" class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-xs">
+                                        <i class="fas fa-plus"></i> Tambah Baris
+                                    </button>
+                                    <button type="button" onclick="resetIndikatorSpmData(${subIdx})" class="px-3 py-1.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-xs" title="Reset data ke bawaan resmi">
+                                        <i class="fas fa-undo"></i> Reset Bawaan
+                                    </button>
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        <div class="overflow-x-auto border border-slate-200 rounded-xl bg-white shadow-inner max-h-[600px]">
+                            <table class="w-full text-xs text-left border-collapse">
+                                <thead class="sticky top-0 z-10 shadow-xs">
+                                    <tr>
+                                        ${sub.kolom.map((c, cIdx) => {
+                                            const name = (c || '').toLowerCase();
+                                            let bgClass = 'bg-slate-800 text-white text-center';
+                                            if (cIdx === 0 || name === 'no' || name === 'no.') bgClass = 'bg-slate-900 text-white text-center w-12';
+                                            else if (cIdx === 1 || name.includes('indikator')) bgClass = 'bg-blue-950 text-white text-left';
+                                            else if (cIdx === 2 || name.includes('satuan')) bgClass = 'bg-slate-800 text-white text-center w-20';
+                                            else if (cIdx === 3 || name.includes('2025')) bgClass = 'bg-emerald-900 text-white text-center w-28';
+                                            else if (cIdx === 4 || name.includes('2026')) bgClass = 'bg-blue-900 text-white text-center w-28';
+                                            else if (cIdx === 5 || name.includes('2027')) bgClass = 'bg-indigo-900 text-white text-center w-28';
+                                            return \`<th class="p-2.5 border-r border-slate-700 whitespace-nowrap text-xs font-bold \${bgClass}">\${c}</th>\`;
+                                        }).join('')}
+                                        ${canEdit ? '<th class="p-2.5 text-center w-12 bg-slate-900 text-white whitespace-nowrap">Aksi</th>' : ''}
+                                    </tr>
+                                </thead>
+                                <tbody id="table-body-${subIdx}">
+                                    ${sub.baris.map((row, rIdx) => {
+                                        const isGroup1 = rIdx < 6;
+                                        return `
+                                        <tr class="border-b transition hover:bg-blue-50/40 ${isGroup1 ? 'bg-white' : 'bg-slate-50/30'}">
+                                            ${row.map((cell, cIdx) => {
+                                                if (cIdx === 0) {
+                                                    return `
+                                                        <td class="p-2 border-r border-slate-100 w-12 text-center bg-slate-100 font-bold text-slate-700">
+                                                            <input type="text" value="${(cell || '').replace(/"/g, '&quot;')}"
+                                                                ${!canEdit ? 'disabled' : ''}
+                                                                oninput="updateTableCell(${subIdx}, ${rIdx}, ${cIdx}, this.value)"
+                                                                onchange="updateTableCell(${subIdx}, ${rIdx}, ${cIdx}, this.value)"
+                                                                class="w-full text-center font-bold text-slate-700 bg-transparent focus:outline-none">
+                                                        </td>
+                                                    `;
+                                                } else if (cIdx === 1) {
+                                                    return `
+                                                        <td class="p-2 border-r border-slate-100 min-w-[260px]">
+                                                            <textarea rows="2"
+                                                                ${!canEdit ? 'disabled' : ''}
+                                                                oninput="updateTableCell(${subIdx}, ${rIdx}, ${cIdx}, this.value)"
+                                                                onchange="updateTableCell(${subIdx}, ${rIdx}, ${cIdx}, this.value)"
+                                                                class="w-full px-2 py-1 text-xs border border-slate-200 rounded-lg focus:border-blue-500 focus:bg-white text-slate-800 font-medium leading-snug resize-y ${!canEdit ? 'bg-slate-100 cursor-not-allowed opacity-75' : 'bg-white'}">${cell || ''}</textarea>
+                                                        </td>
+                                                    `;
+                                                } else if (cIdx === 2) {
+                                                    return `
+                                                        <td class="p-2 border-r border-slate-100 w-20 text-center">
+                                                            <input type="text" value="${(cell || '').replace(/"/g, '&quot;')}"
+                                                                ${!canEdit ? 'disabled' : ''}
+                                                                oninput="updateTableCell(${subIdx}, ${rIdx}, ${cIdx}, this.value)"
+                                                                onchange="updateTableCell(${subIdx}, ${rIdx}, ${cIdx}, this.value)"
+                                                                class="w-full px-2 py-1 text-xs border border-slate-200 rounded-lg focus:border-blue-500 focus:bg-white text-center font-bold text-slate-700 ${!canEdit ? 'bg-slate-100 cursor-not-allowed opacity-75' : 'bg-white'}">
+                                                        </td>
+                                                    `;
+                                                } else if (cIdx === 3) {
+                                                    return `
+                                                        <td class="p-2 border-r border-slate-100 w-28 text-center bg-emerald-50/40">
+                                                            <input type="text" value="${(cell || '').replace(/"/g, '&quot;')}"
+                                                                ${!canEdit ? 'disabled' : ''}
+                                                                oninput="updateTableCell(${subIdx}, ${rIdx}, ${cIdx}, this.value)"
+                                                                onchange="updateTableCell(${subIdx}, ${rIdx}, ${cIdx}, this.value)"
+                                                                class="w-full px-2 py-1 text-xs border border-emerald-200 rounded-lg focus:border-emerald-500 focus:bg-white text-center font-black text-emerald-800 bg-white ${!canEdit ? 'bg-slate-100 cursor-not-allowed opacity-75' : ''}">
+                                                        </td>
+                                                    `;
+                                                } else if (cIdx === 4) {
+                                                    return `
+                                                        <td class="p-2 border-r border-slate-100 w-28 text-center bg-blue-50/40">
+                                                            <input type="text" value="${(cell || '').replace(/"/g, '&quot;')}"
+                                                                ${!canEdit ? 'disabled' : ''}
+                                                                oninput="updateTableCell(${subIdx}, ${rIdx}, ${cIdx}, this.value)"
+                                                                onchange="updateTableCell(${subIdx}, ${rIdx}, ${cIdx}, this.value)"
+                                                                class="w-full px-2 py-1 text-xs border border-blue-200 rounded-lg focus:border-blue-500 focus:bg-white text-center font-black text-blue-800 bg-white ${!canEdit ? 'bg-slate-100 cursor-not-allowed opacity-75' : ''}">
+                                                        </td>
+                                                    `;
+                                                } else {
+                                                    return `
+                                                        <td class="p-2 border-r border-slate-100 w-28 text-center bg-indigo-50/40">
+                                                            <input type="text" value="${(cell || '').replace(/"/g, '&quot;')}"
+                                                                ${!canEdit ? 'disabled' : ''}
+                                                                oninput="updateTableCell(${subIdx}, ${rIdx}, ${cIdx}, this.value)"
+                                                                onchange="updateTableCell(${subIdx}, ${rIdx}, ${cIdx}, this.value)"
+                                                                class="w-full px-2 py-1 text-xs border border-indigo-200 rounded-lg focus:border-indigo-500 focus:bg-white text-center font-black text-indigo-800 bg-white ${!canEdit ? 'bg-slate-100 cursor-not-allowed opacity-75' : ''}">
+                                                        </td>
+                                                    `;
+                                                }
+                                            }).join('')}
+                                            ${canEdit ? `
+                                                <td class="p-2 text-center whitespace-nowrap">
+                                                    <button type="button" onclick="deleteTableRow(${subIdx}, ${rIdx})" class="p-1.5 text-rose-500 hover:text-rose-700 hover:bg-rose-50 rounded-lg transition cursor-pointer" title="Hapus Baris Ini">
+                                                        <i class="fas fa-trash-alt text-xs"></i>
+                                                    </button>
+                                                </td>
+                                            ` : ''}
+                                        </tr>
+                                        `;
+                                    }).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Banner Keterangan & Narasi Resmi
+            const narasiOfficialHTML = `
+                <div class="mt-4 p-4 rounded-xl bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white shadow-sm space-y-3">
+                    <div class="flex items-center gap-2 border-b border-white/10 pb-2">
+                        <i class="fas fa-info-circle text-amber-300 text-base"></i>
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-200">Keterangan Satuan & Kerangka SPM</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="p-3 rounded-lg bg-white/5 border border-white/10 space-y-1">
+                            <div class="font-bold text-sky-200">📊 Format Pengukuran:</div>
+                            <ul class="space-y-1 text-slate-200 text-[11px] list-disc list-inside">
+                                <li><strong>Angka Partisipasi Sekolah (APS):</strong> Dinyatakan dalam satuan persen (%)</li>
+                                <li><strong>Kemampuan Literasi & Numerasi:</strong> Dinyatakan dalam satuan skor</li>
+                                <li><strong>Iklim Keamanan & Kebinekaan:</strong> Dinyatakan dalam skor</li>
+                                <li><strong>Akreditasi & Kualifikasi PAUD:</strong> Dinyatakan dalam persen (%)</li>
+                            </ul>
+                        </div>
+                        <div class="p-3 rounded-lg bg-white/5 border border-white/10 space-y-1">
+                            <div class="font-bold text-amber-200">🎯 4 Fokus Kita & Komitmen SPM:</div>
+                            <ul class="space-y-1 text-slate-200 text-[11px] list-disc list-inside">
+                                <li>Akses pendidikan merata & berkualitas</li>
+                                <li>Kompetensi literasi & numerasi peserta didik</li>
+                                <li>Lingkungan belajar inklusif, aman, dan berkebinekaan</li>
+                                <li>Peningkatan mutu satuan dan pendidik PAUD</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pt-2 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
+                        <span class="text-[11px] text-slate-300 font-semibold italic">5 Pilar: BERKUALITAS • INKLUSIF • AMAN • BERKEBINEKAAN • BERKELANJUTAN</span>
+                        <span class="text-[10px] bg-blue-500/30 text-blue-200 px-2 py-0.5 rounded-full border border-blue-400/30">Dinas Pendidikan dan Kebudayaan Kab. Madiun</span>
+                    </div>
+                </div>
+            `;
+
+            // Integrasi Google Sheets (Publish to Web / Embed)
+            let googleSheetHTML = `
+                <div class="mt-4 pt-3 border-t border-slate-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="block text-xs font-black uppercase text-slate-800 flex items-center gap-1.5">
+                            <i class="fab fa-google-drive text-blue-600 text-sm"></i>
+                            <span>Integrasi Google Sheets (Publish to Web / Embed)</span>
+                        </label>
+                        <span class="text-[10px] font-bold text-slate-500 bg-slate-200/80 px-2 py-0.5 rounded-full">Opsi Live Spreadsheet</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 mb-2 leading-relaxed">
+                        Anda dapat mengedit tabel di atas secara manual <strong>ATAU</strong> menyematkan tautan Google Sheets dari menu <em>File &gt; Share &gt; Publish to the web (Publikasikan ke web)</em>. Jika tautan diisi, pengunjung dapat melihat tampilan lembar kerja live Google Sheets di portal.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <div class="relative flex-1">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                                <i class="fas fa-link text-xs"></i>
+                            </span>
+                            <input type="url" value="${(sub.googleSheetUrl || '').replace(/"/g, '&quot;')}"
+                                ${!canEdit ? 'disabled' : ''}
+                                placeholder="Contoh: https://docs.google.com/spreadsheets/d/e/2PACX-.../pubhtml"
+                                oninput="window.updateGoogleSheetUrl(${subIdx}, this.value)"
+                                onchange="window.updateGoogleSheetUrl(${subIdx}, this.value)"
+                                class="w-full pl-8 pr-3 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none ${!canEdit ? 'bg-slate-100 cursor-not-allowed opacity-75' : 'bg-white'}">
+                        </div>
+                        ${sub.googleSheetUrl ? `
+                            <a href="${sub.googleSheetUrl}" target="_blank" rel="noopener noreferrer"
+                                class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition shrink-0">
+                                <i class="fas fa-external-link-alt"></i> Uji Tautan
+                            </a>
+                            ${canEdit ? `
+                                <button type="button" onclick="window.clearGoogleSheetUrl(${subIdx})"
+                                    class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-red-50 text-slate-600 hover:text-red-600 border border-slate-200 text-xs font-bold transition flex items-center justify-center gap-1.5 shrink-0 cursor-pointer"
+                                    title="Kosongkan Tautan Spreadsheet">
+                                    <i class="fas fa-times"></i> Kosongkan Link
+                                </button>
+                            ` : ''}
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+
+            box.innerHTML = `
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-200">
+                    <div class="flex-1">
+                        <label class="block text-[10px] font-bold uppercase text-slate-400 mb-0.5">Nama Sub Modul</label>
+                        <input type="text" id="input-sub-name-indikator-spm-15" value="${(sub.nama || '').replace(/"/g, '&quot;')}"
+                            ${!canEdit ? 'disabled' : ''}
+                            oninput="updateSubName(${subIdx}, this.value)"
+                            onchange="updateSubName(${subIdx}, this.value)"
+                            class="w-full px-2.5 py-1 text-xs font-extrabold text-slate-800 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 bg-white ${!canEdit ? 'bg-slate-100 cursor-not-allowed opacity-75' : ''}">
+                    </div>
+                    <span class="text-[10px] uppercase font-bold px-2.5 py-1 rounded-full bg-blue-100 text-blue-700 self-start sm:self-center shrink-0">Tipe: ${sub.tipe}</span>
+                </div>
+                <div class="mt-2">
+                    <label class="block text-[11px] font-bold uppercase text-slate-500 mb-1">Deskripsi Lengkap Sub Bagian</label>
+                    <textarea id="input-sub-desc-indikator-spm-15" rows="3" 
+                        ${!canEdit ? 'disabled' : ''}
+                        oninput="updateSubDesc(${subIdx}, this.value)"
+                        onchange="updateSubDesc(${subIdx}, this.value)"
+                        class="w-full px-3 py-2 text-xs border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 bg-white leading-relaxed ${!canEdit ? 'bg-slate-100 cursor-not-allowed opacity-75' : ''}">${sub.deskripsi || ''}</textarea>
+                </div>
+                ${tableHTML}
+                ${narasiOfficialHTML}
+                ${googleSheetHTML}
+            `;
+
+            subModulesEditor.appendChild(box);
+        }
+
         window.openEkinerjaEditor = function() {
             const spmIdx = adminData.findIndex(f => f.id === 'spm');
             if (spmIdx === -1) return;
 
+            isIndikatorSpmStandaloneMode = false;
             isIjinOperasionalStandaloneMode = false;
             isPresensiOnlineStandaloneMode = false;
             isRpjmdStandaloneMode = false;
@@ -4513,6 +4919,7 @@
             const lembagaIdx = adminData.findIndex(f => f.id === 'lembaga-sekolah');
             if (lembagaIdx === -1) return;
 
+            isIndikatorSpmStandaloneMode = false;
             isEkinerjaStandaloneMode = false;
             isPresensiOnlineStandaloneMode = false;
             isRpjmdStandaloneMode = false;
@@ -4687,6 +5094,7 @@
             const spmIdx = adminData.findIndex(f => f.id === 'spm');
             if (spmIdx === -1) return;
 
+            isIndikatorSpmStandaloneMode = false;
             isEkinerjaStandaloneMode = false;
             isIjinOperasionalStandaloneMode = false;
             isRpjmdStandaloneMode = false;
@@ -4741,6 +5149,7 @@
         };
 
         window.openRpjmdEditor = function() {
+            isIndikatorSpmStandaloneMode = false;
             isEkinerjaStandaloneMode = false;
             isIjinOperasionalStandaloneMode = false;
             isPresensiOnlineStandaloneMode = false;
@@ -5397,16 +5806,18 @@
             }
 
             const f = adminData[selectedFeatureIndex];
-            const isStandalone = isEkinerjaStandaloneMode || isIjinOperasionalStandaloneMode || isPresensiOnlineStandaloneMode || isRpjmdStandaloneMode;
-            const requiredPerm = isEkinerjaStandaloneMode 
-                ? 'ekinerja' 
-                : (isIjinOperasionalStandaloneMode 
-                    ? 'ijin-operasional' 
-                    : (isPresensiOnlineStandaloneMode 
-                        ? 'presensi-online' 
-                        : (isRpjmdStandaloneMode ? 'rpjmd' : (f ? f.id : ''))));
+            const isStandalone = isIndikatorSpmStandaloneMode || isEkinerjaStandaloneMode || isIjinOperasionalStandaloneMode || isPresensiOnlineStandaloneMode || isRpjmdStandaloneMode;
+            const requiredPerm = isIndikatorSpmStandaloneMode
+                ? 'spm'
+                : (isEkinerjaStandaloneMode 
+                    ? 'ekinerja' 
+                    : (isIjinOperasionalStandaloneMode 
+                        ? 'ijin-operasional' 
+                        : (isPresensiOnlineStandaloneMode 
+                            ? 'presensi-online' 
+                            : (isRpjmdStandaloneMode ? 'rpjmd' : (f ? f.id : '')))));
 
-            if (!hasFeatureAccess(requiredPerm)) {
+            if (!hasFeatureAccess(requiredPerm) && !hasFeatureAccess('indikator-spm')) {
                 alert('Akses Ditolak: Anda tidak memiliki izin untuk menyimpan perubahan pada modul ini.');
                 return;
             }
@@ -5442,6 +5853,8 @@
                     }
 
                     // Sinkronkan nama dan deskripsi sub-modul langsung dari DOM input yang sedang terbuka
+                    const domIndikatorName = document.getElementById('input-sub-name-indikator-spm-15');
+                    const domIndikatorDesc = document.getElementById('input-sub-desc-indikator-spm-15');
                     const domEkinName = document.getElementById('input-sub-name-ekinerja');
                     const domEkinDesc = document.getElementById('input-sub-desc-ekinerja');
                     const domPresName = document.getElementById('input-sub-name-presensi-online');
@@ -5451,6 +5864,14 @@
 
                     const spmF = adminData.find(x => x.id === 'spm');
                     if (spmF && Array.isArray(spmF.bagian)) {
+                        if (domIndikatorName && domIndikatorName.value.trim()) {
+                            const sub = spmF.bagian.find(b => b.id === 'indikator-spm-15');
+                            if (sub) sub.nama = domIndikatorName.value.trim();
+                        }
+                        if (domIndikatorDesc && domIndikatorDesc.value != null) {
+                            const sub = spmF.bagian.find(b => b.id === 'indikator-spm-15');
+                            if (sub) sub.deskripsi = domIndikatorDesc.value;
+                        }
                         if (domEkinName && domEkinName.value.trim()) {
                             const sub = spmF.bagian.find(b => b.id === 'ekinerja');
                             if (sub) sub.nama = domEkinName.value.trim();
@@ -5522,13 +5943,15 @@
                 }, 3000);
 
                 // Notifikasi floating toast yang selalu terlihat di posisi layar manapun
-                const savedTitle = isEkinerjaStandaloneMode 
-                    ? 'E-Kinerja' 
-                    : (isIjinOperasionalStandaloneMode 
-                        ? 'Ijin Operasional' 
-                        : (isPresensiOnlineStandaloneMode 
-                            ? 'Presensi Online' 
-                            : (isRpjmdStandaloneMode ? 'Laporan RPJMD 2025 - 2029' : (f ? f.judul : 'Fitur'))));
+                const savedTitle = isIndikatorSpmStandaloneMode
+                    ? '15 Indikator Target Kinerja'
+                    : (isEkinerjaStandaloneMode 
+                        ? 'E-Kinerja' 
+                        : (isIjinOperasionalStandaloneMode 
+                            ? 'Ijin Operasional' 
+                            : (isPresensiOnlineStandaloneMode 
+                                ? 'Presensi Online' 
+                                : (isRpjmdStandaloneMode ? 'Laporan RPJMD 2025 - 2029' : (f ? f.judul : 'Fitur')))));
                 const toastMsg = isStandalone 
                     ? `Data modul "${savedTitle}" berhasil diperbarui dan disimpan secara mandiri (tidak digabung ke Google Spreadsheet lama).` 
                     : `Data fitur "${f ? f.judul : ''}" telah berhasil diperbarui dan disinkronkan ke sistem.`;
@@ -5544,23 +5967,27 @@
             } finally {
                 // Kembalikan tombol ke keadaan semula setelah 2.5 detik
                 setTimeout(() => {
-                    const currentCanEdit = isEkinerjaStandaloneMode 
-                        ? hasFeatureAccess('ekinerja') 
-                        : (isIjinOperasionalStandaloneMode 
-                            ? hasFeatureAccess('ijin-operasional') 
-                            : (isPresensiOnlineStandaloneMode 
-                                ? hasFeatureAccess('presensi-online') 
-                                : (isRpjmdStandaloneMode ? hasFeatureAccess('rpjmd') : (f ? hasFeatureAccess(f.id) : false))));
+                    const currentCanEdit = isIndikatorSpmStandaloneMode
+                        ? (hasFeatureAccess('spm') || hasFeatureAccess('indikator-spm') || (activeUser && (activeUser.role === 'superadmin' || activeUser.role === 'admin')))
+                        : (isEkinerjaStandaloneMode 
+                            ? hasFeatureAccess('ekinerja') 
+                            : (isIjinOperasionalStandaloneMode 
+                                ? hasFeatureAccess('ijin-operasional') 
+                                : (isPresensiOnlineStandaloneMode 
+                                    ? hasFeatureAccess('presensi-online') 
+                                    : (isRpjmdStandaloneMode ? hasFeatureAccess('rpjmd') : (f ? hasFeatureAccess(f.id) : false)))));
                     if (currentCanEdit) {
                         btnSaveChanges.disabled = false;
                         btnSaveChanges.innerHTML = isRpjmdStandaloneMode 
                             ? '<i class="fas fa-save text-sm"></i> Simpan Dokumen RPJMD' 
                             : '<i class="fas fa-save text-sm"></i> Simpan Perubahan';
-                        const themeBg = isPresensiOnlineStandaloneMode 
-                            ? 'bg-teal-600 hover:bg-teal-500' 
-                            : (isIjinOperasionalStandaloneMode 
-                                ? 'bg-indigo-600 hover:bg-indigo-500' 
-                                : (isRpjmdStandaloneMode ? 'bg-cyan-600 hover:bg-cyan-500' : 'bg-emerald-600 hover:bg-emerald-500'));
+                        const themeBg = isIndikatorSpmStandaloneMode
+                            ? 'bg-blue-600 hover:bg-blue-500'
+                            : (isPresensiOnlineStandaloneMode 
+                                ? 'bg-teal-600 hover:bg-teal-500' 
+                                : (isIjinOperasionalStandaloneMode 
+                                    ? 'bg-indigo-600 hover:bg-indigo-500' 
+                                    : (isRpjmdStandaloneMode ? 'bg-cyan-600 hover:bg-cyan-500' : 'bg-emerald-600 hover:bg-emerald-500')));
                         btnSaveChanges.className = `w-full sm:w-auto px-5 py-2.5 rounded-xl ${themeBg} text-white text-xs font-bold transition flex items-center justify-center gap-2 shadow-md cursor-pointer shrink-0`;
                     }
                 }, 2500);

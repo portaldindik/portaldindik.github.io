@@ -227,10 +227,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof portalData !== 'undefined') {
         let needsSave = false;
 
-        // Sinkronisasi SPM (E-Kinerja & Presensi Online)
+        // Sinkronisasi SPM (15 Indikator SPM, E-Kinerja & Presensi Online)
         const defSpm = portalData.find(f => f.id === 'spm');
         const curSpm = currentData.find(f => f.id === 'spm');
         if (defSpm && curSpm) {
+            const defIndikator = (defSpm.bagian || []).find(b => b.id === 'indikator-spm-15');
+            const curIndikator = (curSpm.bagian || []).find(b => b.id === 'indikator-spm-15');
+            if (defIndikator && !curIndikator) {
+                const ikuIdx = curSpm.bagian.findIndex(b => b.id === 'iku');
+                if (ikuIdx !== -1) {
+                    curSpm.bagian.splice(ikuIdx + 1, 0, JSON.parse(JSON.stringify(defIndikator)));
+                } else {
+                    curSpm.bagian.push(JSON.parse(JSON.stringify(defIndikator)));
+                }
+                needsSave = true;
+            }
             const defEkinerja = (defSpm.bagian || []).find(b => b.id === 'ekinerja');
             const curEkinerja = (curSpm.bagian || []).find(b => b.id === 'ekinerja');
             if (defEkinerja && !curEkinerja) {
@@ -882,6 +893,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Helper ikon ceria sub-bab
     function getSubBabIcon(sub) {
         const name = (sub.nama || '').toLowerCase();
+        if (sub.id === 'indikator-spm-15' || name.includes('15 indikator')) return 'fa-list-check';
         if (name.includes('presensi') || name.includes('absensi')) return 'fa-user-clock';
         if (name.includes('ekinerja') || name.includes('kinerja')) return 'fa-chart-pie';
         if (name.includes('ikk') || name.includes('iku') || name.includes('indikator')) return 'fa-chart-line';
@@ -1175,7 +1187,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             }
-            bodyHTML = extraTopHTML + renderSubTable(sub, sIdx);
+            if (sub.id === 'indikator-spm-15') {
+                bodyHTML = renderSubIndikatorSpm15(sub, sIdx);
+            } else {
+                bodyHTML = extraTopHTML + renderSubTable(sub, sIdx);
+            }
         } else if (sub.tipe === 'kegiatan-foto' || (sub.kegiatan && sub.kegiatan.length > 0)) {
             let skTopHTML = '';
             if (sub.dokumenSK) {
@@ -1519,6 +1535,337 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     };
+
+    // Helper Render Khusus: 15 Indikator Target Kinerja Dinas Pendidikan dan Kebudayaan Pada SPM
+    function renderSubIndikatorSpm15(sub, sIdx) {
+        if (!sub.baris || sub.baris.length === 0) {
+            return '<p class="text-slate-400 py-6 text-center">Data 15 Indikator Target Kinerja belum tersedia.</p>';
+        }
+
+        const totalIndikator = sub.baris.length;
+        const rowsPart1 = sub.baris.filter((r, idx) => idx < 6);
+        const rowsPart2 = sub.baris.filter((r, idx) => idx >= 6);
+
+        const renderRowsHTML = (rows, startIndex = 0) => {
+            return rows.map((row, rIdx) => {
+                const globalIndex = startIndex + rIdx;
+                const noVal = row[0] || (globalIndex + 1);
+                const indikatorFull = String(row[1] || '');
+                const satuanVal = String(row[2] || '');
+                const cap2025 = String(row[3] || '');
+                const tgt2026 = String(row[4] || '');
+                const tgt2027 = String(row[5] || '');
+
+                let indikatorTitle = indikatorFull;
+                let indikatorDesc = '';
+                if (indikatorFull.includes(' - ')) {
+                    const parts = indikatorFull.split(' - ');
+                    indikatorTitle = parts[0].trim();
+                    indikatorDesc = parts.slice(1).join(' - ').trim();
+                } else if (indikatorFull.includes(') ') && (indikatorFull.includes('Partisipasi') || indikatorFull.includes('Kemampuan'))) {
+                    const closeParenIdx = indikatorFull.indexOf(') ');
+                    indikatorTitle = indikatorFull.substring(0, closeParenIdx + 1).trim();
+                    indikatorDesc = indikatorFull.substring(closeParenIdx + 2).trim();
+                }
+
+                let satuanBadge = `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-black bg-slate-100 text-slate-800 border border-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700">${satuanVal}</span>`;
+                if (satuanVal === '%' || satuanVal.toLowerCase().includes('persen')) {
+                    satuanBadge = `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-black bg-blue-100 text-blue-900 border border-blue-200 dark:bg-blue-950/80 dark:text-blue-300 dark:border-blue-800"><i class="fas fa-percent text-[10px]"></i> ${satuanVal}</span>`;
+                } else if (satuanVal.toLowerCase().includes('skor')) {
+                    satuanBadge = `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-black bg-purple-100 text-purple-900 border border-purple-200 dark:bg-purple-950/80 dark:text-purple-300 dark:border-purple-800"><i class="fas fa-chart-simple text-[10px]"></i> ${satuanVal}</span>`;
+                }
+
+                const trBg = (globalIndex % 2 === 0 ? 'bg-white dark:bg-slate-900' : 'bg-slate-50/60 dark:bg-slate-800/40');
+
+                return `
+                    <tr class="${trBg} hover:bg-blue-50/50 dark:hover:bg-slate-800 transition-colors border-b border-slate-200/80 dark:border-slate-800/80">
+                        <td class="p-3.5 text-center whitespace-nowrap w-14">
+                            <span class="w-7 h-7 rounded-lg bg-blue-600 dark:bg-blue-500 text-white font-black text-xs inline-flex items-center justify-center font-mono shadow-xs">
+                                ${noVal}
+                            </span>
+                        </td>
+                        <td class="p-3.5 text-left min-w-[280px]">
+                            <div class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm leading-snug">
+                                ${indikatorTitle}
+                            </div>
+                            ${indikatorDesc ? `
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">
+                                    ${indikatorDesc}
+                                </div>
+                            ` : ''}
+                        </td>
+                        <td class="p-3.5 text-center whitespace-nowrap w-24">
+                            ${satuanBadge}
+                        </td>
+                        <td class="p-3.5 text-center whitespace-nowrap w-36">
+                            <span class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black bg-emerald-100 dark:bg-emerald-950/80 text-emerald-900 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-700 font-mono shadow-2xs">
+                                <i class="fas fa-circle-check text-emerald-600 dark:text-emerald-400 text-[10px]"></i>
+                                <span>${cap2025}</span>
+                            </span>
+                        </td>
+                        <td class="p-3.5 text-center whitespace-nowrap w-36">
+                            <span class="inline-flex items-center justify-center px-3 py-1.5 rounded-xl text-xs font-black bg-teal-50 dark:bg-teal-950/60 text-teal-900 dark:text-teal-200 border border-teal-300 dark:border-teal-700 font-mono shadow-2xs">
+                                ${tgt2026}
+                            </span>
+                        </td>
+                        <td class="p-3.5 text-center whitespace-nowrap w-36">
+                            <span class="inline-flex items-center justify-center px-3 py-1.5 rounded-xl text-xs font-black bg-sky-50 dark:bg-sky-950/60 text-sky-900 dark:text-sky-200 border border-sky-300 dark:border-sky-700 font-mono shadow-2xs">
+                                ${tgt2027}
+                            </span>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        };
+
+        const theadColumnsHTML = `
+            <thead>
+                <tr class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white text-[11px] font-black uppercase tracking-wider">
+                    <th class="p-3.5 text-center border-r border-slate-700/60 w-14">NO</th>
+                    <th class="p-3.5 text-left border-r border-slate-700/60 min-w-[280px]">INDIKATOR SPM</th>
+                    <th class="p-3.5 text-center border-r border-slate-700/60 w-24">SATUAN</th>
+                    <th class="p-3.5 text-center border-r border-slate-700/60 w-36">
+                        <div class="leading-tight">
+                            <span>CAPAIAN</span>
+                            <span class="block text-[10px] text-emerald-300 font-mono mt-0.5">TAHUN 2025</span>
+                        </div>
+                    </th>
+                    <th class="p-3.5 text-center border-r border-slate-700/60 w-36">
+                        <div class="leading-tight">
+                            <span>TARGET</span>
+                            <span class="block text-[10px] text-teal-300 font-mono mt-0.5">TAHUN 2026</span>
+                        </div>
+                    </th>
+                    <th class="p-3.5 text-center w-36">
+                        <div class="leading-tight">
+                            <span>TARGET</span>
+                            <span class="block text-[10px] text-sky-300 font-mono mt-0.5">TAHUN 2027</span>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+        `;
+
+        return `
+            <div class="space-y-8">
+                <!-- 1. Header Banner Resmi -->
+                <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-blue-950 via-indigo-950 to-slate-900 text-white shadow-xl relative overflow-hidden border border-blue-500/30">
+                    <div class="absolute -right-12 -bottom-12 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                        <div class="space-y-2.5">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="px-3 py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider bg-white/15 backdrop-blur-md text-cyan-200 border border-white/20 flex items-center gap-1.5">
+                                    <i class="fas fa-landmark text-cyan-300"></i> KABUPATEN MADIUN
+                                </span>
+                                <span class="px-3 py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 flex items-center gap-1.5">
+                                    <i class="fas fa-balance-scale"></i> SPM BIDANG PENDIDIKAN
+                                </span>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-white leading-tight">
+                                TARGET KINERJA DINAS PENDIDIKAN DAN KEBUDAYAAN PADA SPM
+                            </h3>
+                            <p class="text-xs sm:text-sm text-blue-100 max-w-2xl leading-relaxed">
+                                Standar Pelayanan Minimal (SPM) Pendidikan Kabupaten Madiun: Pemantauan Capaian Tahun 2025 serta Target Kinerja Tahun 2026 s/d 2027.
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 shrink-0">
+                            <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center">
+                                <div class="text-2xl font-black text-white font-mono">${totalIndikator}</div>
+                                <div class="text-[10px] font-bold text-cyan-200 uppercase tracking-wider mt-0.5">Indikator SPM</div>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center">
+                                <div class="text-2xl font-black text-emerald-300 font-mono">3</div>
+                                <div class="text-[10px] font-bold text-emerald-200 uppercase tracking-wider mt-0.5">Partisipasi (%)</div>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center">
+                                <div class="text-2xl font-black text-amber-300 font-mono">10</div>
+                                <div class="text-[10px] font-bold text-amber-200 uppercase tracking-wider mt-0.5">Literasi & Iklim</div>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center">
+                                <div class="text-2xl font-black text-sky-300 font-mono">2</div>
+                                <div class="text-[10px] font-bold text-sky-200 uppercase tracking-wider mt-0.5">Mutu PAUD (%)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. TABEL BAGIAN 1 (No. 1 s/d 6) -->
+                <div class="space-y-3">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-200 dark:border-slate-800">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center text-xs font-bold shadow-xs">
+                                <i class="fas fa-list-ol"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm sm:text-base font-black text-slate-900 dark:text-white">
+                                    TABEL 1: PARTISIPASI SEKOLAH, KEMAMPUAN LITERASI & NUMERASI DASAR
+                                </h4>
+                                <p class="text-[11px] text-slate-500 dark:text-slate-400">
+                                    Indikator No. 1 s/d 6 • Angka Partisipasi Sekolah, Literasi SD & SMP, dan Numerasi SD
+                                </p>
+                            </div>
+                        </div>
+                        <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 border border-blue-200 dark:border-blue-800 w-fit">
+                            Kelompok 1 (No. 1 - 6)
+                        </span>
+                    </div>
+
+                    <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
+                        <table class="w-full text-xs text-left border-collapse">
+                            ${theadColumnsHTML}
+                            <tbody>
+                                ${renderRowsHTML(rowsPart1, 0)}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Keterangan Di Bawah Tabel 1 -->
+                    <div class="p-4 rounded-2xl bg-amber-50/80 dark:bg-amber-950/40 border border-amber-200/80 dark:border-amber-800/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-2xs">
+                        <div class="flex items-center gap-2 font-black text-amber-900 dark:text-amber-200 shrink-0">
+                            <i class="fas fa-circle-info text-amber-600 text-sm"></i>
+                            <span>KETERANGAN PENGUKURAN:</span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-2.5 text-amber-900 dark:text-amber-200 font-semibold">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white dark:bg-slate-900 border border-amber-300 dark:border-amber-700/60 shadow-2xs">
+                                <i class="fas fa-percent text-blue-600"></i> Angka Partisipasi Sekolah dinyatakan dalam persen (%)
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white dark:bg-slate-900 border border-amber-300 dark:border-amber-700/60 shadow-2xs">
+                                <i class="fas fa-chart-line text-emerald-600"></i> Kemampuan Literasi dan Numerasi dinyatakan dalam skor
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. TABEL BAGIAN 2 (No. 7 s/d 15) -->
+                ${rowsPart2.length > 0 ? `
+                <div class="space-y-3 pt-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-200 dark:border-slate-800">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-xs font-bold shadow-xs">
+                                <i class="fas fa-table-cells-large"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm sm:text-base font-black text-slate-900 dark:text-white">
+                                    TABEL 2: NUMERASI SMP, IKLIM LINGKUNGAN BELAJAR & MUTU SATUAN PAUD
+                                </h4>
+                                <p class="text-[11px] text-slate-500 dark:text-slate-400">
+                                    Dinas Pendidikan dan Kebudayaan Pada SPM Bidang Pendidikan • Kabupaten Madiun (No. 7 - 15)
+                                </p>
+                            </div>
+                        </div>
+                        <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 w-fit">
+                            Kelompok 2 (No. 7 - 15)
+                        </span>
+                    </div>
+
+                    <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
+                        <table class="w-full text-xs text-left border-collapse">
+                            ${theadColumnsHTML}
+                            <tbody>
+                                ${renderRowsHTML(rowsPart2, rowsPart1.length)}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                ` : ''}
+
+                <!-- 4. Section SPM BIDANG PENDIDIKAN & FOKUS KITA -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-4">
+                    <!-- Komitmen SPM -->
+                    <div class="lg:col-span-5 p-6 rounded-3xl bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 text-white shadow-md flex flex-col justify-between border border-blue-500/20">
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-cyan-200 font-extrabold text-[10px] uppercase tracking-wider mb-4 border border-white/20">
+                                <i class="fas fa-scroll text-cyan-300"></i> SPM BIDANG PENDIDIKAN
+                            </div>
+                            <blockquote class="text-sm sm:text-base text-white/95 leading-relaxed font-semibold italic">
+                                "Standar Pelayanan Minimal (SPM) merupakan komitmen pemerintah dalam memberikan layanan pendidikan bermutu bagi seluruh masyarakat."
+                            </blockquote>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-white/15 flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-cyan-300 text-sm font-black">
+                                <i class="fas fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-black text-white">Dinas Pendidikan dan Kebudayaan</div>
+                                <div class="text-[10px] text-cyan-200 font-medium">Pemerintah Kabupaten Madiun</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FOKUS KITA -->
+                    <div class="lg:col-span-7 p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+                        <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100 dark:border-slate-800">
+                            <div class="flex items-center gap-2">
+                                <div class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">
+                                    <i class="fas fa-bullseye"></i>
+                                </div>
+                                <h5 class="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider">
+                                    FOKUS KITA
+                                </h5>
+                            </div>
+                            <span class="text-[10px] font-bold text-slate-400">4 Prioritas Mutu</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div class="p-3.5 rounded-2xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-black flex items-center justify-center shrink-0">1</span>
+                                <p class="text-xs font-bold text-blue-950 dark:text-blue-200 leading-snug">
+                                    Meningkatkan akses pendidikan yang merata dan berkualitas
+                                </p>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-teal-50/70 dark:bg-teal-950/40 border border-teal-200 dark:border-teal-900/60 flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-teal-600 text-white text-xs font-black flex items-center justify-center shrink-0">2</span>
+                                <p class="text-xs font-bold text-teal-950 dark:text-teal-200 leading-snug">
+                                    Meningkatkan kompetensi literasi dan numerasi peserta didik
+                                </p>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-purple-50/70 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-900/60 flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-purple-600 text-white text-xs font-black flex items-center justify-center shrink-0">3</span>
+                                <p class="text-xs font-bold text-purple-950 dark:text-purple-200 leading-snug">
+                                    Mewujudkan lingkungan belajar yang inklusif, aman, dan berkebinekaan
+                                </p>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-amber-600 text-white text-xs font-black flex items-center justify-center shrink-0">4</span>
+                                <p class="text-xs font-bold text-amber-950 dark:text-amber-200 leading-snug">
+                                    Mendorong peningkatan mutu satuan dan pendidik PAUD
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. BERSAMA WUJUDKAN PENDIDIKAN BERKUALITAS UNTUK GENERASI EMAS -->
+                <div class="p-6 sm:p-7 rounded-3xl bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-700 text-white shadow-xl relative overflow-hidden">
+                    <div class="text-center space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-emerald-100 font-black text-[11px] uppercase tracking-wider border border-white/20">
+                            <i class="fas fa-crown text-amber-300"></i> GENERASI EMAS KABUPATEN MADIUN
+                        </div>
+                        <h4 class="text-base sm:text-xl md:text-2xl font-black text-white leading-snug max-w-3xl mx-auto">
+                            BERSAMA WUJUDKAN PENDIDIKAN BERKUALITAS UNTUK GENERASI EMAS KABUPATEN MADIUN
+                        </h4>
+                        <!-- 5 Badges Pilar -->
+                        <div class="flex flex-wrap items-center justify-center gap-2.5 pt-2">
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white text-emerald-950 font-black text-xs shadow-sm uppercase tracking-wider">
+                                ✨ BERKUALITAS
+                            </span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white text-teal-950 font-black text-xs shadow-sm uppercase tracking-wider">
+                                🤝 INKLUSIF
+                            </span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white text-blue-950 font-black text-xs shadow-sm uppercase tracking-wider">
+                                🛡️ AMAN
+                            </span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white text-indigo-950 font-black text-xs shadow-sm uppercase tracking-wider">
+                                🇮🇩 BERKEBINEKAAN
+                            </span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white text-cyan-950 font-black text-xs shadow-sm uppercase tracking-wider">
+                                🌱 BERKELANJUTAN
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
 
     // 8. Helper Render Konten Spesifik
     function renderSubTable(sub, sIdx) {

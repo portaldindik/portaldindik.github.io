@@ -8206,5 +8206,13 @@ Terima kasih atas pelayanan yang diberikan.`;
     // Jalankan sistem penghitung kunjungan
     initPortalVisitorStats();
 
+    // Jalan pintas rahasia khusus pengelola (Ctrl + Shift + A)
+    window.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+            e.preventDefault();
+            window.location.href = 'nirmala';
+        }
+    });
+
     window.renderPortalNews();
 });

@@ -1,0 +1,1467 @@
+/* ========================================================
+   PORTAL RESMI DINAS PENDIDIKAN & KEBUDAYAAN KAB. MADIUN
+   Style Utama, Animasi Background & Efek Hover Silau (Glare)
+   ======================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-blue: #1e3a8a;
+    --primary-teal: #0f766e;
+    --accent-gold: #d97706;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Hero Section Gradient & Pattern */
+/* Mode Terang (Default): Latar belakang PUTIH bersih, profesional & elegan */
+.hero-pattern {
+    background-color: #ffffff !important;
+    background-image: 
+        radial-gradient(at 15% 15%, rgba(241, 245, 249, 0.8) 0px, transparent 60%),
+        radial-gradient(at 85% 20%, rgba(240, 253, 250, 0.7) 0px, transparent 50%),
+        radial-gradient(at 50% 90%, rgba(248, 250, 252, 0.9) 0px, transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+    background-size: 100% 100% !important;
+    animation: none !important;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Mode Gelap (Dark Mode): Latar belakang biru dongker / royal midnight navy cerah bercahaya (Bukan hitam) */
+html.dark .hero-pattern {
+    background-color: #0b1530 !important;
+    background-image: 
+        radial-gradient(at 10% 20%, rgba(37, 99, 235, 0.85) 0px, transparent 55%),
+        radial-gradient(at 90% 15%, rgba(13, 148, 136, 0.75) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(79, 70, 229, 0.75) 0px, transparent 60%),
+        linear-gradient(135deg, #0a1128 0%, #112048 50%, #1e3a8a 100%) !important;
+    background-size: 140% 140% !important;
+    animation: heroMeshAnimation 16s ease-in-out infinite alternate !important;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.4) !important;
+}
+
+@keyframes heroMeshAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Hero Typography & Komponen Tampilan (Light & Dark Theme) */
+.hero-badge {
+    background-color: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+}
+html.dark .hero-badge {
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.45) 0%, rgba(13, 148, 136, 0.35) 100%) !important;
+    color: #7dd3fc !important;
+    border: 1px solid rgba(56, 189, 248, 0.45) !important;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2) !important;
+}
+
+.hero-title-text {
+    color: #0f172a;
+}
+html.dark .hero-title-text {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 40%, #bae6fd 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.hero-title-gradient {
+    background: linear-gradient(135deg, #0d9488 0%, #0284c7 50%, #4338ca 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+html.dark .hero-title-gradient {
+    background: linear-gradient(135deg, #2dd4bf 0%, #38bdf8 45%, #a5b4fc 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 2px 8px rgba(56, 189, 248, 0.3));
+}
+
+.hero-description-text {
+    color: #475569;
+}
+html.dark .hero-description-text {
+    color: #cbd5e1 !important;
+}
+
+.hero-btn-secondary {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    border: 1px solid #cbd5e1;
+}
+.hero-btn-secondary:hover {
+    background-color: #e2e8f0;
+    color: #0f172a;
+}
+html.dark .hero-btn-secondary {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.5) 0%, rgba(17, 32, 70, 0.7) 100%) !important;
+    color: #f0f9ff !important;
+    border: 1px solid rgba(96, 165, 250, 0.45) !important;
+    box-shadow: 0 4px 15px rgba(2, 6, 23, 0.4) !important;
+}
+html.dark .hero-btn-secondary:hover {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.6) 0%, rgba(30, 64, 175, 0.8) 100%) !important;
+    border-color: rgba(147, 197, 253, 0.8) !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4) !important;
+}
+
+.hero-counter-border {
+    border-top: 1px solid #e2e8f0;
+}
+html.dark .hero-counter-border {
+    border-top: 1px solid rgba(59, 130, 246, 0.4) !important;
+}
+
+.hero-counter-val {
+    color: #0f766e;
+}
+html.dark .hero-counter-val {
+    background: linear-gradient(135deg, #2dd4bf 0%, #38bdf8 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.hero-counter-lbl {
+    color: #64748b;
+}
+html.dark .hero-counter-lbl {
+    color: #93c5fd !important;
+}
+
+/* ========================================================
+   BAGAN STRUKTUR ORGANISASI INTERAKTIF (VECTOR SVG)
+   ======================================================== */
+.org-box-group {
+    transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), filter 0.18s ease, opacity 0.25s ease;
+    cursor: pointer;
+}
+.org-box-group:hover {
+    filter: brightness(1.08) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35)) !important;
+    transform: translateY(-2px);
+    transform-origin: center;
+}
+.org-box-group:active {
+    transform: translateY(0);
+}
+
+/* ========================================================
+   ANIMATED BACKGROUND UNTUK SECTION 10 FITUR
+   ======================================================== */
+.features-section-animated {
+    position: relative;
+    background: #f8fafc;
+    overflow: hidden;
+}
+
+/* Glowing Ambient Orbs di Background */
+.features-section-animated::before {
+    content: '';
+    position: absolute;
+    top: 5%;
+    left: -100px;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(14, 165, 233, 0) 70%);
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: 1;
+    animation: orbFloating1 12s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+.features-section-animated::after {
+    content: '';
+    position: absolute;
+    bottom: 5%;
+    right: -100px;
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.14) 0%, rgba(168, 85, 247, 0) 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 1;
+    animation: orbFloating2 14s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes orbFloating1 {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(80px) translateX(60px) scale(1.15); }
+    100% { transform: translateY(20px) translateX(-30px) scale(0.95); }
+}
+
+@keyframes orbFloating2 {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-70px) translateX(-50px) scale(1.2); }
+    100% { transform: translateY(40px) translateX(40px) scale(1); }
+}
+
+/* Latar belakang bersih tanpa pola kotak-kotak, mengandalkan ambient glowing orbs */
+.bg-grid-pattern {
+    background-image: none !important;
+}
+
+/* ========================================================
+   EFEK KARTU BERWARNA-WARNI & EFEK HOVER SILAU (GLARE EFFECT)
+   ======================================================== */
+.glare-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+    backdrop-filter: blur(8px);
+    z-index: 2;
+}
+
+/* Efek Silau Mengkilap (Gleam / Glare Shimmer) saat kursor diarahkan ke kartu */
+.glare-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -160%;
+    width: 220%;
+    height: 220%;
+    background: linear-gradient(
+        70deg,
+        rgba(255, 255, 255, 0) 25%,
+        rgba(255, 255, 255, 0.15) 40%,
+        rgba(255, 255, 255, 0.75) 50%,
+        rgba(255, 255, 255, 0.2) 58%,
+        rgba(255, 255, 255, 0) 75%
+    );
+    transform: rotate(28deg);
+    pointer-events: none;
+    z-index: 25;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.glare-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+.glare-card:hover::before {
+    opacity: 1;
+    left: 140%;
+    transition: left 0.85s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
+}
+
+/* Efek Glow Shadow Berwarna pada Kartu saat Hover */
+.glare-card.card-glow-blue:hover {
+    box-shadow: 0 20px 35px -10px rgba(37, 99, 235, 0.35), 0 0 20px 2px rgba(59, 130, 246, 0.2);
+    border-color: #3b82f6;
+}
+.glare-card.card-glow-emerald:hover {
+    box-shadow: 0 20px 35px -10px rgba(5, 150, 105, 0.35), 0 0 20px 2px rgba(16, 185, 129, 0.2);
+    border-color: #10b981;
+}
+.glare-card.card-glow-indigo:hover {
+    box-shadow: 0 20px 35px -10px rgba(79, 70, 229, 0.35), 0 0 20px 2px rgba(99, 102, 241, 0.2);
+    border-color: #6366f1;
+}
+.glare-card.card-glow-amber:hover {
+    box-shadow: 0 20px 35px -10px rgba(217, 119, 6, 0.35), 0 0 20px 2px rgba(245, 158, 11, 0.2);
+    border-color: #f59e0b;
+}
+.glare-card.card-glow-rose:hover {
+    box-shadow: 0 20px 35px -10px rgba(225, 29, 72, 0.35), 0 0 20px 2px rgba(244, 63, 94, 0.2);
+    border-color: #f43f5e;
+}
+.glare-card.card-glow-sky:hover {
+    box-shadow: 0 20px 35px -10px rgba(2, 132, 199, 0.35), 0 0 20px 2px rgba(14, 165, 233, 0.2);
+    border-color: #0ea5e9;
+}
+.glare-card.card-glow-red:hover {
+    box-shadow: 0 20px 35px -10px rgba(220, 38, 38, 0.35), 0 0 20px 2px rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+}
+.glare-card.card-glow-fuchsia:hover {
+    box-shadow: 0 20px 35px -10px rgba(192, 38, 211, 0.35), 0 0 20px 2px rgba(217, 70, 239, 0.2);
+    border-color: #d946ef;
+}
+.glare-card.card-glow-teal:hover {
+    box-shadow: 0 20px 35px -10px rgba(13, 148, 136, 0.35), 0 0 20px 2px rgba(20, 184, 166, 0.2);
+    border-color: #14b8a6;
+}
+.glare-card.card-glow-yellow:hover {
+    box-shadow: 0 20px 35px -10px rgba(180, 83, 9, 0.35), 0 0 20px 2px rgba(234, 179, 8, 0.2);
+    border-color: #eab308;
+}
+
+
+
+/* Chip Sub Bagian Interaktif */
+.sub-feature-pill {
+    transition: all 0.2s ease;
+}
+.sub-feature-pill:hover {
+    transform: translateX(4px);
+}
+
+/* ========================================================
+   MODAL DETAIL POPUP INTERAKTIF
+   ======================================================== */
+.modal-backdrop {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+}
+
+.view-transition-fade {
+    animation: fadeInView 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInView {
+    0% {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Kartu Pilihan Sub-Bab (Level 2) - Ceria & Seragam untuk Siswa */
+.sub-bab-card {
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 1.5rem;
+    min-height: 315px;
+}
+.sub-bab-card:hover {
+    transform: translateY(-8px) scale(1.015);
+}
+
+/* Kartu Sub-Modul pada Tampilan Baru (Level 3) */
+.sub-module-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+/* Kartu Galeri Foto Dokumentasi Kegiatan (Sub-Bab) */
+.kegiatan-foto-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+.kegiatan-foto-card:hover {
+    transform: translateY(-6px);
+}
+
+/* ========================================================
+   BAGAN STRUKTUR ORGANISASI INTERAKTIF
+   ======================================================== */
+.org-chart-wrapper {
+    overflow-x: auto;
+    padding: 1.5rem 0.5rem 2rem 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: #0d9488 #f1f5f9;
+}
+.org-chart-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+.org-chart-wrapper::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 9999px;
+}
+.org-chart-wrapper::-webkit-scrollbar-thumb {
+    background: #0d9488;
+    border-radius: 9999px;
+}
+
+.org-card {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    cursor: pointer;
+}
+.org-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.15);
+}
+
+.org-line-v {
+    width: 2px;
+    background: linear-gradient(to bottom, #94a3b8, #cbd5e1);
+    margin: 0 auto;
+}
+.org-line-h {
+    height: 2px;
+    background: linear-gradient(to right, #94a3b8, #cbd5e1, #94a3b8);
+}
+
+@media print {
+    nav, footer, #fitur-unggulan, #berita, .no-print {
+        display: none !important;
+    }
+    #struktur-organisasi {
+        display: block !important;
+        padding: 0 !important;
+        background: white !important;
+    }
+    .org-chart-wrapper {
+        overflow: visible !important;
+    }
+}
+
+/* ========================================================
+   TEMA GELAP (DARK MODE) BERBASIS GRADIEN BIRU ELEGAN & MEWAH
+   Bebas warna hitam pekat, kaya akan nuansa royal navy, 
+   sapphire blue, ambient cyan glow & font gradient menawan
+   ======================================================== */
+html.dark {
+    color-scheme: dark;
+}
+
+html.dark body {
+    background: radial-gradient(at 15% 15%, rgba(30, 64, 175, 0.45) 0px, transparent 45%),
+                radial-gradient(at 85% 25%, rgba(13, 148, 136, 0.35) 0px, transparent 40%),
+                radial-gradient(at 50% 80%, rgba(37, 99, 235, 0.35) 0px, transparent 50%),
+                linear-gradient(160deg, #0a132b 0%, #10214a 45%, #0d1b3e 75%, #071026 100%) !important;
+    background-attachment: fixed !important;
+    color: #e0f2fe !important;
+}
+
+/* Background Seksi Animasi Fitur pada Mode Gelap (Gradien Biru Samudra Berpendar) */
+html.dark .features-section-animated {
+    background: radial-gradient(at 15% 25%, rgba(37, 99, 235, 0.3) 0px, transparent 50%),
+                radial-gradient(at 85% 75%, rgba(20, 184, 166, 0.25) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(30, 58, 138, 0.35) 0px, transparent 60%),
+                linear-gradient(180deg, #09142e 0%, #0e2049 45%, #081229 100%) !important;
+}
+html.dark .features-section-animated::before {
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(37, 99, 235, 0.12) 70%) !important;
+}
+html.dark .features-section-animated::after {
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.3) 0%, rgba(99, 102, 241, 0.12) 70%) !important;
+}
+
+/* Judul Bagian dengan Efek Font Gradient Indah pada Mode Gelap */
+html.dark #view-main-features h3,
+html.dark #view-sub-features-list h3,
+html.dark #struktur-organisasi h3,
+html.dark #berita h3 {
+    background: linear-gradient(135deg, #ffffff 0%, #bae6fd 40%, #38bdf8 70%, #2dd4bf 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 2px 10px rgba(56, 189, 248, 0.25));
+}
+
+html.dark #view-main-features p.text-slate-600,
+html.dark #struktur-organisasi p.text-slate-600,
+html.dark #berita p.text-slate-600 {
+    color: #93c5fd !important;
+}
+
+/* Lencana Sub-Judul (Pill Badge) */
+html.dark #view-main-features .bg-blue-100,
+html.dark #struktur-organisasi .bg-teal-100,
+html.dark #berita .bg-blue-100 {
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.5) 0%, rgba(13, 148, 136, 0.35) 100%) !important;
+    color: #7dd3fc !important;
+    border: 1px solid rgba(56, 189, 248, 0.45) !important;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2) !important;
+}
+html.dark #view-main-features .bg-blue-100 i,
+html.dark #struktur-organisasi .bg-teal-100 i,
+html.dark #berita .bg-blue-100 i {
+    color: #38bdf8 !important;
+}
+
+/* Garis Pembatas Gradien Emas/Cyan */
+html.dark .bg-gradient-to-r.from-blue-600.via-teal-500.to-amber-500 {
+    background: linear-gradient(to right, #38bdf8, #2dd4bf, #fbbf24) !important;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.45) !important;
+}
+
+/* Kartu Utama Fitur (Level 1) pada Mode Gelap (Sapphire Blue Glare Card) */
+html.dark .glare-card {
+    background: linear-gradient(145deg, #132450 0%, #0d1a3b 60%, #162a5c 100%) !important;
+    border: 1px solid rgba(96, 165, 250, 0.35) !important;
+    box-shadow: 0 12px 30px -5px rgba(3, 10, 30, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+html.dark .glare-card:hover {
+    background: linear-gradient(145deg, #182e66 0%, #11234e 60%, #1d3574 100%) !important;
+    border-color: rgba(147, 197, 253, 0.8) !important;
+    box-shadow: 0 20px 40px -5px rgba(14, 116, 144, 0.4), 0 0 25px rgba(56, 189, 248, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+}
+html.dark .glare-card h4 {
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #7dd3fc 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+html.dark .glare-card:hover h4 {
+    background: linear-gradient(135deg, #67e8f9 0%, #38bdf8 50%, #93c5fd 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+html.dark .glare-card p {
+    color: #cbd5e1 !important;
+}
+html.dark .glare-card p.font-bold,
+html.dark .glare-card .text-slate-500 {
+    color: #7dd3fc !important;
+}
+html.dark .glare-card > div:last-child {
+    background: linear-gradient(180deg, rgba(13, 26, 59, 0.98) 0%, rgba(9, 19, 43, 0.98) 100%) !important;
+    border-top: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+/* Chip Pilihan Modul & Lencana Program pada Kartu Utama */
+html.dark .sub-feature-pill,
+html.dark .glare-card .sub-feature-pill {
+    background: linear-gradient(135deg, rgba(23, 37, 84, 0.85) 0%, rgba(15, 23, 42, 0.75) 100%) !important;
+    color: #bae6fd !important;
+    border: 1px solid rgba(59, 130, 246, 0.4) !important;
+}
+html.dark .sub-feature-pill:hover,
+html.dark .glare-card .sub-feature-pill:hover {
+    background: linear-gradient(135deg, #0284c7 0%, #0d9488 100%) !important;
+    color: #ffffff !important;
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.4) !important;
+}
+html.dark .glare-card span.uppercase,
+html.dark .sub-bab-card span.uppercase {
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.6) 0%, rgba(14, 116, 144, 0.45) 100%) !important;
+    color: #7dd3fc !important;
+    border: 1px solid rgba(56, 189, 248, 0.45) !important;
+}
+
+/* Kartu Sub-Bab (Level 2) pada Mode Gelap */
+html.dark .sub-bab-card {
+    background: linear-gradient(145deg, #132450 0%, #0d1a3b 60%, #162a5c 100%) !important;
+    border: 1px solid rgba(96, 165, 250, 0.35) !important;
+    box-shadow: 0 12px 30px -5px rgba(3, 10, 30, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+html.dark .sub-bab-card:hover {
+    background: linear-gradient(145deg, #182e66 0%, #11234e 60%, #1d3574 100%) !important;
+    border-color: rgba(147, 197, 253, 0.8) !important;
+    box-shadow: 0 20px 40px -5px rgba(14, 116, 144, 0.4), 0 0 25px rgba(56, 189, 248, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+}
+html.dark .sub-bab-card h4 {
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #7dd3fc 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+html.dark .sub-bab-card:hover h4 {
+    background: linear-gradient(135deg, #67e8f9 0%, #38bdf8 50%, #93c5fd 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+html.dark .sub-bab-card p {
+    color: #cbd5e1 !important;
+}
+html.dark .sub-bab-card p.font-bold,
+html.dark .sub-bab-card .text-slate-500 {
+    color: #7dd3fc !important;
+}
+html.dark .sub-bab-card > div:last-child {
+    background: linear-gradient(180deg, rgba(13, 26, 59, 0.98) 0%, rgba(9, 19, 43, 0.98) 100%) !important;
+    border-top: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+/* Tampilan Detail Khusus Sub-Bab (Level 3) & Sub-list (Level 2) - Menghilangkan Kotak Background Kaku agar Menyatu Mulus dengan Background Utama */
+html.dark #view-single-sub-detail,
+html.dark #view-sub-features-list {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+html.dark #sub-detail-header-block {
+    background: linear-gradient(160deg, #132450 0%, #0d1a3b 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.4) !important;
+    border-radius: 1.25rem !important;
+    padding: 1.5rem !important;
+    box-shadow: 0 10px 25px -5px rgba(3, 10, 30, 0.5) !important;
+}
+html.dark #sub-detail-header-block h3 {
+    background: linear-gradient(135deg, #ffffff 0%, #bae6fd 50%, #38bdf8 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+html.dark #sub-detail-header-block p {
+    color: #93c5fd !important;
+}
+
+/* Kontainer & Komponen di Dalam Sub-Detail pada Mode Gelap */
+html.dark #single-sub-container,
+html.dark #single-sub-container.bg-white,
+html.dark .sub-module-card {
+    background: linear-gradient(165deg, #0d1938 0%, #081024 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.35) !important;
+    border-radius: 1.5rem !important;
+    color: #e0f2fe !important;
+    box-shadow: 0 20px 40px -15px rgba(2, 6, 23, 0.7) !important;
+}
+html.dark #single-sub-container .bg-white {
+    background: linear-gradient(160deg, #132450 0%, #0d1a3b 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.35) !important;
+    border-radius: 1rem !important;
+    color: #e0f2fe !important;
+    box-shadow: 0 10px 25px -5px rgba(2, 6, 23, 0.5) !important;
+}
+html.dark #single-sub-container .bg-white:hover {
+    border-color: rgba(96, 165, 250, 0.65) !important;
+    box-shadow: 0 15px 35px -5px rgba(14, 116, 144, 0.35) !important;
+}
+html.dark #single-sub-container .bg-slate-50,
+html.dark #single-sub-container .bg-blue-50,
+html.dark #single-sub-container .bg-emerald-50,
+html.dark #single-sub-container .bg-amber-50,
+html.dark #single-sub-container .bg-teal-50,
+html.dark #single-sub-container .bg-indigo-50 {
+    background: linear-gradient(160deg, rgba(23, 37, 84, 0.65) 0%, rgba(15, 23, 42, 0.65) 100%) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+html.dark #single-sub-container h4,
+html.dark #single-sub-container h5,
+html.dark #single-sub-container h6 {
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #7dd3fc 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+html.dark #single-sub-container p,
+html.dark #single-sub-container li,
+html.dark #single-sub-container td,
+html.dark #single-sub-container span.text-slate-600,
+html.dark #single-sub-container span.text-slate-700 {
+    color: #cbd5e1 !important;
+}
+html.dark #single-sub-container .text-slate-900,
+html.dark #single-sub-container .text-slate-800 {
+    color: #f0f9ff !important;
+}
+html.dark #single-sub-container .border-slate-200,
+html.dark #single-sub-container .border-slate-100 {
+    border-color: rgba(59, 130, 246, 0.25) !important;
+}
+
+/* Kartu Foto Dokumentasi & Modal Berita pada Mode Gelap */
+html.dark .kegiatan-foto-card {
+    background: linear-gradient(160deg, #132450 0%, #0d1a3b 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.35) !important;
+    box-shadow: 0 10px 25px -5px rgba(2, 6, 23, 0.5) !important;
+}
+html.dark .kegiatan-foto-card:hover {
+    border-color: rgba(96, 165, 250, 0.7) !important;
+    box-shadow: 0 20px 40px -5px rgba(14, 116, 144, 0.4), 0 0 20px rgba(56, 189, 248, 0.2) !important;
+}
+html.dark #modal-news-detail .bg-white {
+    background: linear-gradient(160deg, #132450 0%, #0d1a3b 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.4) !important;
+    box-shadow: 0 25px 60px -15px rgba(3, 10, 30, 0.8) !important;
+}
+html.dark #modal-news-detail .bg-slate-50 {
+    background: rgba(13, 26, 59, 0.95) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+/* Tabel Data & Header pada Mode Gelap (Navy Samudra Berpendar) */
+html.dark table thead th {
+    background: linear-gradient(90deg, #1e3a8a 0%, #172554 100%) !important;
+    color: #e0f2fe !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+html.dark table tbody tr {
+    background-color: #0d1a3b !important;
+    border-color: rgba(59, 130, 246, 0.25) !important;
+}
+html.dark table tbody tr:nth-child(even) {
+    background-color: #11224d !important;
+}
+html.dark table tbody tr:hover {
+    background-color: #1a326b !important;
+}
+html.dark table tbody td {
+    color: #cbd5e1 !important;
+    border-color: rgba(59, 130, 246, 0.2) !important;
+}
+html.dark table tbody td.font-bold {
+    color: #ffffff !important;
+}
+
+/* ========================================================
+   WARNA-WARNI KHUSUS HEADER TABEL RENSTRA & IKU
+   ======================================================== */
+.th-col-no {
+    background: #1e293b !important;
+    color: #ffffff !important;
+}
+.th-col-indikator {
+    background: #0f172a !important;
+    color: #ffffff !important;
+}
+.th-col-satuan {
+    background: #334155 !important;
+    color: #f8fafc !important;
+}
+.th-col-baseline {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%) !important;
+    color: #ffffff !important;
+    border-bottom: 2px solid #f59e0b !important;
+}
+.th-col-target2025 {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    color: #ffffff !important;
+    border-bottom: 2px solid #60a5fa !important;
+}
+.th-col-capaian2025,
+.th-col-realisasi2025 {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+    color: #ffffff !important;
+    border-bottom: 2px solid #34d399 !important;
+    box-shadow: inset 0 -2px 0 #34d399 !important;
+}
+.th-col-target2026 {
+    background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%) !important;
+    color: #ffffff !important;
+    border-bottom: 2px solid #2dd4bf !important;
+}
+.th-col-target2027 {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    color: #ffffff !important;
+    border-bottom: 2px solid #38bdf8 !important;
+}
+.th-col-target2028 {
+    background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
+    color: #ffffff !important;
+    border-bottom: 2px solid #818cf8 !important;
+}
+.th-col-target2029 {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%) !important;
+    color: #ffffff !important;
+    border-bottom: 2px solid #a78bfa !important;
+}
+.th-col-target2030 {
+    background: linear-gradient(135deg, #e11d48 0%, #be123c 100%) !important;
+    color: #ffffff !important;
+    border-bottom: 2px solid #fb7185 !important;
+}
+
+/* Penyesuaian Mode Gelap untuk Header Kolom */
+html.dark .th-col-no {
+    background: #09132a !important;
+    color: #93c5fd !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+html.dark .th-col-indikator {
+    background: #0f1c3f !important;
+    color: #ffffff !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+html.dark .th-col-satuan {
+    background: #172554 !important;
+    color: #bfdbfe !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+html.dark .th-col-baseline {
+    background: linear-gradient(135deg, #78350f 0%, #451a03 100%) !important;
+    color: #fde68a !important;
+    border-color: #f59e0b !important;
+}
+html.dark .th-col-target2025 {
+    background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%) !important;
+    color: #bfdbfe !important;
+    border-color: #3b82f6 !important;
+}
+html.dark .th-col-capaian2025,
+html.dark .th-col-realisasi2025 {
+    background: linear-gradient(135deg, #064e3b 0%, #022c22 100%) !important;
+    color: #6ee7b7 !important;
+    border-color: #10b981 !important;
+}
+html.dark .th-col-target2026 {
+    background: linear-gradient(135deg, #134e4a 0%, #042f2e 100%) !important;
+    color: #99f6e4 !important;
+    border-color: #14b8a6 !important;
+}
+html.dark .th-col-target2027 {
+    background: linear-gradient(135deg, #0c4a6e 0%, #082f49 100%) !important;
+    color: #bae6fd !important;
+    border-color: #0ea5e9 !important;
+}
+html.dark .th-col-target2028 {
+    background: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%) !important;
+    color: #c7d2fe !important;
+    border-color: #6366f1 !important;
+}
+html.dark .th-col-target2029 {
+    background: linear-gradient(135deg, #581c87 0%, #3b0764 100%) !important;
+    color: #e9d5ff !important;
+    border-color: #a855f7 !important;
+}
+html.dark .th-col-target2030 {
+    background: linear-gradient(135deg, #881337 0%, #4c0519 100%) !important;
+    color: #fecdd3 !important;
+    border-color: #f43f5e !important;
+}
+
+/* ========================================================
+   HIGHLIGHT KHUSUS BARIS INDEKS CAPAIAN SPM PENDIDIKAN
+   ======================================================== */
+.tr-highlight-spm {
+    background: linear-gradient(90deg, #ecfdf5 0%, #f0fdf4 50%, #eff6ff 100%) !important;
+    border-left: 5px solid #059669 !important;
+    box-shadow: 0 4px 15px -2px rgba(16, 185, 129, 0.25) !important;
+    position: relative;
+}
+.tr-highlight-spm:hover {
+    background: linear-gradient(90deg, #d1fae5 0%, #dcfce7 50%, #dbeafe 100%) !important;
+}
+.tr-highlight-spm td {
+    color: #064e3b !important;
+    font-weight: 600 !important;
+    border-top: 1px solid rgba(16, 185, 129, 0.3) !important;
+    border-bottom: 2px solid rgba(16, 185, 129, 0.4) !important;
+}
+
+html.dark .tr-highlight-spm {
+    background: linear-gradient(90deg, rgba(6, 78, 59, 0.8) 0%, rgba(15, 45, 75, 0.8) 50%, rgba(23, 37, 84, 0.8) 100%) !important;
+    border-left: 5px solid #34d399 !important;
+    box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.4) !important;
+}
+html.dark .tr-highlight-spm:hover {
+    background: linear-gradient(90deg, rgba(6, 95, 70, 0.9) 0%, rgba(19, 58, 97, 0.9) 50%, rgba(30, 58, 138, 0.9) 100%) !important;
+}
+html.dark .tr-highlight-spm td {
+    color: #ecfdf5 !important;
+    border-top: 1px solid rgba(52, 211, 153, 0.3) !important;
+    border-bottom: 2px solid rgba(52, 211, 153, 0.5) !important;
+}
+
+/* Kotak Pencarian pada Mode Gelap */
+html.dark input[type="text"],
+html.dark input[type="search"],
+html.dark select,
+html.dark textarea {
+    background: linear-gradient(135deg, #0f1f44 0%, #0b1735 100%) !important;
+    color: #f0f9ff !important;
+    border: 1px solid rgba(59, 130, 246, 0.45) !important;
+    box-shadow: inset 0 2px 4px rgba(2, 6, 23, 0.4) !important;
+}
+html.dark input[type="text"]:focus,
+html.dark input[type="search"]:focus {
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3) !important;
+}
+html.dark input::placeholder {
+    color: #93c5fd !important;
+    opacity: 0.65;
+}
+
+/* Tombol Kembali & Navigasi Breadcrumb pada Mode Gelap */
+html.dark button[onclick*="showMainFeatures"],
+html.dark button[onclick*="showSubFeaturesList"],
+html.dark #sibling-modules-nav button {
+    background: linear-gradient(135deg, #132450 0%, #0e1c3e 100%) !important;
+    color: #e0f2fe !important;
+    border: 1px solid rgba(96, 165, 250, 0.35) !important;
+}
+html.dark button[onclick*="showMainFeatures"]:hover,
+html.dark button[onclick*="showSubFeaturesList"]:hover,
+html.dark #sibling-modules-nav button:hover {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%) !important;
+    color: #ffffff !important;
+    border-color: #38bdf8 !important;
+}
+html.dark .bg-white\/90.backdrop-blur {
+    background: rgba(15, 28, 61, 0.85) !important;
+    color: #93c5fd !important;
+    border: 1px solid rgba(59, 130, 246, 0.35) !important;
+}
+html.dark #breadcrumb-sublist-name,
+html.dark #breadcrumb-detail-feature,
+html.dark #breadcrumb-detail-sub {
+    color: #38bdf8 !important;
+}
+
+/* Seksi Struktur Organisasi pada Mode Gelap */
+html.dark #struktur-organisasi {
+    background: radial-gradient(at 30% 20%, rgba(30, 64, 175, 0.3) 0px, transparent 50%),
+                linear-gradient(180deg, #09142e 0%, #0d1e44 50%, #071026 100%) !important;
+}
+html.dark #org-catalog-cards > div {
+    background: linear-gradient(160deg, #132450 0%, #0d1a3b 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.35) !important;
+}
+html.dark .org-card {
+    background: linear-gradient(160deg, #132450 0%, #0d1a3b 100%) !important;
+    border: 1px solid rgba(96, 165, 250, 0.35) !important;
+    box-shadow: 0 10px 25px -5px rgba(2, 6, 23, 0.5) !important;
+}
+html.dark .org-card:hover {
+    border-color: #38bdf8 !important;
+    box-shadow: 0 15px 35px -5px rgba(30, 64, 175, 0.4), 0 0 20px rgba(56, 189, 248, 0.25) !important;
+}
+html.dark .org-card h5 {
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #7dd3fc 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+html.dark .org-card span.text-slate-400 {
+    color: #93c5fd !important;
+}
+html.dark .org-line-v, 
+html.dark .org-line-h {
+    background: linear-gradient(to bottom, #38bdf8, #1e40af) !important;
+}
+html.dark #modal-org-detail > div {
+    background: radial-gradient(at 20% 20%, rgba(30, 64, 175, 0.3) 0px, transparent 50%),
+                linear-gradient(165deg, #101f44 0%, #0a1329 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.45) !important;
+    color: #f8fafc !important;
+    box-shadow: 0 25px 60px -15px rgba(2, 6, 23, 0.8), 0 0 30px rgba(30, 64, 175, 0.25) !important;
+}
+
+/* Modal Dapodik Drilldown & Detail Sekolah pada Mode Gelap */
+html.dark #sub-detail-dapodik-drilldown .bg-white,
+html.dark #modal-detail-sekolah > div {
+    background: radial-gradient(at 20% 20%, rgba(30, 64, 175, 0.3) 0px, transparent 50%),
+                linear-gradient(165deg, #101f44 0%, #0a1329 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.45) !important;
+    color: #f8fafc !important;
+    box-shadow: 0 25px 60px -15px rgba(2, 6, 23, 0.8), 0 0 30px rgba(30, 64, 175, 0.25) !important;
+}
+html.dark #sub-detail-dapodik-drilldown .text-slate-900,
+html.dark #sub-detail-dapodik-drilldown .text-slate-800 {
+    color: #f0f9ff !important;
+}
+html.dark #sub-detail-dapodik-drilldown .text-slate-600,
+html.dark #sub-detail-dapodik-drilldown .text-slate-500 {
+    color: #93c5fd !important;
+}
+
+/* ========================================================================== */
+/* PERBAIKAN KONTRAS MODE GELAP: DATA SEKOLAH FORMAL & NON-FORMAL            */
+/* ========================================================================== */
+
+/* 1. Judul & Baris Khusus Modul Sekolah Formal & Non-Formal di Tabel Utama */
+html.dark #single-sub-container .text-blue-900,
+html.dark #single-sub-container .text-blue-950,
+html.dark #single-sub-container .text-amber-950,
+html.dark #single-sub-container .text-teal-950,
+html.dark #single-sub-container .text-purple-950,
+html.dark #single-sub-container .text-rose-950,
+html.dark #single-sub-container .text-cyan-950,
+html.dark #single-sub-container .text-slate-900,
+html.dark #single-sub-container .text-slate-800 {
+    color: #f8fafc !important;
+}
+
+html.dark #single-sub-container .text-slate-700,
+html.dark #single-sub-container .text-slate-600 {
+    color: #cbd5e1 !important;
+}
+
+html.dark #single-sub-container .text-slate-500,
+html.dark #single-sub-container .text-slate-400 {
+    color: #94a3b8 !important;
+}
+
+/* Tabel Utama (#table-single-sub) */
+html.dark #table-single-sub tbody td {
+    color: #cbd5e1 !important;
+}
+html.dark #table-single-sub tbody td.font-bold,
+html.dark #table-single-sub tbody td strong {
+    color: #ffffff !important;
+}
+html.dark #table-single-sub tbody tr:hover td {
+    color: #ffffff !important;
+}
+
+/* Badge Status & Kategori di Tabel & Sub-Detail */
+html.dark #single-sub-container .bg-emerald-100,
+html.dark table .bg-emerald-100 {
+    background: rgba(6, 78, 59, 0.75) !important;
+    color: #6ee7b7 !important;
+    border: 1px solid rgba(16, 185, 129, 0.4) !important;
+}
+html.dark #single-sub-container .bg-blue-100,
+html.dark table .bg-blue-100 {
+    background: rgba(30, 58, 138, 0.75) !important;
+    color: #93c5fd !important;
+    border: 1px solid rgba(59, 130, 246, 0.4) !important;
+}
+html.dark #single-sub-container .bg-amber-100,
+html.dark table .bg-amber-100 {
+    background: rgba(120, 53, 15, 0.75) !important;
+    color: #fcd34d !important;
+    border: 1px solid rgba(245, 158, 11, 0.4) !important;
+}
+html.dark #single-sub-container .bg-purple-100,
+html.dark table .bg-purple-100 {
+    background: rgba(88, 28, 135, 0.75) !important;
+    color: #d8b4fe !important;
+    border: 1px solid rgba(168, 85, 247, 0.4) !important;
+}
+html.dark #single-sub-container .bg-teal-100,
+html.dark table .bg-teal-100 {
+    background: rgba(19, 78, 74, 0.75) !important;
+    color: #5eead4 !important;
+    border: 1px solid rgba(20, 184, 166, 0.4) !important;
+}
+html.dark #single-sub-container .bg-sky-100,
+html.dark table .bg-sky-100 {
+    background: rgba(12, 74, 110, 0.75) !important;
+    color: #7dd3fc !important;
+    border: 1px solid rgba(14, 165, 233, 0.4) !important;
+}
+
+/* 2. Kartu-Kartu Kecamatan Dapodik (.dapodik-kec-card) */
+html.dark .dapodik-kec-card {
+    background: linear-gradient(160deg, #132450 0%, #0d1a3b 100%) !important;
+    border: 1px solid rgba(96, 165, 250, 0.35) !important;
+    box-shadow: 0 10px 25px -5px rgba(2, 6, 23, 0.6) !important;
+}
+html.dark .dapodik-kec-card:hover {
+    border-color: #38bdf8 !important;
+    box-shadow: 0 15px 35px -5px rgba(30, 64, 175, 0.45), 0 0 20px rgba(56, 189, 248, 0.3) !important;
+}
+html.dark .dapodik-kec-card h4 {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #7dd3fc 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+html.dark .dapodik-kec-card .bg-white\/60 {
+    background: rgba(15, 28, 61, 0.75) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+html.dark .dapodik-kec-card .text-slate-400 {
+    color: #94a3b8 !important;
+}
+html.dark .dapodik-kec-card .text-slate-800 {
+    color: #f8fafc !important;
+}
+html.dark .dapodik-kec-card .text-slate-700 {
+    color: #cbd5e1 !important;
+}
+html.dark .dapodik-kec-card span.text-xs.font-extrabold {
+    color: #38bdf8 !important;
+}
+
+/* 3. Toolbar & Navigasi di Drilldown Dapodik */
+html.dark #sub-detail-dapodik-drilldown button[onclick*="closeDapodikDrilldown"],
+html.dark #sub-detail-dapodik-drilldown button[onclick*="openDapodikDrilldown"],
+html.dark #sub-detail-dapodik-drilldown button[onclick*="openDapodikSchools"] {
+    background: linear-gradient(135deg, #132450 0%, #0e1c3e 100%) !important;
+    color: #e0f2fe !important;
+    border: 1px solid rgba(96, 165, 250, 0.35) !important;
+}
+html.dark #sub-detail-dapodik-drilldown button[onclick*="closeDapodikDrilldown"]:hover,
+html.dark #sub-detail-dapodik-drilldown button[onclick*="openDapodikDrilldown"]:hover,
+html.dark #sub-detail-dapodik-drilldown button[onclick*="openDapodikSchools"]:hover {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%) !important;
+    color: #ffffff !important;
+    border-color: #38bdf8 !important;
+}
+html.dark #sub-detail-dapodik-drilldown .text-teal-700 {
+    color: #2dd4bf !important;
+}
+
+/* Toolbar Judul & Deskripsi Daftar Kecamatan */
+html.dark #sub-detail-dapodik-drilldown h4 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+}
+html.dark #sub-detail-dapodik-drilldown h4 span {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+html.dark #sub-detail-dapodik-drilldown p {
+    color: #bae6fd !important;
+}
+html.dark #input-search-kecamatan {
+    background: #0f1f44 !important;
+    color: #ffffff !important;
+    border-color: rgba(59, 130, 246, 0.45) !important;
+}
+
+/* 4 kotak statistik Dapodik */
+html.dark #sub-detail-dapodik-drilldown .grid-cols-2.sm\:grid-cols-4 > div {
+    background: linear-gradient(160deg, #132450 0%, #0d1a3b 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.35) !important;
+}
+html.dark #sub-detail-dapodik-drilldown .grid-cols-2.sm\:grid-cols-4 > div .text-slate-900 {
+    color: #f8fafc !important;
+}
+html.dark #sub-detail-dapodik-drilldown .grid-cols-2.sm\:grid-cols-4 > div .text-slate-400 {
+    color: #94a3b8 !important;
+}
+
+/* Hint Box NPSN Interaktif */
+html.dark #sub-detail-dapodik-drilldown .bg-blue-50\/90,
+html.dark #sub-detail-dapodik-drilldown .bg-blue-50 {
+    background: linear-gradient(135deg, rgba(23, 37, 84, 0.8) 0%, rgba(15, 23, 42, 0.85) 100%) !important;
+    border: 1px solid rgba(56, 189, 248, 0.35) !important;
+    color: #e0f2fe !important;
+}
+html.dark #sub-detail-dapodik-drilldown .bg-blue-50\/90 strong,
+html.dark #sub-detail-dapodik-drilldown .bg-blue-50\/90 span {
+    color: #e0f2fe !important;
+}
+html.dark #sub-detail-dapodik-drilldown .bg-blue-50\/90 i.fa-circle-info {
+    color: #38bdf8 !important;
+}
+html.dark #sub-detail-dapodik-drilldown .bg-blue-50\/90 span.bg-white {
+    background: rgba(30, 58, 138, 0.7) !important;
+    color: #7dd3fc !important;
+    border-color: rgba(56, 189, 248, 0.4) !important;
+}
+
+/* Toolbar Filter Status Sekolah */
+html.dark #sub-detail-dapodik-drilldown .school-filter-btn {
+    background: rgba(15, 28, 61, 0.8) !important;
+    color: #93c5fd !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+html.dark #sub-detail-dapodik-drilldown .school-filter-btn.bg-slate-900 {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%) !important;
+    color: #ffffff !important;
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.4) !important;
+}
+
+/* 4. Tabel Daftar Sekolah per Kecamatan (#table-dapodik-schools) */
+html.dark #table-dapodik-schools thead th {
+    background: linear-gradient(90deg, #1e3a8a 0%, #172554 100%) !important;
+    color: #e0f2fe !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+html.dark #table-dapodik-schools tbody tr {
+    background-color: #0d1a3b !important;
+    border-color: rgba(59, 130, 246, 0.25) !important;
+}
+html.dark #table-dapodik-schools tbody tr:nth-child(even) {
+    background-color: #11224d !important;
+}
+html.dark #table-dapodik-schools tbody tr:hover {
+    background-color: #1a326b !important;
+}
+
+/* Nama Satuan Lembaga: Putih Terang Kontras Tinggi */
+html.dark #table-dapodik-schools .school-row-item button.text-left {
+    color: #ffffff !important;
+}
+html.dark #table-dapodik-schools .school-row-item button.text-left span {
+    color: #ffffff !important;
+}
+html.dark #table-dapodik-schools .school-row-item button.text-left:hover span {
+    color: #38bdf8 !important;
+}
+
+/* Tombol NPSN */
+html.dark #table-dapodik-schools .school-row-item td button[title*="NPSN"] {
+    background: rgba(30, 58, 138, 0.7) !important;
+    color: #7dd3fc !important;
+    border-color: rgba(56, 189, 248, 0.4) !important;
+}
+html.dark #table-dapodik-schools .school-row-item td button[title*="NPSN"]:hover {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    border-color: #38bdf8 !important;
+}
+
+/* Kolom Angka & Teks Lain di Tabel Sekolah */
+html.dark #table-dapodik-schools td {
+    color: #cbd5e1 !important;
+}
+html.dark #table-dapodik-schools td.text-slate-500 {
+    color: #94a3b8 !important;
+}
+html.dark #table-dapodik-schools td.text-slate-600 {
+    color: #cbd5e1 !important;
+}
+html.dark #table-dapodik-schools td.text-slate-800 {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+html.dark #table-dapodik-schools td span.bg-slate-100 {
+    background: rgba(30, 41, 59, 0.8) !important;
+    color: #e2e8f0 !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+/* 5. Tampilan Detail Profil Sekolah (openDapodikSchoolDetail) */
+/* Status Sinkronisasi Banner */
+html.dark #sub-detail-dapodik-drilldown .bg-emerald-50\/90 {
+    background: linear-gradient(135deg, rgba(6, 78, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%) !important;
+    border: 1px solid rgba(16, 185, 129, 0.4) !important;
+}
+html.dark #sub-detail-dapodik-drilldown .bg-amber-50\/90 {
+    background: linear-gradient(135deg, rgba(120, 53, 15, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%) !important;
+    border: 1px solid rgba(245, 158, 11, 0.4) !important;
+}
+html.dark #sub-detail-dapodik-drilldown .text-emerald-900 {
+    color: #6ee7b7 !important;
+}
+html.dark #sub-detail-dapodik-drilldown .text-amber-900 {
+    color: #fcd34d !important;
+}
+html.dark #sub-detail-dapodik-drilldown .bg-white\/80 {
+    background: rgba(15, 28, 61, 0.85) !important;
+    border: 1px solid rgba(59, 130, 246, 0.35) !important;
+}
+
+/* Card Identitas, Data Pelengkap, Kontak, Rekap Murid/PTK & Sarpras */
+html.dark #sub-detail-dapodik-drilldown .divide-slate-100 > div,
+html.dark #sub-detail-dapodik-drilldown .border-slate-100 {
+    border-color: rgba(59, 130, 246, 0.2) !important;
+}
+html.dark #sub-detail-dapodik-drilldown span.text-slate-500.font-medium {
+    color: #94a3b8 !important;
+}
+html.dark #sub-detail-dapodik-drilldown span.font-bold.text-slate-900 {
+    color: #f8fafc !important;
+}
+html.dark #sub-detail-dapodik-drilldown span.font-mono.text-blue-700 {
+    color: #38bdf8 !important;
+}
+html.dark #sub-detail-dapodik-drilldown .bg-slate-50,
+html.dark #sub-detail-dapodik-drilldown .bg-slate-50\/50,
+html.dark #sub-detail-dapodik-drilldown .bg-slate-50\/60 {
+    background: rgba(15, 28, 61, 0.7) !important;
+    border-color: rgba(59, 130, 246, 0.25) !important;
+}
+html.dark #sub-detail-dapodik-drilldown .bg-blue-50\/80 {
+    background: rgba(30, 58, 138, 0.4) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+html.dark #sub-detail-dapodik-drilldown .bg-purple-50\/80 {
+    background: rgba(88, 28, 135, 0.4) !important;
+    border-color: rgba(168, 85, 247, 0.3) !important;
+}
+html.dark #sub-detail-dapodik-drilldown .text-blue-700 {
+    color: #38bdf8 !important;
+}
+html.dark #sub-detail-dapodik-drilldown .text-purple-700 {
+    color: #c084fc !important;
+}
+html.dark #sub-detail-dapodik-drilldown .text-emerald-700 {
+    color: #34d399 !important;
+}
+html.dark #sub-detail-dapodik-drilldown .text-yellow-700 {
+    color: #facc15 !important;
+}
+html.dark #sub-detail-dapodik-drilldown .text-orange-700 {
+    color: #fb923c !important;
+}
+html.dark #sub-detail-dapodik-drilldown .text-red-700 {
+    color: #f87171 !important;
+}
+html.dark #sub-detail-dapodik-drilldown .bg-slate-100 {
+    background: rgba(30, 41, 59, 0.8) !important;
+    border-color: rgba(59, 130, 246, 0.25) !important;
+}
+
+/* 6. Satuan Pendidikan Formal & Non-Formal di Bagan Struktur Organisasi */
+html.dark .org-card h6 {
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #7dd3fc 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+html.dark .org-card p {
+    color: #93c5fd !important;
+}
+html.dark #modal-org-detail h3 {
+    color: #ffffff !important;
+}
+html.dark #modal-org-detail p,
+html.dark #modal-org-detail li,
+html.dark #modal-org-detail .text-slate-700 {
+    color: #cbd5e1 !important;
+}
+html.dark #modal-org-detail .text-slate-500 {
+    color: #93c5fd !important;
+}
+html.dark #modal-org-detail .bg-white {
+    background: rgba(15, 28, 61, 0.85) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+html.dark #modal-org-detail .bg-slate-50 {
+    background: rgba(13, 26, 59, 0.85) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+html.dark #modal-org-detail span.bg-slate-100 {
+    background: rgba(30, 58, 138, 0.6) !important;
+    color: #e0f2fe !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+/* Seksi Berita & Footer pada Mode Gelap */
+html.dark #berita {
+    background: radial-gradient(at 20% 25%, rgba(30, 64, 175, 0.3) 0px, transparent 50%),
+                linear-gradient(180deg, #09142e 0%, #0d1e44 50%, #071026 100%) !important;
+}
+html.dark #berita .bg-white {
+    background: linear-gradient(160deg, #132450 0%, #0d1a3b 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.35) !important;
+}
+html.dark #berita .bg-white:hover {
+    border-color: rgba(96, 165, 250, 0.65) !important;
+    box-shadow: 0 15px 35px -5px rgba(14, 116, 144, 0.35) !important;
+}
+html.dark #berita h4 {
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #7dd3fc 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+html.dark #berita .bg-white:hover h4 {
+    background: linear-gradient(135deg, #67e8f9 0%, #38bdf8 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+html.dark #berita p {
+    color: #cbd5e1 !important;
+}
+
+html.dark footer {
+    background: radial-gradient(at 50% 0%, rgba(30, 64, 175, 0.35) 0px, transparent 60%),
+                linear-gradient(180deg, #0b1530 0%, #060d1e 100%) !important;
+    border-top: 1px solid rgba(59, 130, 246, 0.35) !important;
+}
+html.dark footer h4 {
+    background: linear-gradient(135deg, #ffffff 0%, #bae6fd 60%, #38bdf8 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+html.dark footer p,
+html.dark footer a {
+    color: #93c5fd !important;
+}
+html.dark footer a:hover {
+    color: #38bdf8 !important;
+}
+
+/* ========================================================
+   OPTIMASI TAMPILAN MULTI-DEVICE LENGKAP:
+   HP KECIL (OPPO F9, IPHONE SE, ANDROID 360PX),
+   HP LEBAR/BESAR, TABLET (IPAD), & LAPTOP/DESKTOP
+   ======================================================== */
+
+/* 1. Safe Area Support untuk Layar Berponi / Waterdrop Notch (Oppo F9 & iPhone) */
+:root {
+    --sat: env(safe-area-inset-top, 0px);
+    --sar: env(safe-area-inset-right, 0px);
+    --sab: env(safe-area-inset-bottom, 0px);
+    --sal: env(safe-area-inset-left, 0px);
+}
+
+/* Dukungan Notch Oppo F9 & iPhone pada Navbar Atas */
+#navbar, header.sticky {
+    padding-top: max(0px, env(safe-area-inset-top));
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+}
+
+/* 2. Perlindungan Anti Horizontal-Overflow & Tipografi Fleksibel */
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+}
+
+/* 3. Touch Optimization untuk Layar Sentuh Handphone & Tablet */
+button, a, input, select, textarea, [role="button"] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 4. Scrollbar Tabel yang Halus & Responsif di Seluruh HP & Tablet */
+.overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    max-width: 100%;
+}
+.overflow-x-auto::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+.overflow-x-auto::-webkit-scrollbar-track {
+    background: rgba(148, 163, 184, 0.15);
+    border-radius: 9999px;
+}
+.overflow-x-auto::-webkit-scrollbar-thumb {
+    background: rgba(13, 148, 136, 0.4);
+    border-radius: 9999px;
+}
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+    background: rgba(13, 148, 136, 0.8);
+}
+
+/* 5. Khusus Perangkat Layar HP (Termasuk Oppo F9 ~360px - 412px & Layar Kecil 320px) */
+@media screen and (max-width: 640px) {
+    /* Hero Title fluid typography agar pas sempurna di layar Oppo F9 */
+    .hero-title-text {
+        font-size: clamp(1.5rem, 6.2vw, 2.25rem) !important;
+        line-height: 1.25 !important;
+    }
+    
+    .hero-description-text {
+        font-size: 0.875rem !important;
+        line-height: 1.5 !important;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    /* Modal dialog agar pas penuh dan bisa discroll secara nyaman di layar HP */
+    #modal-manage-users > div,
+    #modal-manage-spreadsheet > div,
+    #modal-sk-revitalisasi > div,
+    #modal-org-detail > div,
+    #modal-layanan-success > div {
+        max-height: 90vh !important;
+        width: 95vw !important;
+        margin: auto !important;
+        border-radius: 1.25rem !important;
+    }
+
+    /* Tabel di dalam modal & kartu sub-modul agar tidak terpotong */
+    table th, table td {
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    /* Padding kontainer di HP lebih proporsional */
+    .features-section-animated {
+        padding-top: 3.5rem !important;
+        padding-bottom: 3.5rem !important;
+    }
+}
+
+/* 6. Khusus Tablet (iPad Mini, iPad Air, Galaxy Tab 768px - 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .hero-title-text {
+        font-size: 2.75rem !important;
+    }
+    
+    /* Grid 2 kolom yang seimbang di layar tablet */
+    #features-grid,
+    #sub-modules-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 1.25rem !important;
+    }
+}
+
+/* 7. Khusus Laptop & Desktop Lebar (1280px ke atas) */
+@media screen and (min-width: 1280px) {
+    .hero-title-text {
+        font-size: 3.75rem !important;
+    }
+}
+
+
+

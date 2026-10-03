@@ -1,0 +1,301 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 575" width="100%" height="100%" class="w-full h-auto select-none" style="background: #ffffff; font-family: 'Montserrat', Arial, sans-serif;">
+  <defs>
+    <filter id="boxShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="2" dy="3" stdDeviation="2" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Title & Watermark Logo -->
+  <image href="logo-kabupaten-madiun.svg" x="482" y="2" width="60" height="60" opacity="0.22" preserveAspectRatio="xMidYMid meet"/>
+  <text x="512" y="27" text-anchor="middle" font-family="'Times New Roman', serif" font-size="18" font-weight="bold" fill="#143B66" letter-spacing="0.5">BAGAN STRUKTUR ORGANISASI</text>
+  <text x="512" y="48" text-anchor="middle" font-family="'Times New Roman', serif" font-size="18" font-weight="bold" fill="#143B66" letter-spacing="0.5">DINAS PENDIDIKAN DAN KEBUDAYAAN KABUPATEN MADIUN</text>
+
+  <!-- LINES -->
+  <!-- Top Solid Lines from Kepala Dinas -->
+  <line x1="514.5" y1="102" x2="514.5" y2="108" stroke="#111111" stroke-width="1.4"/>
+  <line x1="347" y1="108" x2="678" y2="108" stroke="#111111" stroke-width="1.4"/>
+  <line x1="347" y1="108" x2="347" y2="118" stroke="#111111" stroke-width="1.4"/>
+  <line x1="678" y1="108" x2="678" y2="118" stroke="#111111" stroke-width="1.4"/>
+
+  <!-- Central Vertical Dashed Line -->
+  <line x1="514.5" y1="108" x2="514.5" y2="522" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+  <!-- Horizontal Dashed Line below Kepala Dinas -->
+  <line x1="390" y1="133" x2="632" y2="133" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+  <!-- Lines under Sekretariat -->
+  <line x1="678" y1="144" x2="678" y2="152" stroke="#111111" stroke-width="1.4"/>
+  <line x1="571" y1="152" x2="774" y2="152" stroke="#111111" stroke-width="1.4"/>
+  <line x1="571" y1="152" x2="571" y2="160" stroke="#111111" stroke-width="1.4"/>
+  <line x1="774" y1="152" x2="774" y2="160" stroke="#111111" stroke-width="1.4"/>
+  <line x1="619" y1="181" x2="732" y2="181" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+  <!-- Horizontal Dashed Line to 5 Bidang -->
+  <line x1="571" y1="202" x2="571" y2="208" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <line x1="342" y1="208" x2="774" y2="208" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <line x1="342" y1="208" x2="342" y2="220" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <line x1="451" y1="208" x2="451" y2="220" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <line x1="571" y1="208" x2="571" y2="220" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <line x1="678" y1="208" x2="678" y2="220" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <line x1="774" y1="208" x2="774" y2="220" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+  <!-- Column 1 Lines (Ketenagaan) -->
+  <line x1="342" y1="272" x2="342" y2="279" stroke="#111111" stroke-width="1.4"/>
+  <line x1="284" y1="279" x2="342" y2="279" stroke="#111111" stroke-width="1.4"/>
+  <line x1="284" y1="279" x2="284" y2="406" stroke="#111111" stroke-width="1.4"/>
+  <line x1="284" y1="320" x2="295" y2="320" stroke="#111111" stroke-width="1.4"/>
+  <line x1="284" y1="406" x2="295" y2="406" stroke="#111111" stroke-width="1.4"/>
+  <line x1="342" y1="442" x2="342" y2="454" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+  <!-- Column 2 Lines (SD) -->
+  <line x1="451" y1="272" x2="451" y2="284" stroke="#111111" stroke-width="1.4"/>
+  <line x1="451" y1="356" x2="451" y2="370" stroke="#111111" stroke-width="1.4"/>
+  <line x1="451" y1="442" x2="451" y2="454" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+  <!-- Column 3 Lines (SMP) -->
+  <line x1="571" y1="272" x2="571" y2="279" stroke="#111111" stroke-width="1.4"/>
+  <line x1="513" y1="279" x2="571" y2="279" stroke="#111111" stroke-width="1.4"/>
+  <line x1="513" y1="279" x2="513" y2="406" stroke="#111111" stroke-width="1.4"/>
+  <line x1="513" y1="320" x2="524" y2="320" stroke="#111111" stroke-width="1.4"/>
+  <line x1="513" y1="406" x2="524" y2="406" stroke="#111111" stroke-width="1.4"/>
+  <line x1="571" y1="442" x2="571" y2="454" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+  <!-- Column 4 Lines (PAUD) -->
+  <line x1="678" y1="272" x2="678" y2="279" stroke="#111111" stroke-width="1.4"/>
+  <line x1="621" y1="279" x2="678" y2="279" stroke="#111111" stroke-width="1.4"/>
+  <line x1="621" y1="279" x2="621" y2="392" stroke="#111111" stroke-width="1.4"/>
+  <line x1="621" y1="320" x2="631" y2="320" stroke="#111111" stroke-width="1.4"/>
+  <line x1="621" y1="392" x2="631" y2="392" stroke="#111111" stroke-width="1.4"/>
+
+  <!-- Column 5 Lines (Kebudayaan) -->
+  <line x1="774" y1="272" x2="774" y2="284" stroke="#111111" stroke-width="1.4"/>
+
+  <!-- Bottom Lines (Satuan Pendidikan & UPT) -->
+  <line x1="470" y1="522" x2="613" y2="522" stroke="#111111" stroke-width="1.4"/>
+  <line x1="470" y1="522" x2="470" y2="532" stroke="#111111" stroke-width="1.4"/>
+  <line x1="613" y1="522" x2="613" y2="532" stroke="#111111" stroke-width="1.4"/>
+
+  <!-- BOXES -->
+  <!-- 1. KEPALA DINAS -->
+  <g class="org-box-group" onclick="window.openOrgModal('kadis')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="430" y="70" width="169" height="32" rx="1.5" fill="#1B497D" stroke="#0F3156" stroke-width="1"/>
+    <text x="514.5" y="91" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="bold" letter-spacing="0.5">KEPALA DINAS</text>
+  </g>
+
+  <!-- 2. KELOMPOK JABATAN FUNGSIONAL (Top-Left, 5x4 Grid) -->
+  <g class="org-box-group" onclick="window.openOrgModal('fungsional')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="272" y="118" width="150" height="26" rx="1" fill="#438B50" stroke="#245C2D" stroke-width="1"/>
+    <text x="347" y="129" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">KELOMPOK JABATAN</text>
+    <text x="347" y="139" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">FUNGSIONAL</text>
+    <!-- Grid 5 cols x 4 rows -->
+    <g fill="#8EBA94" stroke="#245C2D" stroke-width="0.8">
+      <!-- row 0 -->
+      <rect x="272" y="144" width="30" height="14"/><rect x="302" y="144" width="30" height="14"/><rect x="332" y="144" width="30" height="14"/><rect x="362" y="144" width="30" height="14"/><rect x="392" y="144" width="30" height="14"/>
+      <!-- row 1 -->
+      <rect x="272" y="158" width="30" height="14"/><rect x="302" y="158" width="30" height="14"/><rect x="332" y="158" width="30" height="14"/><rect x="362" y="158" width="30" height="14"/><rect x="392" y="158" width="30" height="14"/>
+      <!-- row 2 -->
+      <rect x="272" y="172" width="30" height="14"/><rect x="302" y="172" width="30" height="14"/><rect x="332" y="172" width="30" height="14"/><rect x="362" y="172" width="30" height="14"/><rect x="392" y="172" width="30" height="14"/>
+      <!-- row 3 -->
+      <rect x="272" y="186" width="30" height="14"/><rect x="302" y="186" width="30" height="14"/><rect x="332" y="186" width="30" height="14"/><rect x="362" y="186" width="30" height="14"/><rect x="392" y="186" width="30" height="14"/>
+    </g>
+  </g>
+
+  <!-- 3. SEKRETARIAT -->
+  <g class="org-box-group" onclick="window.openOrgModal('sekretariat')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="632" y="118" width="92" height="26" rx="1.5" fill="#7297C5" stroke="#466B99" stroke-width="1"/>
+    <text x="678" y="135" text-anchor="middle" fill="#000000" font-size="9.5" font-weight="bold">SEKRETARIAT</text>
+  </g>
+
+  <!-- 4. SUBBAG UMUM DAN KEPEGAWAIAN -->
+  <g class="org-box-group" onclick="window.openOrgModal('sekretariat')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="523" y="160" width="96" height="42" rx="1.5" fill="#8EBCDF" stroke="#5C8EBA" stroke-width="1"/>
+    <text x="571" y="174" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">SUBBAG</text>
+    <text x="571" y="185" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">UMUM DAN</text>
+    <text x="571" y="196" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">KEPEGAWAIAN</text>
+  </g>
+
+  <!-- 5. KELOMPOK JABATAN FUNGSIONAL (Under Sekretariat) -->
+  <g class="org-box-group" onclick="window.openOrgModal('fungsional')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="732" y="160" width="85" height="42" rx="1.5" fill="#6FA372" stroke="#2C6436" stroke-width="1"/>
+    <text x="774.5" y="174" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">KELOMPOK</text>
+    <text x="774.5" y="185" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">JABATAN</text>
+    <text x="774.5" y="196" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">FUNGSIONAL</text>
+  </g>
+
+  <!-- 5 BIDANG HEADERS (Row at y=220) -->
+  <!-- Col 1: Bidang Ketenagaan -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-gtk')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="295" y="220" width="95" height="52" rx="1.5" fill="#EB7D23" stroke="#BD5A08" stroke-width="1"/>
+    <text x="342.5" y="244" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">BIDANG</text>
+    <text x="342.5" y="256" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">KETENAGAAN</text>
+  </g>
+
+  <!-- Col 2: Bidang Pembinaan SD -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-sd')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="404" y="220" width="95" height="52" rx="1.5" fill="#C73032" stroke="#961C1E" stroke-width="1"/>
+    <text x="451.5" y="244" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">BIDANG</text>
+    <text x="451.5" y="256" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">PEMBINAAN SD</text>
+  </g>
+
+  <!-- Col 3: Bidang Pembinaan SMP -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-smp')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="524" y="220" width="94" height="52" rx="1.5" fill="#74368E" stroke="#4A1560" stroke-width="1"/>
+    <text x="571" y="244" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">BIDANG</text>
+    <text x="571" y="256" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">PEMBINAAN SMP</text>
+  </g>
+
+  <!-- Col 4: Bidang PAUD dan Dikmas -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-paud')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="631" y="220" width="95" height="52" rx="1.5" fill="#CF3376" stroke="#A01650" stroke-width="1"/>
+    <text x="678.5" y="237" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="bold">BIDANG</text>
+    <text x="678.5" y="247" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="bold">PAUD DAN</text>
+    <text x="678.5" y="257" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="bold">PENDIDIKAN</text>
+    <text x="678.5" y="267" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="bold">MASYARAKAT</text>
+  </g>
+
+  <!-- Col 5: Bidang Kebudayaan -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-budaya')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="732" y="220" width="85" height="52" rx="1.5" fill="#168B75" stroke="#0E6251" stroke-width="1"/>
+    <text x="774.5" y="244" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">BIDANG</text>
+    <text x="774.5" y="256" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">KEBUDAYAAN</text>
+  </g>
+
+  <!-- COLUMN 1 SUB-BOXES (Ketenagaan) -->
+  <!-- Seksi 1 -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-gtk')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="295" y="284" width="95" height="72" rx="1.5" fill="#F8CCA4" stroke="#C98642" stroke-width="1"/>
+    <text x="342.5" y="299" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKSI</text>
+    <text x="342.5" y="309" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">ADMINISTRASI</text>
+    <text x="342.5" y="319" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KEPEGAWAIAN</text>
+    <text x="342.5" y="329" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PENDIDIK DAN</text>
+    <text x="342.5" y="339" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">TENAGA</text>
+    <text x="342.5" y="349" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KEPENDIDIKAN</text>
+  </g>
+  <!-- Seksi 2 -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-gtk')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="295" y="370" width="95" height="72" rx="1.5" fill="#F8CCA4" stroke="#C98642" stroke-width="1"/>
+    <text x="342.5" y="387" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKSI PEMBINAAN</text>
+    <text x="342.5" y="397" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">DAN</text>
+    <text x="342.5" y="407" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PENGEMBANGAN</text>
+    <text x="342.5" y="417" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PENDIDIK DAN</text>
+    <text x="342.5" y="427" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">TENAGA</text>
+    <text x="342.5" y="437" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KEPENDIDIKAN</text>
+  </g>
+  <!-- Fungsional + Grid (5x2) -->
+  <g class="org-box-group" onclick="window.openOrgModal('fungsional')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="295" y="454" width="95" height="20" rx="1" fill="#438B50" stroke="#245C2D" stroke-width="1"/>
+    <text x="342.5" y="463" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold">KELOMPOK</text>
+    <text x="342.5" y="471" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold">JABATAN FUNGSIONAL</text>
+    <g fill="#8EBA94" stroke="#245C2D" stroke-width="0.8">
+      <rect x="295" y="474" width="19" height="12"/><rect x="314" y="474" width="19" height="12"/><rect x="333" y="474" width="19" height="12"/><rect x="352" y="474" width="19" height="12"/><rect x="371" y="474" width="19" height="12"/>
+      <rect x="295" y="486" width="19" height="12"/><rect x="314" y="486" width="19" height="12"/><rect x="333" y="486" width="19" height="12"/><rect x="352" y="486" width="19" height="12"/><rect x="371" y="486" width="19" height="12"/>
+    </g>
+  </g>
+
+  <!-- COLUMN 2 SUB-BOXES (SD) -->
+  <!-- Seksi 1 -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-sd')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="404" y="284" width="95" height="72" rx="1.5" fill="#F39E96" stroke="#C25B51" stroke-width="1"/>
+    <text x="451.5" y="304" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKSI PESERTA</text>
+    <text x="451.5" y="315" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">DIDIK SEKOLAH</text>
+    <text x="451.5" y="326" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">DASAR DAN</text>
+    <text x="451.5" y="337" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PEMBANGUNAN</text>
+    <text x="451.5" y="348" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KARAKTER</text>
+  </g>
+  <!-- Seksi 2 -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-sd')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="404" y="370" width="95" height="72" rx="1.5" fill="#F39E96" stroke="#C25B51" stroke-width="1"/>
+    <text x="451.5" y="396" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKSI</text>
+    <text x="451.5" y="407" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PENGEMBANGAN</text>
+    <text x="451.5" y="418" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KELEMBAGAAN</text>
+    <text x="451.5" y="429" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKOLAH DASAR</text>
+  </g>
+  <!-- Fungsional + Grid (5x2) -->
+  <g class="org-box-group" onclick="window.openOrgModal('fungsional')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="404" y="454" width="95" height="20" rx="1" fill="#438B50" stroke="#245C2D" stroke-width="1"/>
+    <text x="451.5" y="463" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold">KELOMPOK</text>
+    <text x="451.5" y="471" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold">JABATAN FUNGSIONAL</text>
+    <g fill="#8EBA94" stroke="#245C2D" stroke-width="0.8">
+      <rect x="404" y="474" width="19" height="12"/><rect x="423" y="474" width="19" height="12"/><rect x="442" y="474" width="19" height="12"/><rect x="461" y="474" width="19" height="12"/><rect x="480" y="474" width="19" height="12"/>
+      <rect x="404" y="486" width="19" height="12"/><rect x="423" y="486" width="19" height="12"/><rect x="442" y="486" width="19" height="12"/><rect x="461" y="486" width="19" height="12"/><rect x="480" y="486" width="19" height="12"/>
+    </g>
+  </g>
+
+  <!-- COLUMN 3 SUB-BOXES (SMP) -->
+  <!-- Seksi 1 -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-smp')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="524" y="284" width="94" height="72" rx="1.5" fill="#B89FD5" stroke="#88549C" stroke-width="1"/>
+    <text x="571" y="304" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKSI PESERTA</text>
+    <text x="571" y="315" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">DIDIK SMP DAN</text>
+    <text x="571" y="326" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PEMBANGUNAN</text>
+    <text x="571" y="337" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KARAKTER</text>
+  </g>
+  <!-- Seksi 2 -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-smp')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="524" y="370" width="94" height="72" rx="1.5" fill="#B89FD5" stroke="#88549C" stroke-width="1"/>
+    <text x="571" y="402" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKSI</text>
+    <text x="571" y="413" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PENGEMBANGAN</text>
+    <text x="571" y="424" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KELEMBAGAAN</text>
+    <text x="571" y="435" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SMP</text>
+  </g>
+  <!-- Fungsional + Grid (5x2) -->
+  <g class="org-box-group" onclick="window.openOrgModal('fungsional')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="524" y="454" width="94" height="20" rx="1" fill="#438B50" stroke="#245C2D" stroke-width="1"/>
+    <text x="571" y="463" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold">KELOMPOK</text>
+    <text x="571" y="471" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold">JABATAN FUNGSIONAL</text>
+    <g fill="#8EBA94" stroke="#245C2D" stroke-width="0.8">
+      <rect x="524" y="474" width="18.8" height="12"/><rect x="542.8" y="474" width="18.8" height="12"/><rect x="561.6" y="474" width="18.8" height="12"/><rect x="580.4" y="474" width="18.8" height="12"/><rect x="599.2" y="474" width="18.8" height="12"/>
+      <rect x="524" y="486" width="18.8" height="12"/><rect x="542.8" y="486" width="18.8" height="12"/><rect x="561.6" y="486" width="18.8" height="12"/><rect x="580.4" y="486" width="18.8" height="12"/><rect x="599.2" y="486" width="18.8" height="12"/>
+    </g>
+  </g>
+
+  <!-- COLUMN 4 SUB-BOXES (PAUD) -->
+  <!-- Seksi 1 -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-paud')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="631" y="284" width="95" height="72" rx="1.5" fill="#F09BBB" stroke="#C05C82" stroke-width="1"/>
+    <text x="678.5" y="304" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKSI</text>
+    <text x="678.5" y="315" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PENGEMBANGAN</text>
+    <text x="678.5" y="326" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KELEMBAGAAN</text>
+    <text x="678.5" y="337" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PAUD DAN</text>
+    <text x="678.5" y="348" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PENDIDIKAN</text>
+    <text x="678.5" y="358" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">MASYARAKAT</text>
+  </g>
+  <!-- Fungsional + PINK Grid (5x2) -->
+  <g class="org-box-group" onclick="window.openOrgModal('fungsional')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="631" y="370" width="95" height="35" rx="1" fill="#EC7EA8" stroke="#A03060" stroke-width="1"/>
+    <text x="678.5" y="385" text-anchor="middle" fill="#000000" font-size="8" font-weight="bold">KELOMPOK</text>
+    <text x="678.5" y="396" text-anchor="middle" fill="#000000" font-size="8" font-weight="bold">JABATAN</text>
+    <text x="678.5" y="406" text-anchor="middle" fill="#000000" font-size="8" font-weight="bold">FUNGSIONAL</text>
+    <g fill="#F8BBD0" stroke="#A03060" stroke-width="0.8">
+      <rect x="631" y="412" width="19" height="12"/><rect x="650" y="412" width="19" height="12"/><rect x="669" y="412" width="19" height="12"/><rect x="688" y="412" width="19" height="12"/><rect x="707" y="412" width="19" height="12"/>
+      <rect x="631" y="424" width="19" height="12"/><rect x="650" y="424" width="19" height="12"/><rect x="669" y="424" width="19" height="12"/><rect x="688" y="424" width="19" height="12"/><rect x="707" y="424" width="19" height="12"/>
+    </g>
+  </g>
+
+  <!-- COLUMN 5 SUB-BOXES (Kebudayaan) -->
+  <!-- Fungsional + Green Grid (5x2) -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-budaya')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="732" y="284" width="85" height="35" rx="1" fill="#6FA372" stroke="#245C2D" stroke-width="1"/>
+    <text x="774.5" y="299" text-anchor="middle" fill="#000000" font-size="8" font-weight="bold">KELOMPOK</text>
+    <text x="774.5" y="310" text-anchor="middle" fill="#000000" font-size="8" font-weight="bold">JABATAN</text>
+    <text x="774.5" y="321" text-anchor="middle" fill="#000000" font-size="8" font-weight="bold">FUNGSIONAL</text>
+    <g fill="#8EBA94" stroke="#245C2D" stroke-width="0.8">
+      <rect x="732" y="326" width="17" height="12"/><rect x="749" y="326" width="17" height="12"/><rect x="766" y="326" width="17" height="12"/><rect x="783" y="326" width="17" height="12"/><rect x="800" y="326" width="17" height="12"/>
+      <rect x="732" y="338" width="17" height="12"/><rect x="749" y="338" width="17" height="12"/><rect x="766" y="338" width="17" height="12"/><rect x="783" y="338" width="17" height="12"/><rect x="800" y="338" width="17" height="12"/>
+    </g>
+  </g>
+
+  <!-- BOTTOM BOXES -->
+  <!-- Satuan Pendidikan -->
+  <g class="org-box-group" onclick="window.openOrgModal('sekolah')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="422" y="532" width="96" height="28" rx="1.5" fill="#BFC2C7" stroke="#707378" stroke-width="1"/>
+    <text x="470" y="544" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">SATUAN</text>
+    <text x="470" y="554" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">PENDIDIKAN</text>
+  </g>
+
+  <!-- UPT -->
+  <g class="org-box-group" onclick="window.openOrgModal('upt')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="564" y="532" width="98" height="28" rx="1.5" fill="#BFC2C7" stroke="#707378" stroke-width="1"/>
+    <text x="613" y="550" text-anchor="middle" fill="#000000" font-size="10" font-weight="bold">UPT</text>
+  </g>
+</svg>

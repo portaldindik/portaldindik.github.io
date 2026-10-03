@@ -1,0 +1,2125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+        <!-- Security Headers & Content Security Policy (Fase 3 Medium) -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(self)">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: blob: https: https://*.tile.openstreetmap.org; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://dapo.kemendikdasmen.go.id; frame-src 'self' https://anyflip.com https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self';">
+    <title>Dinas Pendidikan dan Kebudayaan Kab. Madiun</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        };
+        // Deteksi dan terapkan tema instan tanpa flicker
+        (function() {
+            try {
+                const saved = localStorage.getItem('portalTheme');
+                if (saved === 'dark') {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            } catch(e) {}
+        })();
+    </script>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS (Tema Warna-Warni, Efek Hover Silau & Animasi Background) -->
+    <link rel="stylesheet" href="style.css?v=2026.10.03.v2">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-teal-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <nav class="bg-blue-950/95 text-white shadow-lg fixed w-full z-50 top-0 transition-all duration-300 backdrop-blur-md border-b border-blue-800/40" id="navbar">
+        <div class="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6">
+            <div class="flex justify-between items-center h-16 lg:h-18">
+                <!-- Logo & Brand Name (Fluid di Layar HP Kecil s.d Laptop) -->
+                <a href="#" onclick="window.closeOrgSection();" class="flex items-center space-x-2 sm:space-x-3 shrink-0 group">
+                    <div class="h-9 w-9 min-[380px]:h-10 min-[380px]:w-10 sm:h-11 sm:w-11 rounded-xl bg-white/10 p-1 backdrop-blur-xs border border-white/20 shadow-md flex items-center justify-center group-hover:scale-105 transition duration-300 shrink-0">
+                        <img src="logo-kabupaten-madiun.svg" alt="Logo Kabupaten Madiun" class="w-full h-full object-contain filter drop-shadow-sm">
+                    </div>
+                    <div class="leading-tight">
+                        <h1 class="text-[11px] min-[380px]:text-xs sm:text-sm lg:text-[14px] font-black tracking-tight text-white group-hover:text-teal-300 transition">
+                            DINAS PENDIDIKAN & KEBUDAYAAN
+                        </h1>
+                        <p class="text-[9px] min-[380px]:text-[10px] sm:text-[11px] text-blue-200/90 font-medium tracking-wider uppercase mt-0.5 sm:mt-1">
+                            Pemerintah Kab. Madiun
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu (Dibuat Rapi, Kompak & Elegan) -->
+                <div class="hidden lg:flex items-center gap-1 xl:gap-2 text-[12px] xl:text-[13px] font-semibold text-slate-200">
+                    <a href="#" onclick="window.closeOrgSection('beranda');" class="px-2.5 py-1.5 rounded-lg hover:bg-white/10 hover:text-white transition whitespace-nowrap">
+                        Beranda
+                    </a>
+                    <a href="#berita" onclick="window.closeOrgSection('berita');" class="px-2.5 py-1.5 rounded-lg hover:bg-white/10 hover:text-white transition flex items-center gap-1.5 whitespace-nowrap">
+                        <i class="far fa-newspaper text-teal-400 text-[11px]"></i> Berita
+                    </a>
+                    <a href="#inovasi" onclick="window.closeOrgSection('inovasi');" class="px-2.5 py-1.5 rounded-lg hover:bg-white/10 hover:text-white transition flex items-center gap-1.5 whitespace-nowrap">
+                        <i class="fas fa-lightbulb text-amber-400 text-[11px]"></i> Inovasi
+                    </a>
+                    <a href="#struktur-organisasi" onclick="window.openOrgSection(event)" class="px-2.5 py-1.5 rounded-lg bg-teal-500/10 hover:bg-teal-500/20 text-teal-300 hover:text-teal-200 transition flex items-center gap-1.5 whitespace-nowrap border border-teal-500/30">
+                        <i class="fas fa-sitemap text-teal-400 text-[11px]"></i> Struktur Organisasi
+                    </a>
+                    <a href="#rpjmd" onclick="window.openRpjmdSection(event)" class="px-2.5 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 hover:text-cyan-200 transition flex items-center gap-1.5 whitespace-nowrap border border-cyan-500/30">
+                        <i class="fas fa-file-contract text-cyan-400 text-[11px]"></i> Laporan RPJMD
+                    </a>
+
+                    <div class="h-4 w-px bg-blue-800/80 mx-1"></div>
+
+                    <a href="#layanan-terpadu" onclick="window.openLayananTerpadu(event);" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-teal-600 to-teal-500 hover:from-teal-500 hover:to-teal-400 text-white text-[11px] xl:text-xs font-bold transition shadow-sm shadow-teal-950/30 flex items-center gap-1.5 whitespace-nowrap cursor-pointer">
+                        <i class="fas fa-headset text-[10px]"></i> Layanan
+                    </a>
+
+                    <!-- Tombol Utilitas Icon Ringkas: Panel Admin & Ganti Mode Tampilan Berdampingan -->
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        <a href="admin.html" 
+                            class="w-8 h-8 xl:w-9 xl:h-9 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-teal-300 hover:text-white transition border border-slate-700/80 flex items-center justify-center shadow-sm group shrink-0" 
+                            title="Akses Panel Admin" aria-label="Akses Panel Admin">
+                            <span class="text-xs sm:text-sm transform group-hover:rotate-45 group-hover:scale-110 transition duration-200">
+                                <i class="fas fa-sliders-h"></i>
+                            </span>
+                        </a>
+
+                        <button type="button" id="btn-theme-toggle" onclick="window.togglePortalTheme()" 
+                            class="w-8 h-8 xl:w-9 xl:h-9 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-amber-300 hover:text-white transition border border-slate-700/80 flex items-center justify-center shadow-sm cursor-pointer group shrink-0" 
+                            title="Ganti Mode Terang / Gelap" aria-label="Ganti Mode Terang atau Gelap">
+                            <span id="theme-toggle-icon" class="text-xs sm:text-sm transform group-hover:scale-110 transition duration-200">
+                                <i class="fas fa-moon"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button (Responsif di Layar HP Kecil / Oppo F9) -->
+                <div class="lg:hidden flex items-center space-x-1.5 shrink-0">
+                    <a href="admin.html" class="p-2 text-teal-300 hover:text-white rounded-lg bg-slate-800/80 border border-slate-700 flex items-center justify-center cursor-pointer shrink-0" title="Akses Panel Admin" aria-label="Akses Panel Admin">
+                        <i class="fas fa-sliders-h text-xs"></i>
+                    </a>
+                    <button type="button" onclick="window.togglePortalTheme()" class="p-2 text-amber-300 hover:text-white rounded-lg bg-slate-800/80 border border-slate-700 flex items-center justify-center cursor-pointer shrink-0" title="Ganti Mode Terang/Gelap" aria-label="Ganti Mode">
+                        <i id="theme-toggle-icon-mobile" class="fas fa-moon text-xs"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-white hover:text-teal-300 focus:outline-hidden p-2 rounded-lg hover:bg-white/10 shrink-0" aria-label="Buka Menu">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default, Scrollable on Small Screens) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-blue-950/98 backdrop-blur-md pb-5 px-4 space-y-1.5 border-t border-blue-800/50 max-h-[calc(100vh-4.5rem)] overflow-y-auto">
+            <a href="#" onclick="window.closeOrgSection('beranda'); toggleMobileMenu();" class="block hover:bg-blue-800/60 px-3 py-2 rounded-xl font-medium text-xs text-white">Beranda</a>
+            <a href="#berita" onclick="window.closeOrgSection('berita'); toggleMobileMenu();" class="block hover:bg-blue-800/60 px-3 py-2 rounded-xl font-medium text-xs text-teal-300 flex items-center gap-2">
+                <i class="far fa-newspaper text-teal-400 text-xs"></i> Berita
+            </a>
+            <a href="#inovasi" onclick="window.closeOrgSection('inovasi'); toggleMobileMenu();" class="block hover:bg-blue-800/60 px-3 py-2 rounded-xl font-medium text-xs text-amber-300 flex items-center gap-2">
+                <i class="fas fa-lightbulb text-amber-400 text-xs"></i> Inovasi Pendidikan Daerah (SiLebah, KIPP, ODL)
+            </a>
+            <a href="#struktur-organisasi" onclick="window.openOrgSection(event); toggleMobileMenu();" class="block bg-teal-900/40 text-teal-300 px-3 py-2 rounded-xl font-semibold text-xs flex items-center gap-2 border border-teal-500/30">
+                <i class="fas fa-sitemap text-teal-400 text-xs"></i> Struktur Organisasi &amp; Bagan
+            </a>
+            <a href="#rpjmd" onclick="window.openRpjmdSection(event); toggleMobileMenu();" class="block bg-cyan-900/40 text-cyan-300 px-3 py-2 rounded-xl font-semibold text-xs flex items-center gap-2 border border-cyan-500/30">
+                <i class="fas fa-file-contract text-cyan-400 text-xs"></i> Laporan RPJMD 2025 - 2029
+            </a>
+            <div class="pt-2 border-t border-blue-800/40 flex gap-2">
+                <a href="admin.html" class="flex-1 bg-slate-800 text-slate-200 px-3 py-2 rounded-xl font-medium text-xs text-center border border-slate-700">
+                    <i class="fas fa-tools mr-1 text-teal-400"></i> Panel Admin
+                </a>
+                <a href="#layanan-terpadu" onclick="window.openLayananTerpadu(event); toggleMobileMenu();" class="flex-1 bg-teal-600 hover:bg-teal-500 text-white px-3 py-2 rounded-xl font-bold text-xs text-center shadow cursor-pointer">
+                    Layanan
+                </a>
+                <button type="button" onclick="window.togglePortalTheme();" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 rounded-xl font-bold text-xs flex items-center justify-center cursor-pointer" title="Ubah Mode Terang/Gelap" aria-label="Ubah Mode Terang/Gelap">
+                    <span id="theme-toggle-icon-drawer"><i class="fas fa-moon"></i></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern pt-28 pb-20 sm:pt-32 sm:pb-24 text-center px-4 relative overflow-hidden" id="beranda">
+        <div class="relative z-10 max-w-5xl mx-auto">
+            <div class="hero-badge inline-flex items-center gap-2 text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider backdrop-blur-md mb-6 shadow-sm">
+                <i class="fas fa-shield-alt text-teal-600 dark:text-teal-400"></i> Portal Resmi Kab. Madiun
+            </div>
+            <h2 class="hero-title-text text-3xl sm:text-5xl lg:text-6xl font-black mb-6 leading-tight tracking-tight">
+                Pendidikan Bermutu, Berkarakter, Kampung Pesilat, <br class="hidden md:block">
+                <span class="hero-title-gradient">
+                    dan Madiun Bersahaja
+                </span>
+            </h2>
+            <p class="hero-description-text text-base sm:text-lg mb-10 max-w-3xl mx-auto leading-relaxed font-normal">
+                Pusat data, informasi, dan layanan digital resmi Dinas Pendidikan dan Kebudayaan Pemerintah Kabupaten Madiun yang transparan, terintegrasi, dan mudah diakses.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#fitur-unggulan" class="w-full sm:w-auto bg-gradient-to-r from-teal-600 to-teal-500 hover:from-teal-500 hover:to-teal-400 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-teal-900/20 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    <i class="fas fa-th-large"></i> Jelajahi Fitur Unggulan
+                </a>
+                <a href="#berita" class="hero-btn-secondary w-full sm:w-auto font-bold px-8 py-4 rounded-xl backdrop-blur-md transition flex items-center justify-center gap-2">
+                    <i class="far fa-newspaper text-teal-600 dark:text-teal-400"></i> Pengumuman Terbaru
+                </a>
+            </div>
+
+            <!-- Quick Counter Bar -->
+            <div class="hero-counter-border mt-14 pt-8 grid grid-cols-3 gap-3 sm:gap-6 max-w-3xl mx-auto text-center">
+                <div class="p-2 sm:p-3">
+                    <div class="hero-counter-val text-2xl sm:text-3xl font-black">497+</div>
+                    <div class="hero-counter-lbl text-xs mt-1 uppercase font-semibold">Sekolah Formal</div>
+                </div>
+                <div class="p-2 sm:p-3">
+                    <div class="hero-counter-val text-2xl sm:text-3xl font-black">84.500+</div>
+                    <div class="hero-counter-lbl text-xs mt-1 uppercase font-semibold">Peserta Didik</div>
+                </div>
+                <div class="p-2 sm:p-3">
+                    <div class="hero-counter-val text-2xl sm:text-3xl font-black">100%</div>
+                    <div class="hero-counter-lbl text-xs mt-1 uppercase font-semibold">Zero ATS Monitoring</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION INFORMASI PUBLIK, BERITA & PENGUMUMAN RESMI (SEBELUM FITUR UNGGULAN) -->
+    <section class="py-20 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 relative z-10" id="berita">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider block mb-1">Informasi Publik Terkini</span>
+                    <h3 class="text-3xl font-black text-slate-900 dark:text-white">Berita &amp; Pengumuman Resmi</h3>
+                    <div class="w-20 h-1 bg-teal-600 mt-3 rounded-full"></div>
+                </div>
+                <button type="button" onclick="window.openAllNewsSection(event)" class="text-blue-700 dark:text-teal-400 font-bold hover:text-blue-800 dark:hover:text-teal-300 transition mt-4 md:mt-0 text-sm flex items-center gap-1.5 cursor-pointer">
+                    Lihat Semua Berita <i class="fas fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+
+            <div id="news-grid-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Berita & Pengumuman akan dirender dinamis dari script.js / data.js / Panel Admin -->
+                <div class="col-span-full py-10 text-center text-slate-400">
+                    <i class="fas fa-circle-notch fa-spin text-2xl mb-2 text-teal-600"></i>
+                    <p class="text-xs font-semibold">Memuat Berita &amp; Pengumuman Terkini...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION FITUR LENGKAP DENGAN ANIMASI BACKGROUND & HOVER SILAU (BEBAS KOTAK-KOTAK) -->
+    <section class="features-section-animated py-24 px-4 sm:px-6 lg:px-8 relative" id="fitur-unggulan">
+        <div class="max-w-7xl mx-auto relative z-10">
+
+            <!-- TAMPILAN 1: GRID FITUR UTAMA -->
+            <div id="view-main-features" class="view-transition-fade">
+                <!-- Header Bagian Fitur -->
+                <div class="text-center mb-14">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider mb-3">
+                        <i class="fas fa-sparkles text-blue-600"></i> Eksplorasi Layanan Digital
+                    </div>
+                    <h3 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+                        Fitur & Program Layanan Unggulan
+                    </h3>
+                    <div class="w-24 h-1.5 bg-gradient-to-r from-blue-600 via-teal-500 to-amber-500 mx-auto mt-4 rounded-full"></div>
+                    <p class="text-slate-600 mt-4 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+                        Akses terpadu seluruh indikator kinerja, basis data lembaga sekolah, program strategis nasional dan daerah, kurikulum pesilat, serta perlindungan disabilitas di Kabupaten Madiun.
+                    </p>
+
+                    <!-- Search & Quick Navigation -->
+                    <div class="mt-8 max-w-xl mx-auto relative">
+                        <div class="relative">
+                            <i class="fas fa-search absolute left-4 top-4 text-slate-400 text-sm"></i>
+                            <input type="text" id="search-features" placeholder="Ketik kata kunci (contoh: IKK, Beasiswa, MBG, SKO, SPMB)..." 
+                                class="w-full pl-11 pr-28 py-3.5 text-sm rounded-2xl border border-slate-300/80 bg-white/95 backdrop-blur shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition">
+                            <span class="absolute right-3.5 top-3 px-2 py-1 bg-slate-100 text-[11px] font-bold text-slate-500 rounded-lg hidden sm:block">
+                                Layanan
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid Kartu Berwarna-Warni (Dirender dinamis oleh script.js) -->
+                <div id="features-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 items-stretch">
+                    <!-- Kartu-kartu akan dirender dinamis dari data.js -->
+                    <div class="col-span-full py-16 text-center text-slate-400">
+                        <i class="fas fa-circle-notch fa-spin text-3xl mb-3 text-teal-600"></i>
+                        <p class="text-sm font-semibold">Memuat fitur terpadu...</p>
+                    </div>
+                </div>
+
+                <!-- Footer Section Info & Shortcut Admin -->
+                <div class="mt-14 pt-8 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-info-circle text-teal-600 text-sm"></i>
+                        <span>Klik pada kartu untuk membuka tampilan halaman lengkap beserta seluruh modul dan data sub-bagiannya.</span>
+                    </div>
+                    <a href="admin.html" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white border border-slate-300 text-slate-700 font-semibold hover:bg-slate-100 hover:text-slate-900 transition shadow-sm">
+                        <i class="fas fa-edit text-blue-600"></i> Kelola Konten di Panel Admin
+                    </a>
+                </div>
+            </div>
+
+            <!-- TAMPILAN 2: DAFTAR KARTU SUB-BAB DARI FITUR TERPILIH (LEVEL 2) -->
+            <div id="view-sub-features-list" class="hidden view-transition-fade">
+                <!-- Navigasi Kembali & Breadcrumb -->
+                <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+                    <button type="button" onclick="window.showMainFeatures()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-slate-800 hover:bg-slate-900 hover:text-white font-bold text-xs sm:text-sm shadow-sm border border-slate-200 transition group cursor-pointer">
+                        <i class="fas fa-arrow-left text-xs transform group-hover:-translate-x-1.5 transition duration-200"></i>
+                        <span>Kembali ke Semua Fitur</span>
+                    </button>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-slate-500 bg-white/90 backdrop-blur px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-sm">
+                        <span class="hover:text-blue-600 cursor-pointer" onclick="window.showMainFeatures()">Semua Fitur</span>
+                        <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
+                        <span id="breadcrumb-sublist-name" class="text-blue-900 font-bold">Nama Fitur</span>
+                    </div>
+                </div>
+
+                <!-- Hero Banner Fitur Terpilih -->
+                <div id="sublist-hero-banner" class="p-7 sm:p-9 rounded-3xl text-white shadow-xl relative overflow-hidden mb-10 transition-all duration-300">
+                    <div class="relative z-10 max-w-4xl">
+                        <span id="sublist-hero-badge" class="inline-block text-xs font-extrabold uppercase tracking-wider px-3.5 py-1 rounded-full bg-white/20 text-white mb-3 backdrop-blur-sm">
+                            Program Unggulan
+                        </span>
+                        <div class="flex items-start gap-4 sm:gap-5 mt-1">
+                            <div id="sublist-hero-icon" class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-2xl sm:text-3xl flex-shrink-0 shadow">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div>
+                                <h2 id="sublist-hero-title" class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+                                    Judul Fitur
+                                </h2>
+                                <p id="sublist-hero-subtitle" class="text-xs sm:text-sm text-white/90 font-medium mt-1">
+                                    Subjudul
+                                </p>
+                                <p id="sublist-hero-summary" class="text-xs sm:text-sm text-white/80 mt-3 leading-relaxed max-w-3xl">
+                                    Ringkasan
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+                </div>
+
+                <!-- Header Daftar Kartu Sub-Bab -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2.5">
+                        <i class="fas fa-th-large text-teal-600 dark:text-teal-400"></i>
+                        <span>Pilih Modul / Sub-Bagian Layanan</span>
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+                        Klik salah satu kartu modul di bawah untuk membuka data spesifik, tabel capaian, atau dokumentasinya secara khusus.
+                    </p>
+                </div>
+
+                <!-- Grid Kartu-Kartu Pilihan Sub-Bab (Dirender Dinamis) -->
+                <div id="sub-modules-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+                    <!-- Kartu-kartu sub-bab dirender oleh script.js -->
+                </div>
+
+                <!-- Tombol Bawah -->
+                <div class="mt-14 text-center pt-8 border-t border-slate-200 dark:border-slate-800">
+                    <button type="button" onclick="window.showMainFeatures()" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-slate-900 hover:bg-blue-900 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg cursor-pointer">
+                        <i class="fas fa-arrow-left"></i> Kembali ke Semua Fitur
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAMPILAN 3: TAMPILAN KHUSUS SUB-BAB YANG DIKLIK (LEVEL 3) -->
+            <div id="view-single-sub-detail" class="hidden view-transition-fade">
+                <!-- Navigasi Kembali & Breadcrumb Level 3 -->
+                <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-2">
+                        <button type="button" id="btn-back-to-sublist" onclick="window.backToSubList()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-slate-800 hover:bg-slate-900 hover:text-white font-bold text-xs sm:text-sm shadow-sm border border-slate-200 transition group cursor-pointer">
+                            <i class="fas fa-arrow-left text-xs transform group-hover:-translate-x-1.5 transition duration-200"></i>
+                            <span id="btn-back-to-sublist-text">Kembali ke Daftar Modul</span>
+                        </button>
+                        <button type="button" onclick="window.showMainFeatures()" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold text-xs transition cursor-pointer">
+                            <i class="fas fa-home text-xs"></i> Semua Fitur
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 bg-white/90 backdrop-blur px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-sm flex-wrap">
+                        <span class="hover:text-blue-600 cursor-pointer" onclick="window.showMainFeatures()">Semua Fitur</span>
+                        <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
+                        <span id="breadcrumb-detail-feature" class="hover:text-blue-600 cursor-pointer" onclick="window.backToSubList()">Nama Fitur</span>
+                        <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
+                        <span id="breadcrumb-detail-sub" class="text-blue-900 font-bold">Nama Modul</span>
+                    </div>
+                </div>
+
+                <!-- Kontainer Kartu Spesifik Sub-Bab -->
+                <div id="single-sub-container" class="sub-module-card bg-white dark:bg-slate-900/95 rounded-3xl border border-slate-200/90 dark:border-blue-500/30 shadow-lg p-6 sm:p-10 mb-10">
+                    <!-- Diisi dinamis oleh script.js -->
+                </div>
+
+                <!-- Navigasi Modul Lainnya dalam Program Ini -->
+                <div class="bg-white/90 dark:bg-slate-900/90 backdrop-blur rounded-2xl border border-slate-200 dark:border-blue-500/30 p-6 shadow-sm mb-10">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 flex items-center gap-2">
+                        <i class="fas fa-layer-group text-teal-600"></i>
+                        <span>Pindah ke Modul Lain dalam Program Ini:</span>
+                    </h4>
+                    <div id="sibling-modules-nav" class="flex flex-wrap gap-2">
+                        <!-- Pill switcher untuk berpindah modul lain -->
+                    </div>
+                </div>
+
+                <!-- Tombol Bawah -->
+                <div class="text-center pt-4 flex flex-wrap justify-center gap-3">
+                    <button type="button" onclick="window.backToSubList()" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs uppercase tracking-wider transition shadow cursor-pointer">
+                        <i class="fas fa-arrow-left"></i> Kembali ke Daftar Modul
+                    </button>
+                    <button type="button" onclick="window.showMainFeatures()" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs uppercase tracking-wider transition cursor-pointer">
+                        Ke Semua Fitur
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================
+         BAGIAN INOVASI DAERAH & PENDIDIKAN (BERDIRI SENDIRI)
+         ======================================================== -->
+    <section class="py-12 sm:py-16 bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-900/90 dark:via-slate-900 dark:to-slate-950 border-t border-b border-slate-200/80 dark:border-slate-800/80 relative overflow-hidden" id="inovasi">
+        <!-- Ambient Background Glow Effects -->
+        <div class="absolute -top-32 -left-32 w-72 h-72 bg-orange-500/10 dark:bg-orange-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-32 -right-32 w-72 h-72 bg-amber-500/10 dark:bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Header Section Inovasi -->
+            <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+                <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-100 dark:bg-orange-950/60 border border-orange-200 dark:border-orange-800/80 text-orange-700 dark:text-orange-300 text-[11px] font-black uppercase tracking-wider mb-2.5 shadow-2xs">
+                    <i class="fas fa-lightbulb text-amber-500 animate-pulse"></i> Inovasi Pendidikan Daerah
+                </div>
+                <h2 class="text-xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
+                    Inovasi Layanan & Aplikasi Edukasi Digital
+                </h2>
+                <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 max-w-xl mx-auto leading-relaxed">
+                    Terobosan teknologi informasi Dinas Pendidikan dan Kebudayaan Kabupaten Madiun dalam menghadirkan ekosistem pembelajaran yang interaktif, inklusif, dan berkualitas.
+                </p>
+            </div>
+
+            <!-- Grid 3 Kartu Inovasi Persegi Ramping (Compact Square Cards) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 max-w-5xl mx-auto items-stretch">
+
+                <!-- KARTU 1: SILEBAH EDU -->
+                <div class="bg-white dark:bg-slate-900/95 rounded-2xl sm:rounded-3xl border border-orange-200/90 dark:border-orange-900/50 p-4 sm:p-5 shadow-md shadow-orange-500/5 hover:shadow-xl hover:shadow-orange-500/10 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden flex flex-col justify-between">
+                    <!-- Top Gradient Line -->
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500"></div>
+
+                    <div>
+                        <!-- Logo SiLebah EDU (Persegi Kompak) -->
+                        <div class="flex flex-col items-center mb-3">
+                            <a href="https://silebahedu.netlify.app/" target="_blank" rel="noopener noreferrer" 
+                                class="relative block w-20 h-20 sm:w-22 sm:h-22 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-100/80 dark:from-slate-800 dark:to-orange-950/40 p-2 sm:p-2.5 border-2 border-orange-200 dark:border-orange-800/80 shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-300 group/logo cursor-pointer"
+                                title="Buka Aplikasi SiLebah EDU (https://silebahedu.netlify.app/)">
+                                <img src="logo-silebah-edu.png" 
+                                    alt="Logo SiLebah EDU" 
+                                    class="w-full h-full object-contain filter drop-shadow group-hover/logo:rotate-3 transition duration-300"
+                                    onerror="this.onerror=null; this.src='https://i.ibb.co.com/wFVCPCsz/DESAIN-APLIKASI-SILEBAH-EDU.png';">
+                                <span class="absolute -bottom-1.5 -right-1.5 w-6 h-6 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white flex items-center justify-center text-[9px] shadow-sm border-2 border-white dark:border-slate-900 group-hover/logo:scale-110 transition">
+                                    <i class="fas fa-arrow-up-right-from-square"></i>
+                                </span>
+                            </a>
+                            <span class="text-[10px] font-bold text-orange-600 dark:text-orange-400 mt-1.5 flex items-center gap-1">
+                                <i class="fas fa-hand-pointer text-[9px] animate-bounce"></i> Klik logo untuk membuka
+                            </span>
+                        </div>
+
+                        <!-- Info SiLebah EDU -->
+                        <div class="text-center">
+                            <div class="flex flex-wrap items-center justify-center gap-1 mb-1.5">
+                                <span class="px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-orange-100 dark:bg-orange-950/60 text-orange-800 dark:text-orange-200 border border-orange-300 dark:border-orange-800">
+                                    Inovasi Unggulan
+                                </span>
+                                <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
+                                    Aplikasi Web Resmi
+                                </span>
+                            </div>
+
+                            <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white leading-tight mb-0.5">
+                                <a href="https://silebahedu.netlify.app/" target="_blank" rel="noopener noreferrer" class="hover:text-orange-600 dark:hover:text-orange-400 transition">
+                                    SiLebah EDU
+                                </a>
+                            </h3>
+                            <p class="text-[11px] font-extrabold text-orange-600 dark:text-orange-400 italic mb-2">
+                                “Kolaborasi Cerdas, Layanan Tuntas, Pembelajaran Berkualitas”
+                            </p>
+                            <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4 line-clamp-3">
+                                Platform inovasi edukasi digital terpadu Dinas Pendidikan dan Kebudayaan Kabupaten Madiun yang menyajikan media belajar ramah anak, kuis wawasan kebangsaan, dan petualangan literasi interaktif.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Akses -->
+                    <div class="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex flex-col gap-1.5">
+                        <a href="https://silebahedu.netlify.app/" target="_blank" rel="noopener noreferrer" 
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white font-bold text-xs shadow-xs hover:shadow-md transition duration-200 cursor-pointer">
+                            <span>Buka Aplikasi SiLebah EDU</span>
+                            <i class="fas fa-external-link-alt text-[10px]"></i>
+                        </a>
+                        <a href="https://silebahedu.netlify.app/" target="_blank" rel="noopener noreferrer" 
+                            class="w-full inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 font-mono text-[10px] font-semibold transition cursor-pointer">
+                            <i class="fas fa-globe text-slate-400 text-[10px]"></i>
+                            <span>silebahedu.netlify.app</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- KARTU 2: KIPP KANAL INFORMASI PELAYANAN PENDIDIKAN -->
+                <div class="bg-white dark:bg-slate-900/95 rounded-2xl sm:rounded-3xl border border-blue-200/90 dark:border-blue-900/50 p-4 sm:p-5 shadow-md shadow-blue-500/5 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden flex flex-col justify-between">
+                    <!-- Top Gradient Line -->
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-blue-600 to-indigo-600"></div>
+
+                    <div>
+                        <!-- Logo / Icon KIPP (Persegi Kompak) -->
+                        <div class="flex flex-col items-center mb-3">
+                            <a href="https://kippmadiun.netlify.app/" target="_blank" rel="noopener noreferrer" 
+                                class="relative block w-20 h-20 sm:w-22 sm:h-22 rounded-2xl bg-gradient-to-br from-sky-50 to-blue-100/80 dark:from-slate-800 dark:to-blue-950/40 p-2 sm:p-2.5 border-2 border-blue-200 dark:border-blue-800/80 shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-300 group/logo cursor-pointer"
+                                title="Buka Portal KIPP (https://kippmadiun.netlify.app/)">
+                                <div class="w-full h-full rounded-xl bg-white dark:bg-slate-900 flex flex-col items-center justify-center p-1.5 shadow-2xs border border-blue-100 dark:border-blue-900">
+                                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-cyan-500 text-white flex items-center justify-center text-sm shadow-xs mb-0.5 group-hover/logo:scale-110 transition duration-300">
+                                        <i class="fas fa-bullhorn"></i>
+                                    </div>
+                                    <span class="text-[10px] font-black text-blue-950 dark:text-blue-200 tracking-wider leading-none">KIPP</span>
+                                    <span class="text-[7.5px] font-bold text-slate-400 dark:text-slate-400 uppercase tracking-widest leading-none mt-0.5">Madiun</span>
+                                </div>
+                                <span class="absolute -bottom-1.5 -right-1.5 w-6 h-6 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white flex items-center justify-center text-[9px] shadow-sm border-2 border-white dark:border-slate-900 group-hover/logo:scale-110 transition">
+                                    <i class="fas fa-arrow-up-right-from-square"></i>
+                                </span>
+                            </a>
+                            <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400 mt-1.5 flex items-center gap-1">
+                                <i class="fas fa-hand-pointer text-[9px] animate-bounce"></i> Klik logo untuk membuka
+                            </span>
+                        </div>
+
+                        <!-- Info KIPP -->
+                        <div class="text-center">
+                            <div class="flex flex-wrap items-center justify-center gap-1 mb-1.5">
+                                <span class="px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-blue-100 dark:bg-blue-950/60 text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-800">
+                                    Inovasi Pelayanan
+                                </span>
+                                <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-sky-50 dark:bg-sky-950/50 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800">
+                                    Kanal Resmi Publik
+                                </span>
+                            </div>
+
+                            <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white leading-tight mb-0.5">
+                                <a href="https://kippmadiun.netlify.app/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition">
+                                    KIPP Madiun
+                                </a>
+                            </h3>
+                            <p class="text-[11px] font-extrabold text-blue-600 dark:text-blue-400 italic mb-2">
+                                “Kanal Informasi Pelayanan Pendidikan”
+                            </p>
+                            <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4 line-clamp-3">
+                                Portal informasi dan pelayanan pendidikan terpadu untuk transparansi program dinas, layanan konsultasi publik, penyampaian aspirasi, dan kemudahan akses data pendidikan Kabupaten Madiun.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Akses -->
+                    <div class="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex flex-col gap-1.5">
+                        <a href="https://kippmadiun.netlify.app/" target="_blank" rel="noopener noreferrer" 
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs shadow-xs hover:shadow-md transition duration-200 cursor-pointer">
+                            <span>Buka Layanan KIPP</span>
+                            <i class="fas fa-external-link-alt text-[10px]"></i>
+                        </a>
+                        <a href="https://kippmadiun.netlify.app/" target="_blank" rel="noopener noreferrer" 
+                            class="w-full inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 font-mono text-[10px] font-semibold transition cursor-pointer">
+                            <i class="fas fa-globe text-slate-400 text-[10px]"></i>
+                            <span>kippmadiun.netlify.app</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- KARTU 3: PENGAJUAN IZIN OUTDOOR LEARNING -->
+                <div class="bg-white dark:bg-slate-900/95 rounded-2xl sm:rounded-3xl border border-emerald-200/90 dark:border-emerald-900/50 p-4 sm:p-5 shadow-md shadow-emerald-500/5 hover:shadow-xl hover:shadow-emerald-500/10 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden flex flex-col justify-between">
+                    <!-- Top Gradient Line -->
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 via-teal-500 to-green-600"></div>
+
+                    <div>
+                        <!-- Logo / Icon ODL (Persegi Kompak) -->
+                        <div class="flex flex-col items-center mb-3">
+                            <a href="https://odl.madiunkab.go.id/" target="_blank" rel="noopener noreferrer" 
+                                class="relative block w-20 h-20 sm:w-22 sm:h-22 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-100/80 dark:from-slate-800 dark:to-teal-950/40 p-2 sm:p-2.5 border-2 border-emerald-200 dark:border-emerald-800/80 shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-300 group/logo cursor-pointer"
+                                title="Buka Layanan Pengajuan Izin Outdoor Learning (https://odl.madiunkab.go.id/)">
+                                <div class="w-full h-full rounded-xl bg-white dark:bg-slate-900 flex flex-col items-center justify-center p-1.5 shadow-2xs border border-emerald-100 dark:border-emerald-900">
+                                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center text-sm shadow-xs mb-0.5 group-hover/logo:scale-110 transition duration-300">
+                                        <i class="fas fa-bus-alt"></i>
+                                    </div>
+                                    <span class="text-[10px] font-black text-emerald-950 dark:text-emerald-200 tracking-wider leading-none">ODL</span>
+                                    <span class="text-[7.5px] font-bold text-slate-400 dark:text-slate-400 uppercase tracking-widest leading-none mt-0.5">Madiun Kab</span>
+                                </div>
+                                <span class="absolute -bottom-1.5 -right-1.5 w-6 h-6 rounded-full bg-gradient-to-r from-emerald-600 to-teal-500 text-white flex items-center justify-center text-[9px] shadow-sm border-2 border-white dark:border-slate-900 group-hover/logo:scale-110 transition">
+                                    <i class="fas fa-arrow-up-right-from-square"></i>
+                                </span>
+                            </a>
+                            <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 mt-1.5 flex items-center gap-1">
+                                <i class="fas fa-hand-pointer text-[9px] animate-bounce"></i> Klik logo untuk membuka
+                            </span>
+                        </div>
+
+                        <!-- Info ODL -->
+                        <div class="text-center">
+                            <div class="flex flex-wrap items-center justify-center gap-1 mb-1.5">
+                                <span class="px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-800">
+                                    Perizinan Digital
+                                </span>
+                                <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-teal-50 dark:bg-teal-950/50 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800">
+                                    Layanan Resmi Pemkab
+                                </span>
+                            </div>
+
+                            <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white leading-tight mb-0.5">
+                                <a href="https://odl.madiunkab.go.id/" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition">
+                                    Izin Outdoor Learning
+                                </a>
+                            </h3>
+                            <p class="text-[11px] font-extrabold text-emerald-600 dark:text-emerald-400 italic mb-2">
+                                “Pengajuan Izin Outdoor Learning Resmi”
+                            </p>
+                            <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4 line-clamp-3">
+                                Sistem perizinan digital resmi untuk verifikasi administrasi, standarisasi kelaikan rute, dan mitigasi keamanan keselamatan kegiatan belajar di luar kelas (outing class) bagi satuan pendidikan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Akses -->
+                    <div class="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex flex-col gap-1.5">
+                        <a href="https://odl.madiunkab.go.id/" target="_blank" rel="noopener noreferrer" 
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-xs shadow-xs hover:shadow-md transition duration-200 cursor-pointer">
+                            <span>Ajukan Izin Outdoor Learning</span>
+                            <i class="fas fa-external-link-alt text-[10px]"></i>
+                        </a>
+                        <a href="https://odl.madiunkab.go.id/" target="_blank" rel="noopener noreferrer" 
+                            class="w-full inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 font-mono text-[10px] font-semibold transition cursor-pointer">
+                            <i class="fas fa-globe text-slate-400 text-[10px]"></i>
+                            <span>odl.madiunkab.go.id</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         STRUKTUR ORGANISASI & BAGAN HIERARKI
+         (Tampilan khusus, dibuka dari header, tidak muncul di dasbor utama)
+         ======================================================== -->
+    <section class="hidden pt-28 pb-20 bg-slate-50 relative view-transition-fade min-h-screen" id="struktur-organisasi">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Navigasi Bar Kembali ke Beranda -->
+            <div class="mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-slate-200/80 pb-5 no-print">
+                <button type="button" onclick="window.closeOrgSection('beranda')" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-blue-900 text-white font-bold text-xs sm:text-sm shadow-md transition group cursor-pointer">
+                    <i class="fas fa-arrow-left text-xs transform group-hover:-translate-x-1 transition duration-200"></i>
+                    <span>Kembali ke Beranda</span>
+                </button>
+                <div class="flex items-center gap-2 text-xs font-semibold text-slate-500 bg-white px-3.5 py-2 rounded-xl border border-slate-200 shadow-sm">
+                    <span class="hover:text-blue-600 cursor-pointer" onclick="window.closeOrgSection('beranda')">Beranda</span>
+                    <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
+                    <span class="text-blue-900 font-bold">Struktur Organisasi & Bagan Hierarki Dinas</span>
+                </div>
+                <button type="button" onclick="window.closeOrgSection('beranda')" class="w-9 h-9 rounded-xl bg-white hover:bg-slate-100 text-slate-500 hover:text-slate-800 border border-slate-200 shadow-sm flex items-center justify-center transition cursor-pointer" title="Tutup Tampilan">
+                    <i class="fas fa-times text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Header Section -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-bold uppercase tracking-wider mb-3">
+                    <i class="fas fa-sitemap text-teal-600"></i> Tata Kelola & Kelembagaan
+                </div>
+                <h3 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+                    Struktur Organisasi Dinas
+                </h3>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-blue-600 via-teal-500 to-amber-500 mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-600 mt-4 text-sm sm:text-base leading-relaxed">
+                    Bagan hierarki kelembagaan, kepemimpinan, sekretariat, 5 bidang pembinaan, pengawas sekolah, dan satuan pendidikan pelaksana di lingkungan Dinas Pendidikan dan Kebudayaan Kabupaten Madiun.
+                </p>
+
+                <!-- Toolbar & Mode Switcher -->
+                <div class="mt-8 flex flex-wrap items-center justify-center gap-3 no-print">
+                    <div class="inline-flex p-1 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                        <button type="button" id="btn-org-tree-mode" onclick="window.switchOrgView('tree')" 
+                            class="px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-slate-900 text-white shadow-sm cursor-pointer">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>Bagan Struktur Organisasi</span>
+                        </button>
+                        <button type="button" id="btn-org-image-mode" onclick="window.switchOrgView('image')" 
+                            class="px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 text-slate-600 hover:text-blue-900 cursor-pointer">
+                            <i class="fas fa-image"></i>
+                            <span>Gambar Dokumen Asli</span>
+                        </button>
+                        <button type="button" id="btn-org-grid-mode" onclick="window.switchOrgView('grid')" 
+                            class="px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 text-slate-600 hover:text-blue-900 cursor-pointer">
+                            <i class="fas fa-th-large"></i>
+                            <span>Daftar Bidang & Tupoksi</span>
+                        </button>
+                    </div>
+
+                    <a href="bagan-struktur-organisasi.jpg" target="_blank" download="Bagan_Struktur_Organisasi_Disdikbud_Kab_Madiun.jpg" 
+                        class="px-4 py-2 rounded-2xl border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold transition shadow-sm flex items-center gap-2 cursor-pointer" title="Unduh File Gambar Bagan Resmi">
+                        <i class="fas fa-download text-teal-600"></i>
+                        <span>Unduh Gambar</span>
+                    </a>
+
+                    <button type="button" onclick="window.print()" 
+                        class="px-4 py-2 rounded-2xl border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold transition shadow-sm flex items-center gap-2 cursor-pointer">
+                        <i class="fas fa-print text-blue-600"></i>
+                        <span>Cetak Bagan</span>
+                    </button>
+                </div>
+
+                <!-- Filter Kategori Kategori Tab -->
+                <div class="mt-4 flex flex-wrap justify-center gap-2 no-print" id="org-filter-tabs">
+                    <button type="button" onclick="window.filterOrgTree('all')" class="org-filter-btn active-tab px-3.5 py-1.5 rounded-xl text-xs font-bold bg-blue-100 text-blue-900 border border-blue-200 transition">Semua Unit</button>
+                    <button type="button" onclick="window.filterOrgTree('pimpinan')" class="org-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition">Pimpinan & Sekretariat</button>
+                    <button type="button" onclick="window.filterOrgTree('sekolah')" class="org-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition">Bidang SD & SMP</button>
+                    <button type="button" onclick="window.filterOrgTree('paud-gtk')" class="org-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition">PAUD & Ketenagaan</button>
+                    <button type="button" onclick="window.filterOrgTree('budaya')" class="org-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition">Bidang Kebudayaan</button>
+                    <button type="button" onclick="window.filterOrgTree('upt')" class="org-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition">UPT & Satuan Pendidikan</button>
+                </div>
+            </div>
+
+            <!-- TAMPILAN 1: BAGAN RESMI STRUKTUR ORGANISASI (100% PERSIS SESUAI GAMBAR DOKUMEN RESMI) -->
+            <div id="org-tree-view" class="org-chart-wrapper transition-all duration-300">
+                <div class="w-full max-w-6xl mx-auto py-2">
+                    
+                    <!-- Paper Card Frame Container -->
+                    <div class="bg-white rounded-3xl p-3 sm:p-6 lg:p-7 shadow-xl border border-slate-200/90 relative overflow-hidden">
+                        
+                        <!-- Top Info Bar & Quick Actions -->
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-100 text-xs no-print">
+                            <div class="flex items-center gap-2 text-slate-600">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span class="font-bold text-slate-800">Format Resmi SOTK Dinas Pendidikan &amp; Kebudayaan Kabupaten Madiun</span>
+                                <span class="hidden md:inline text-slate-400">• Klik pada kotak unit untuk melihat detail tugas &amp; fungsi</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <a href="bagan-struktur-organisasi.jpg" target="_blank" download="Bagan_Struktur_Organisasi_Disdikbud_Kab_Madiun.jpg" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition flex items-center gap-1.5 shadow-2xs cursor-pointer" title="Unduh File Gambar Bagan">
+                                    <i class="fas fa-download text-teal-600"></i>
+                                    <span>Unduh Gambar</span>
+                                </a>
+                                <button type="button" onclick="window.switchOrgView('image')" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold transition flex items-center gap-1.5 border border-blue-200 cursor-pointer" title="Buka Pratinjau Dokumen Asli">
+                                    <i class="fas fa-image text-blue-600"></i>
+                                    <span>Lihat Gambar Asli</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Scrollable SVG Canvas Container (Responsif di Semua Ukuran Layar) -->
+                        <div class="w-full overflow-x-auto pb-3 custom-scrollbar flex justify-center bg-white rounded-2xl border border-slate-100 p-1 sm:p-3">
+                            <div class="min-w-[780px] sm:min-w-[880px] lg:min-w-[960px] max-w-5xl w-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 575" width="100%" height="100%" class="w-full h-auto select-none" style="background: #ffffff; font-family: 'Montserrat', Arial, sans-serif;">
+  <defs>
+    <filter id="boxShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="2" dy="3" stdDeviation="2" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Title & Watermark Logo -->
+  <image href="logo-kabupaten-madiun.svg" x="482" y="2" width="60" height="60" opacity="0.22" preserveAspectRatio="xMidYMid meet"/>
+  <text x="512" y="27" text-anchor="middle" font-family="'Times New Roman', serif" font-size="18" font-weight="bold" fill="#143B66" letter-spacing="0.5">BAGAN STRUKTUR ORGANISASI</text>
+  <text x="512" y="48" text-anchor="middle" font-family="'Times New Roman', serif" font-size="18" font-weight="bold" fill="#143B66" letter-spacing="0.5">DINAS PENDIDIKAN DAN KEBUDAYAAN KABUPATEN MADIUN</text>
+
+  <!-- LINES -->
+  <!-- Top Solid Lines from Kepala Dinas -->
+  <line x1="514.5" y1="102" x2="514.5" y2="108" stroke="#111111" stroke-width="1.4"/>
+  <line x1="347" y1="108" x2="678" y2="108" stroke="#111111" stroke-width="1.4"/>
+  <line x1="347" y1="108" x2="347" y2="118" stroke="#111111" stroke-width="1.4"/>
+  <line x1="678" y1="108" x2="678" y2="118" stroke="#111111" stroke-width="1.4"/>
+
+  <!-- Central Vertical Dashed Line -->
+  <line x1="514.5" y1="108" x2="514.5" y2="522" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+  <!-- Horizontal Dashed Line below Kepala Dinas -->
+  <line x1="390" y1="133" x2="632" y2="133" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+  <!-- Lines under Sekretariat -->
+  <line x1="678" y1="144" x2="678" y2="152" stroke="#111111" stroke-width="1.4"/>
+  <line x1="571" y1="152" x2="774" y2="152" stroke="#111111" stroke-width="1.4"/>
+  <line x1="571" y1="152" x2="571" y2="160" stroke="#111111" stroke-width="1.4"/>
+  <line x1="774" y1="152" x2="774" y2="160" stroke="#111111" stroke-width="1.4"/>
+  <line x1="619" y1="181" x2="732" y2="181" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+  <!-- Horizontal Dashed Line to 5 Bidang -->
+  <line x1="571" y1="202" x2="571" y2="208" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <line x1="342" y1="208" x2="774" y2="208" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <line x1="342" y1="208" x2="342" y2="220" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <line x1="451" y1="208" x2="451" y2="220" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <line x1="571" y1="208" x2="571" y2="220" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <line x1="678" y1="208" x2="678" y2="220" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <line x1="774" y1="208" x2="774" y2="220" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+  <!-- Column 1 Lines (Ketenagaan) -->
+  <line x1="342" y1="272" x2="342" y2="279" stroke="#111111" stroke-width="1.4"/>
+  <line x1="284" y1="279" x2="342" y2="279" stroke="#111111" stroke-width="1.4"/>
+  <line x1="284" y1="279" x2="284" y2="406" stroke="#111111" stroke-width="1.4"/>
+  <line x1="284" y1="320" x2="295" y2="320" stroke="#111111" stroke-width="1.4"/>
+  <line x1="284" y1="406" x2="295" y2="406" stroke="#111111" stroke-width="1.4"/>
+  <line x1="342" y1="442" x2="342" y2="454" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+  <!-- Column 2 Lines (SD) -->
+  <line x1="451" y1="272" x2="451" y2="284" stroke="#111111" stroke-width="1.4"/>
+  <line x1="451" y1="356" x2="451" y2="370" stroke="#111111" stroke-width="1.4"/>
+  <line x1="451" y1="442" x2="451" y2="454" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+  <!-- Column 3 Lines (SMP) -->
+  <line x1="571" y1="272" x2="571" y2="279" stroke="#111111" stroke-width="1.4"/>
+  <line x1="513" y1="279" x2="571" y2="279" stroke="#111111" stroke-width="1.4"/>
+  <line x1="513" y1="279" x2="513" y2="406" stroke="#111111" stroke-width="1.4"/>
+  <line x1="513" y1="320" x2="524" y2="320" stroke="#111111" stroke-width="1.4"/>
+  <line x1="513" y1="406" x2="524" y2="406" stroke="#111111" stroke-width="1.4"/>
+  <line x1="571" y1="442" x2="571" y2="454" stroke="#111111" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+  <!-- Column 4 Lines (PAUD) -->
+  <line x1="678" y1="272" x2="678" y2="279" stroke="#111111" stroke-width="1.4"/>
+  <line x1="621" y1="279" x2="678" y2="279" stroke="#111111" stroke-width="1.4"/>
+  <line x1="621" y1="279" x2="621" y2="392" stroke="#111111" stroke-width="1.4"/>
+  <line x1="621" y1="320" x2="631" y2="320" stroke="#111111" stroke-width="1.4"/>
+  <line x1="621" y1="392" x2="631" y2="392" stroke="#111111" stroke-width="1.4"/>
+
+  <!-- Column 5 Lines (Kebudayaan) -->
+  <line x1="774" y1="272" x2="774" y2="284" stroke="#111111" stroke-width="1.4"/>
+
+  <!-- Bottom Lines (Satuan Pendidikan & UPT) -->
+  <line x1="470" y1="522" x2="613" y2="522" stroke="#111111" stroke-width="1.4"/>
+  <line x1="470" y1="522" x2="470" y2="532" stroke="#111111" stroke-width="1.4"/>
+  <line x1="613" y1="522" x2="613" y2="532" stroke="#111111" stroke-width="1.4"/>
+
+  <!-- BOXES -->
+  <!-- 1. KEPALA DINAS -->
+  <g class="org-box-group" onclick="window.openOrgModal('kadis')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="430" y="70" width="169" height="32" rx="1.5" fill="#1B497D" stroke="#0F3156" stroke-width="1"/>
+    <text x="514.5" y="91" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="bold" letter-spacing="0.5">KEPALA DINAS</text>
+  </g>
+
+  <!-- 2. KELOMPOK JABATAN FUNGSIONAL (Top-Left, 5x4 Grid) -->
+  <g class="org-box-group" onclick="window.openOrgModal('fungsional')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="272" y="118" width="150" height="26" rx="1" fill="#438B50" stroke="#245C2D" stroke-width="1"/>
+    <text x="347" y="129" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">KELOMPOK JABATAN</text>
+    <text x="347" y="139" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">FUNGSIONAL</text>
+    <!-- Grid 5 cols x 4 rows -->
+    <g fill="#8EBA94" stroke="#245C2D" stroke-width="0.8">
+      <!-- row 0 -->
+      <rect x="272" y="144" width="30" height="14"/><rect x="302" y="144" width="30" height="14"/><rect x="332" y="144" width="30" height="14"/><rect x="362" y="144" width="30" height="14"/><rect x="392" y="144" width="30" height="14"/>
+      <!-- row 1 -->
+      <rect x="272" y="158" width="30" height="14"/><rect x="302" y="158" width="30" height="14"/><rect x="332" y="158" width="30" height="14"/><rect x="362" y="158" width="30" height="14"/><rect x="392" y="158" width="30" height="14"/>
+      <!-- row 2 -->
+      <rect x="272" y="172" width="30" height="14"/><rect x="302" y="172" width="30" height="14"/><rect x="332" y="172" width="30" height="14"/><rect x="362" y="172" width="30" height="14"/><rect x="392" y="172" width="30" height="14"/>
+      <!-- row 3 -->
+      <rect x="272" y="186" width="30" height="14"/><rect x="302" y="186" width="30" height="14"/><rect x="332" y="186" width="30" height="14"/><rect x="362" y="186" width="30" height="14"/><rect x="392" y="186" width="30" height="14"/>
+    </g>
+  </g>
+
+  <!-- 3. SEKRETARIAT -->
+  <g class="org-box-group" onclick="window.openOrgModal('sekretariat')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="632" y="118" width="92" height="26" rx="1.5" fill="#7297C5" stroke="#466B99" stroke-width="1"/>
+    <text x="678" y="135" text-anchor="middle" fill="#000000" font-size="9.5" font-weight="bold">SEKRETARIAT</text>
+  </g>
+
+  <!-- 4. SUBBAG UMUM DAN KEPEGAWAIAN -->
+  <g class="org-box-group" onclick="window.openOrgModal('sekretariat')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="523" y="160" width="96" height="42" rx="1.5" fill="#8EBCDF" stroke="#5C8EBA" stroke-width="1"/>
+    <text x="571" y="174" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">SUBBAG</text>
+    <text x="571" y="185" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">UMUM DAN</text>
+    <text x="571" y="196" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">KEPEGAWAIAN</text>
+  </g>
+
+  <!-- 5. KELOMPOK JABATAN FUNGSIONAL (Under Sekretariat) -->
+  <g class="org-box-group" onclick="window.openOrgModal('fungsional')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="732" y="160" width="85" height="42" rx="1.5" fill="#6FA372" stroke="#2C6436" stroke-width="1"/>
+    <text x="774.5" y="174" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">KELOMPOK</text>
+    <text x="774.5" y="185" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">JABATAN</text>
+    <text x="774.5" y="196" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">FUNGSIONAL</text>
+  </g>
+
+  <!-- 5 BIDANG HEADERS (Row at y=220) -->
+  <!-- Col 1: Bidang Ketenagaan -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-gtk')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="295" y="220" width="95" height="52" rx="1.5" fill="#EB7D23" stroke="#BD5A08" stroke-width="1"/>
+    <text x="342.5" y="244" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">BIDANG</text>
+    <text x="342.5" y="256" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">KETENAGAAN</text>
+  </g>
+
+  <!-- Col 2: Bidang Pembinaan SD -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-sd')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="404" y="220" width="95" height="52" rx="1.5" fill="#C73032" stroke="#961C1E" stroke-width="1"/>
+    <text x="451.5" y="244" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">BIDANG</text>
+    <text x="451.5" y="256" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">PEMBINAAN SD</text>
+  </g>
+
+  <!-- Col 3: Bidang Pembinaan SMP -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-smp')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="524" y="220" width="94" height="52" rx="1.5" fill="#74368E" stroke="#4A1560" stroke-width="1"/>
+    <text x="571" y="244" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">BIDANG</text>
+    <text x="571" y="256" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">PEMBINAAN SMP</text>
+  </g>
+
+  <!-- Col 4: Bidang PAUD dan Dikmas -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-paud')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="631" y="220" width="95" height="52" rx="1.5" fill="#CF3376" stroke="#A01650" stroke-width="1"/>
+    <text x="678.5" y="237" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="bold">BIDANG</text>
+    <text x="678.5" y="247" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="bold">PAUD DAN</text>
+    <text x="678.5" y="257" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="bold">PENDIDIKAN</text>
+    <text x="678.5" y="267" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="bold">MASYARAKAT</text>
+  </g>
+
+  <!-- Col 5: Bidang Kebudayaan -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-budaya')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="732" y="220" width="85" height="52" rx="1.5" fill="#168B75" stroke="#0E6251" stroke-width="1"/>
+    <text x="774.5" y="244" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">BIDANG</text>
+    <text x="774.5" y="256" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">KEBUDAYAAN</text>
+  </g>
+
+  <!-- COLUMN 1 SUB-BOXES (Ketenagaan) -->
+  <!-- Seksi 1 -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-gtk')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="295" y="284" width="95" height="72" rx="1.5" fill="#F8CCA4" stroke="#C98642" stroke-width="1"/>
+    <text x="342.5" y="299" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKSI</text>
+    <text x="342.5" y="309" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">ADMINISTRASI</text>
+    <text x="342.5" y="319" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KEPEGAWAIAN</text>
+    <text x="342.5" y="329" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PENDIDIK DAN</text>
+    <text x="342.5" y="339" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">TENAGA</text>
+    <text x="342.5" y="349" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KEPENDIDIKAN</text>
+  </g>
+  <!-- Seksi 2 -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-gtk')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="295" y="370" width="95" height="72" rx="1.5" fill="#F8CCA4" stroke="#C98642" stroke-width="1"/>
+    <text x="342.5" y="387" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKSI PEMBINAAN</text>
+    <text x="342.5" y="397" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">DAN</text>
+    <text x="342.5" y="407" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PENGEMBANGAN</text>
+    <text x="342.5" y="417" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PENDIDIK DAN</text>
+    <text x="342.5" y="427" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">TENAGA</text>
+    <text x="342.5" y="437" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KEPENDIDIKAN</text>
+  </g>
+  <!-- Fungsional + Grid (5x2) -->
+  <g class="org-box-group" onclick="window.openOrgModal('fungsional')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="295" y="454" width="95" height="20" rx="1" fill="#438B50" stroke="#245C2D" stroke-width="1"/>
+    <text x="342.5" y="463" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold">KELOMPOK</text>
+    <text x="342.5" y="471" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold">JABATAN FUNGSIONAL</text>
+    <g fill="#8EBA94" stroke="#245C2D" stroke-width="0.8">
+      <rect x="295" y="474" width="19" height="12"/><rect x="314" y="474" width="19" height="12"/><rect x="333" y="474" width="19" height="12"/><rect x="352" y="474" width="19" height="12"/><rect x="371" y="474" width="19" height="12"/>
+      <rect x="295" y="486" width="19" height="12"/><rect x="314" y="486" width="19" height="12"/><rect x="333" y="486" width="19" height="12"/><rect x="352" y="486" width="19" height="12"/><rect x="371" y="486" width="19" height="12"/>
+    </g>
+  </g>
+
+  <!-- COLUMN 2 SUB-BOXES (SD) -->
+  <!-- Seksi 1 -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-sd')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="404" y="284" width="95" height="72" rx="1.5" fill="#F39E96" stroke="#C25B51" stroke-width="1"/>
+    <text x="451.5" y="304" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKSI PESERTA</text>
+    <text x="451.5" y="315" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">DIDIK SEKOLAH</text>
+    <text x="451.5" y="326" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">DASAR DAN</text>
+    <text x="451.5" y="337" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PEMBANGUNAN</text>
+    <text x="451.5" y="348" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KARAKTER</text>
+  </g>
+  <!-- Seksi 2 -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-sd')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="404" y="370" width="95" height="72" rx="1.5" fill="#F39E96" stroke="#C25B51" stroke-width="1"/>
+    <text x="451.5" y="396" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKSI</text>
+    <text x="451.5" y="407" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PENGEMBANGAN</text>
+    <text x="451.5" y="418" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KELEMBAGAAN</text>
+    <text x="451.5" y="429" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKOLAH DASAR</text>
+  </g>
+  <!-- Fungsional + Grid (5x2) -->
+  <g class="org-box-group" onclick="window.openOrgModal('fungsional')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="404" y="454" width="95" height="20" rx="1" fill="#438B50" stroke="#245C2D" stroke-width="1"/>
+    <text x="451.5" y="463" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold">KELOMPOK</text>
+    <text x="451.5" y="471" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold">JABATAN FUNGSIONAL</text>
+    <g fill="#8EBA94" stroke="#245C2D" stroke-width="0.8">
+      <rect x="404" y="474" width="19" height="12"/><rect x="423" y="474" width="19" height="12"/><rect x="442" y="474" width="19" height="12"/><rect x="461" y="474" width="19" height="12"/><rect x="480" y="474" width="19" height="12"/>
+      <rect x="404" y="486" width="19" height="12"/><rect x="423" y="486" width="19" height="12"/><rect x="442" y="486" width="19" height="12"/><rect x="461" y="486" width="19" height="12"/><rect x="480" y="486" width="19" height="12"/>
+    </g>
+  </g>
+
+  <!-- COLUMN 3 SUB-BOXES (SMP) -->
+  <!-- Seksi 1 -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-smp')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="524" y="284" width="94" height="72" rx="1.5" fill="#B89FD5" stroke="#88549C" stroke-width="1"/>
+    <text x="571" y="304" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKSI PESERTA</text>
+    <text x="571" y="315" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">DIDIK SMP DAN</text>
+    <text x="571" y="326" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PEMBANGUNAN</text>
+    <text x="571" y="337" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KARAKTER</text>
+  </g>
+  <!-- Seksi 2 -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-smp')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="524" y="370" width="94" height="72" rx="1.5" fill="#B89FD5" stroke="#88549C" stroke-width="1"/>
+    <text x="571" y="402" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKSI</text>
+    <text x="571" y="413" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PENGEMBANGAN</text>
+    <text x="571" y="424" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KELEMBAGAAN</text>
+    <text x="571" y="435" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SMP</text>
+  </g>
+  <!-- Fungsional + Grid (5x2) -->
+  <g class="org-box-group" onclick="window.openOrgModal('fungsional')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="524" y="454" width="94" height="20" rx="1" fill="#438B50" stroke="#245C2D" stroke-width="1"/>
+    <text x="571" y="463" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold">KELOMPOK</text>
+    <text x="571" y="471" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold">JABATAN FUNGSIONAL</text>
+    <g fill="#8EBA94" stroke="#245C2D" stroke-width="0.8">
+      <rect x="524" y="474" width="18.8" height="12"/><rect x="542.8" y="474" width="18.8" height="12"/><rect x="561.6" y="474" width="18.8" height="12"/><rect x="580.4" y="474" width="18.8" height="12"/><rect x="599.2" y="474" width="18.8" height="12"/>
+      <rect x="524" y="486" width="18.8" height="12"/><rect x="542.8" y="486" width="18.8" height="12"/><rect x="561.6" y="486" width="18.8" height="12"/><rect x="580.4" y="486" width="18.8" height="12"/><rect x="599.2" y="486" width="18.8" height="12"/>
+    </g>
+  </g>
+
+  <!-- COLUMN 4 SUB-BOXES (PAUD) -->
+  <!-- Seksi 1 -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-paud')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="631" y="284" width="95" height="72" rx="1.5" fill="#F09BBB" stroke="#C05C82" stroke-width="1"/>
+    <text x="678.5" y="304" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">SEKSI</text>
+    <text x="678.5" y="315" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PENGEMBANGAN</text>
+    <text x="678.5" y="326" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">KELEMBAGAAN</text>
+    <text x="678.5" y="337" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PAUD DAN</text>
+    <text x="678.5" y="348" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">PENDIDIKAN</text>
+    <text x="678.5" y="358" text-anchor="middle" fill="#000000" font-size="7.5" font-weight="bold">MASYARAKAT</text>
+  </g>
+  <!-- Fungsional + PINK Grid (5x2) -->
+  <g class="org-box-group" onclick="window.openOrgModal('fungsional')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="631" y="370" width="95" height="35" rx="1" fill="#EC7EA8" stroke="#A03060" stroke-width="1"/>
+    <text x="678.5" y="385" text-anchor="middle" fill="#000000" font-size="8" font-weight="bold">KELOMPOK</text>
+    <text x="678.5" y="396" text-anchor="middle" fill="#000000" font-size="8" font-weight="bold">JABATAN</text>
+    <text x="678.5" y="406" text-anchor="middle" fill="#000000" font-size="8" font-weight="bold">FUNGSIONAL</text>
+    <g fill="#F8BBD0" stroke="#A03060" stroke-width="0.8">
+      <rect x="631" y="412" width="19" height="12"/><rect x="650" y="412" width="19" height="12"/><rect x="669" y="412" width="19" height="12"/><rect x="688" y="412" width="19" height="12"/><rect x="707" y="412" width="19" height="12"/>
+      <rect x="631" y="424" width="19" height="12"/><rect x="650" y="424" width="19" height="12"/><rect x="669" y="424" width="19" height="12"/><rect x="688" y="424" width="19" height="12"/><rect x="707" y="424" width="19" height="12"/>
+    </g>
+  </g>
+
+  <!-- COLUMN 5 SUB-BOXES (Kebudayaan) -->
+  <!-- Fungsional + Green Grid (5x2) -->
+  <g class="org-box-group" onclick="window.openOrgModal('bidang-budaya')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="732" y="284" width="85" height="35" rx="1" fill="#6FA372" stroke="#245C2D" stroke-width="1"/>
+    <text x="774.5" y="299" text-anchor="middle" fill="#000000" font-size="8" font-weight="bold">KELOMPOK</text>
+    <text x="774.5" y="310" text-anchor="middle" fill="#000000" font-size="8" font-weight="bold">JABATAN</text>
+    <text x="774.5" y="321" text-anchor="middle" fill="#000000" font-size="8" font-weight="bold">FUNGSIONAL</text>
+    <g fill="#8EBA94" stroke="#245C2D" stroke-width="0.8">
+      <rect x="732" y="326" width="17" height="12"/><rect x="749" y="326" width="17" height="12"/><rect x="766" y="326" width="17" height="12"/><rect x="783" y="326" width="17" height="12"/><rect x="800" y="326" width="17" height="12"/>
+      <rect x="732" y="338" width="17" height="12"/><rect x="749" y="338" width="17" height="12"/><rect x="766" y="338" width="17" height="12"/><rect x="783" y="338" width="17" height="12"/><rect x="800" y="338" width="17" height="12"/>
+    </g>
+  </g>
+
+  <!-- BOTTOM BOXES -->
+  <!-- Satuan Pendidikan -->
+  <g class="org-box-group" onclick="window.openOrgModal('sekolah')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="422" y="532" width="96" height="28" rx="1.5" fill="#BFC2C7" stroke="#707378" stroke-width="1"/>
+    <text x="470" y="544" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">SATUAN</text>
+    <text x="470" y="554" text-anchor="middle" fill="#000000" font-size="8.5" font-weight="bold">PENDIDIKAN</text>
+  </g>
+
+  <!-- UPT -->
+  <g class="org-box-group" onclick="window.openOrgModal('upt')" filter="url(#boxShadow)" cursor="pointer">
+    <rect x="564" y="532" width="98" height="28" rx="1.5" fill="#BFC2C7" stroke="#707378" stroke-width="1"/>
+    <text x="613" y="550" text-anchor="middle" fill="#000000" font-size="10" font-weight="bold">UPT</text>
+  </g>
+</svg>
+
+                            </div>
+                        </div>
+
+                        <!-- Footer Helper Text -->
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between text-[11px] text-slate-500 gap-2">
+                            <span><i class="fas fa-info-circle text-teal-600 mr-1"></i> Seluruh unit jabatan telah disesuaikan dengan Peraturan Bupati SOTK Dinas Pendidikan &amp; Kebudayaan Kab. Madiun.</span>
+                            <span class="sm:hidden text-slate-400"><i class="fas fa-arrows-left-right mr-1"></i> Geser layar untuk melihat seluruh bagan</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAMPILAN KHUSUS: DOKUMEN GAMBAR ASLI (SCAN RESMI) -->
+            <div id="org-image-view" class="hidden transition-all duration-300">
+                <div class="w-full max-w-6xl mx-auto py-2">
+                    <div class="bg-white rounded-3xl p-4 sm:p-6 shadow-xl border border-slate-200/90 text-center">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-100 text-xs">
+                            <span class="font-bold text-slate-800 flex items-center gap-2">
+                                <i class="fas fa-certificate text-amber-500"></i> Dokumen Asli Bagan Struktur Organisasi Dinas Pendidikan dan Kebudayaan
+                            </span>
+                            <div class="flex items-center gap-2">
+                                <a href="bagan-struktur-organisasi.jpg" target="_blank" download="Bagan_Struktur_Organisasi_Disdikbud_Kab_Madiun.jpg" class="px-3.5 py-1.5 rounded-xl bg-slate-900 text-white font-bold hover:bg-blue-900 transition flex items-center gap-1.5 cursor-pointer">
+                                    <i class="fas fa-download"></i> Unduh File Asli
+                                </a>
+                                <button type="button" onclick="window.switchOrgView('tree')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition cursor-pointer">
+                                    <i class="fas fa-project-diagram mr-1"></i> Kembali ke Bagan Interaktif
+                                </button>
+                            </div>
+                        </div>
+                        <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-2 sm:p-4 flex justify-center">
+                            <img src="bagan-struktur-organisasi.jpg" alt="Bagan Struktur Organisasi Dinas Pendidikan dan Kebudayaan Kabupaten Madiun" class="w-full max-w-5xl h-auto rounded-xl shadow-md object-contain">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAMPILAN 2: KATALOG BIDANG & TUPOKSI (GRID / DAFTAR VIEW) -->
+            <div id="org-grid-view" class="hidden transition-all duration-300">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="org-catalog-cards">
+                    <!-- Kartu-kartu bidang dan rincian tupoksi dirender dinamis -->
+                </div>
+            </div>
+
+            <!-- Tombol Bawah Selesai & Kembali -->
+            <div class="mt-14 text-center pt-8 border-t border-slate-200 no-print">
+                <button type="button" onclick="window.closeOrgSection('beranda')" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-slate-900 hover:bg-blue-900 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg cursor-pointer">
+                    <i class="fas fa-arrow-left"></i> Selesai & Kembali ke Beranda
+                </button>
+            </div>
+
+        </div>
+
+        <!-- MODAL DETAIL JABATAN & TUPOKSI -->
+        <div id="modal-org-detail" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden" onclick="window.closeOrgModal()">
+            <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 max-w-lg w-full p-6 sm:p-7 relative view-transition-fade" onclick="event.stopPropagation()">
+                <button type="button" onclick="window.closeOrgModal()" class="absolute right-5 top-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition cursor-pointer">
+                    <i class="fas fa-times text-xs"></i>
+                </button>
+                <div id="modal-org-content">
+                    <!-- Diisi oleh script.js -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAMPILAN KHUSUS: UNIT LAYANAN TERPADU (ULT) & FAQ RESMI   -->
+    <!-- (Tampil penuh saat tombol Layanan Terpadu diklik)         -->
+    <!-- ======================================================== -->
+    <section class="hidden pt-24 pb-20 bg-slate-50 dark:bg-slate-950 relative view-transition-fade min-h-screen text-slate-800 dark:text-slate-100" id="layanan-terpadu">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Sticky Top Control Bar -->
+            <div class="sticky top-20 z-30 mb-8 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-slate-200/90 dark:border-slate-800 shadow-md flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button type="button" onclick="window.closeLayananTerpadu('beranda')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold transition shadow-sm cursor-pointer group">
+                        <i class="fas fa-arrow-left text-teal-600 dark:text-teal-400 group-hover:-translate-x-0.5 transition duration-150"></i>
+                        <span>Kembali ke Beranda</span>
+                    </button>
+                    <div class="h-4 w-px bg-slate-300 dark:bg-slate-700 hidden sm:block"></div>
+                    <div class="hidden sm:flex items-center text-xs text-slate-500 dark:text-slate-400 gap-1.5 font-medium">
+                        <a href="#" onclick="window.closeLayananTerpadu('beranda')" class="hover:text-blue-600 dark:hover:text-blue-400">Beranda</a>
+                        <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
+                        <span class="text-teal-600 dark:text-teal-400 font-bold">Layanan Terpadu & FAQ Online</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <a href="#faq-container" onclick="window.scrollToLayananSection('faq-container', event);" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900/80 text-blue-700 dark:text-blue-300 text-xs font-bold transition border border-blue-200/70 dark:border-blue-800 cursor-pointer">
+                        <i class="fas fa-circle-question text-xs"></i>
+                        <span class="hidden md:inline">Pertanyaan Umum (FAQ)</span>
+                        <span class="md:hidden">FAQ</span>
+                    </a>
+                    <a href="#form-pelaporan-box" onclick="window.scrollToLayananSection('form-pelaporan-box', event);" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-teal-600 to-teal-500 hover:from-teal-500 hover:to-teal-400 text-white text-xs font-bold transition shadow-sm shadow-teal-900/20 cursor-pointer">
+                        <i class="fas fa-paper-plane text-xs"></i>
+                        <span>Kirim Pertanyaan / Aduan</span>
+                    </a>
+                    <button type="button" onclick="window.closeLayananTerpadu('beranda')" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 hover:text-red-500 flex items-center justify-center transition cursor-pointer" title="Tutup Layanan Terpadu">
+                        <i class="fas fa-times text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Banner Utama Hero Layanan Terpadu -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-950 via-slate-900 to-teal-950 text-white p-6 sm:p-10 lg:p-12 mb-10 shadow-xl border border-teal-500/20">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-teal-500/10 blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-20 -top-20 w-80 h-80 rounded-full bg-blue-500/10 blur-3xl pointer-events-none"></div>
+                
+                <div class="relative z-10 max-w-3xl">
+                    <div class="flex flex-wrap items-center gap-2 mb-4">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 border border-teal-400/30 text-xs font-black uppercase tracking-wider">
+                            <i class="fas fa-headset text-teal-400"></i> Unit Layanan Terpadu (ULT) Online
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30 text-xs font-semibold">
+                            <i class="fas fa-shield-alt text-blue-400"></i> Resmi Disdikbud Kab. Madiun
+                        </span>
+                    </div>
+
+                    <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight leading-snug mb-3">
+                        Pusat Informasi, FAQ & Layanan Konsultasi Online
+                    </h2>
+                    <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+                        Dapatkan jawaban cepat terhadap pertanyaan umum seputar SPMB/PPDB, program beasiswa & KIP, legalisir ijazah, penanganan Zero ATS, hingga perizinan cagar budaya. Anda juga dapat mengirimkan pertanyaan atau aduan langsung ke email resmi kedinasan.
+                    </p>
+
+                    <!-- Statistik / Poin Cepat -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
+                        <div class="flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center text-lg shrink-0">
+                                <i class="fas fa-envelope-circle-check"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <div class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Tujuan Email Resmi</div>
+                                <div class="text-xs font-bold text-teal-200 truncate">dikbud@madiunkab.go.id</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-300 flex items-center justify-center text-lg shrink-0">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <div class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Standar Respon</div>
+                                <div class="text-xs font-bold text-white">Maks 1x24 Jam Kerja</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center text-lg shrink-0">
+                                <i class="fas fa-ticket-alt"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <div class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Layanan Terbuka</div>
+                                <div class="text-xs font-bold text-amber-200">Tiket Pelaporan Resmi</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BAGIAN 1: PUSAT PERTANYAAN UMUM (FAQ) -->
+            <div id="faq-container" class="mb-14 scroll-mt-40">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+                    <div>
+                        <span class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider block mb-1">
+                            <i class="fas fa-question-circle mr-1"></i> Bantuan Cepat Mandiri
+                        </span>
+                        <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                            Pertanyaan yang Paling Sering Ditanyakan (FAQ)
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+                            Pilih kategori atau ketik kata kunci untuk menemukan solusi cepat seputar layanan pendidikan dan kebudayaan.
+                        </p>
+                    </div>
+                    <!-- Counter jumlah pertanyaan -->
+                    <div id="faq-counter-badge" class="px-3.5 py-1.5 rounded-xl bg-teal-50 dark:bg-teal-950/70 border border-teal-200 dark:border-teal-800 text-teal-800 dark:text-teal-300 font-bold text-xs shrink-0 self-start md:self-auto">
+                        <i class="fas fa-list-check mr-1.5 text-teal-600"></i> Menampilkan <span id="faq-visible-count">8</span> Tanya Jawab
+                    </div>
+                </div>
+
+                <!-- Kolom Pencarian Interaktif Real-time -->
+                <div class="relative mb-5">
+                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-base"></i>
+                    <input type="text" id="faq-search-input" oninput="window.filterFaqSearch()" placeholder="Cari pertanyaan... (contoh: PPDB, legalisir ijazah hilang, KIP beasiswa, anak putus sekolah, cagar budaya)" 
+                        class="w-full pl-12 pr-12 py-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 shadow-sm transition">
+                    <button type="button" onclick="document.getElementById('faq-search-input').value=''; window.filterFaqSearch();" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs cursor-pointer p-1">
+                        <i class="fas fa-times-circle text-sm"></i>
+                    </button>
+                </div>
+
+                <!-- Filter Kategori Tombol Tab -->
+                <div class="flex items-center gap-1.5 overflow-x-auto pb-2 mb-6 scrollbar-thin">
+                    <button type="button" onclick="window.filterFaqCategory('all', this)" class="faq-cat-btn active px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer bg-teal-600 text-white shadow-sm">
+                        Semua Kategori
+                    </button>
+                    <button type="button" onclick="window.filterFaqCategory('ppdb', this)" class="faq-cat-btn px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800">
+                        <i class="fas fa-graduation-cap text-teal-500 mr-1.5"></i> PPDB & Mutasi Siswa
+                    </button>
+                    <button type="button" onclick="window.filterFaqCategory('beasiswa', this)" class="faq-cat-btn px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800">
+                        <i class="fas fa-hand-holding-dollar text-emerald-500 mr-1.5"></i> Beasiswa & PIP
+                    </button>
+                    <button type="button" onclick="window.filterFaqCategory('ijazah', this)" class="faq-cat-btn px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800">
+                        <i class="fas fa-stamp text-blue-500 mr-1.5"></i> Legalisir & Ijazah
+                    </button>
+                    <button type="button" onclick="window.filterFaqCategory('ats', this)" class="faq-cat-btn px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800">
+                        <i class="fas fa-user-check text-rose-500 mr-1.5"></i> Zero ATS (Anak Putus Sekolah)
+                    </button>
+                    <button type="button" onclick="window.filterFaqCategory('budaya', this)" class="faq-cat-btn px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800">
+                        <i class="fas fa-landmark text-amber-500 mr-1.5"></i> Kebudayaan & Cagar Budaya
+                    </button>
+                    <button type="button" onclick="window.filterFaqCategory('sarpras', this)" class="faq-cat-btn px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800">
+                        <i class="fas fa-school text-indigo-500 mr-1.5"></i> Sarpras & BOSP
+                    </button>
+                </div>
+
+                <!-- Daftar Pertanyaan Accordion -->
+                <div class="space-y-3" id="faq-list">
+                    <!-- FAQ 1: PPDB -->
+                    <div class="faq-item bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-sm transition-all hover:border-teal-300 dark:hover:border-teal-700" data-category="ppdb">
+                        <button type="button" onclick="window.toggleFaq(this)" class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-teal-100 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 flex items-center justify-center font-black text-xs shrink-0">
+                                    01
+                                </span>
+                                <span class="font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+                                    Bagaimana prosedur dan jadwal PPDB (Penerimaan Peserta Didik Baru) untuk TK, SD, dan SMP di Kabupaten Madiun?
+                                </span>
+                            </div>
+                            <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shrink-0 transition-transform duration-200 faq-icon">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 leading-relaxed">
+                            <p class="mb-2">PPDB di Kabupaten Madiun dilaksanakan serentak secara daring (online) dan terpadu melalui 4 jalur utama:</p>
+                            <ul class="list-disc pl-5 space-y-1 mb-3">
+                                <li><strong>Jalur Zonasi:</strong> Kuota minimal 70% untuk SD dan 50% untuk SMP berdasarkan domisili Kartu Keluarga (KK).</li>
+                                <li><strong>Jalur Afirmasi:</strong> Kuota 15% untuk calon siswa dari keluarga ekonomi tidak mampu (pemegang KIP/PKH) dan penyandang disabilitas (Pendidikan Inklusif).</li>
+                                <li><strong>Jalur Perpindahan Tugas Orang Tua/Wali:</strong> Kuota maksimal 5% dengan melampirkan SK penugasan resmi dari instansi terkait.</li>
+                                <li><strong>Jalur Prestasi:</strong> Sisa kuota untuk jenjang SMP berdasarkan nilai rapor serta piagam kejuaraan akademik, olahraga, maupun seni budaya (misal: pencak silat / kesenian daerah).</li>
+                            </ul>
+                            <p class="text-[11px] text-teal-700 dark:text-teal-300 bg-teal-50 dark:bg-teal-950/40 p-2.5 rounded-xl border border-teal-200 dark:border-teal-900">
+                                <i class="fas fa-info-circle mr-1"></i> Informasi lengkap tanggal pelaksanaan pendaftaran biasanya dibuka pada bulan Mei - Juni setiap tahunnya melalui pengumuman resmi portal ini.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2: Legalisir Ijazah Hilang/Rusak -->
+                    <div class="faq-item bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-sm transition-all hover:border-teal-300 dark:hover:border-teal-700" data-category="ijazah">
+                        <button type="button" onclick="window.toggleFaq(this)" class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-blue-100 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 flex items-center justify-center font-black text-xs shrink-0">
+                                    02
+                                </span>
+                                <span class="font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+                                    Bagaimana alur pengurusan Surat Keterangan Pengganti Ijazah (SKPI) yang hilang atau rusak?
+                                </span>
+                            </div>
+                            <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shrink-0 transition-transform duration-200 faq-icon">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 leading-relaxed">
+                            <p class="mb-2">Jika ijazah jenjang SD atau SMP Anda hilang atau rusak terbakar/banjir, berikut tahapan penerbitan SKPI yang berkekuatan hukum setara:</p>
+                            <ol class="list-decimal pl-5 space-y-1 mb-3">
+                                <li>Buat <strong>Surat Keterangan Kehilangan</strong> dari Polsek setempat.</li>
+                                <li>Minta Surat Keterangan dari Kepala Sekolah asal tempat Anda lulus dengan melampirkan fotokopi ijazah (jika ada) dan buku induk sekolah.</li>
+                                <li>Jika sekolah asal sudah tutup/merger, pemohon dapat langsung datang ke Unit Layanan Terpadu (ULT) Dinas Pendidikan dan Kebudayaan Kab. Madiun.</li>
+                                <li>Bawa 2 orang saksi teman seangkatan yang memiliki ijazah dari sekolah yang sama beserta materai 10.000 untuk penandatanganan Surat Pertanggungjawaban Mutlak (SPTJM).</li>
+                                <li>Dinas Pendidikan dan Kebudayaan akan memverifikasi arsip dan mengesahkan SKPI resmi tanpa dipungut biaya (Gratis/Rp 0).</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3: PIP & Beasiswa -->
+                    <div class="faq-item bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-sm transition-all hover:border-teal-300 dark:hover:border-teal-700" data-category="beasiswa">
+                        <button type="button" onclick="window.toggleFaq(this)" class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 flex items-center justify-center font-black text-xs shrink-0">
+                                    03
+                                </span>
+                                <span class="font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+                                    Bagaimana cara mendaftar atau mengecek bantuan Program Indonesia Pintar (PIP) dan Beasiswa Daerah Madiun?
+                                </span>
+                            </div>
+                            <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shrink-0 transition-transform duration-200 faq-icon">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 leading-relaxed">
+                            <p class="mb-2">Bantuan PIP bersumber dari APBN Kemendikbudristek, sedangkan Beasiswa Anak Berprestasi dan Kurang Mampu bersumber dari APBD Kab. Madiun:</p>
+                            <ul class="list-disc pl-5 space-y-1 mb-2">
+                                <li>Pastikan data siswa telah tercatat aktif di aplikasi Dapodik sekolah dengan NIK yang valid dan sinkron dengan Dispendukcapil.</li>
+                                <li>Siswa yang terdata dalam DTKS (Data Terpadu Kesejahteraan Sosial) Kemensos akan otomatis masuk nominasi penerima PIP.</li>
+                                <li>Pihak sekolah mengusulkan siswa rentan miskin melalui fitur usulan sekolah pada aplikasi Dapodik.</li>
+                                <li>Pengecekan status pencairan PIP dapat diakses secara mandiri melalui situs <code>pip.kemdikbud.go.id</code> dengan memasukkan NISN dan NIK siswa.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4: Zero ATS -->
+                    <div class="faq-item bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-sm transition-all hover:border-teal-300 dark:hover:border-teal-700" data-category="ats">
+                        <button type="button" onclick="window.toggleFaq(this)" class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-950/70 text-rose-700 dark:text-rose-300 flex items-center justify-center font-black text-xs shrink-0">
+                                    04
+                                </span>
+                                <span class="font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+                                    Bagaimana alur melaporkan anak yang putus sekolah (Drop Out) atau tidak mampu melanjutkan (Zero ATS)?
+                                </span>
+                            </div>
+                            <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shrink-0 transition-transform duration-200 faq-icon">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 leading-relaxed">
+                            <p class="mb-2">Pemerintah Kabupaten Madiun memiliki komitmen penuh mewujudkan <strong>Zero ATS (Anak Tidak Sekolah)</strong>:</p>
+                            <p class="mb-2">Jika Anda menemukan anak usia 5–18 tahun yang putus sekolah (DO), lulus tidak melanjutkan (LTM), atau belum pernah sekolah di wilayah Anda, segera laporkan dengan cara:</p>
+                            <ul class="list-disc pl-5 space-y-1 mb-2">
+                                <li>Isi <strong>Formulir Pelaporan Online</strong> di bagian bawah halaman ini dengan memilih kategori <em>"Laporan Temuan Anak Tidak Sekolah (Zero ATS)"</em>.</li>
+                                <li>Sebutkan nama anak, perkiraan usia/jenjang, nama orang tua, serta alamat desa/RT/RW.</li>
+                                <li>Tim Si-Lacak ATS Dinas bersama Penilik/Pengawas dan UPT SKB Kab. Madiun akan turun langsung ke lokasi untuk verifikasi dan memberikan intervensi sekolah gratis (kembali ke sekolah formal atau program Paket A/B/C di SKB/PKBM).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5: Mutasi / Pindah Sekolah -->
+                    <div class="faq-item bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-sm transition-all hover:border-teal-300 dark:hover:border-teal-700" data-category="ppdb">
+                        <button type="button" onclick="window.toggleFaq(this)" class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-teal-100 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 flex items-center justify-center font-black text-xs shrink-0">
+                                    05
+                                </span>
+                                <span class="font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+                                    Apa saja syarat mengurus surat rekomendasi mutasi (pindah sekolah) masuk atau keluar daerah Kabupaten Madiun?
+                                </span>
+                            </div>
+                            <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shrink-0 transition-transform duration-200 faq-icon">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 leading-relaxed">
+                            <p class="mb-2">Persyaratan mutasi siswa antarkabupaten/kota atau provinsi:</p>
+                            <ol class="list-decimal pl-5 space-y-1 mb-2">
+                                <li>Surat permohonan mutasi dari orang tua/wali bermaterai 10.000.</li>
+                                <li>Surat Keterangan Pindah dari sekolah asal yang ditandatangani Kepala Sekolah.</li>
+                                <li>Surat Keterangan Bersedia Menerima dari sekolah tujuan (memastikan ketersediaan kuota rombel).</li>
+                                <li>Fotokopi buku rapor semester terakhir dan fotokopi Akta Kelahiran + KK.</li>
+                                <li>Surat Rekomendasi Mutasi dari Dinas Pendidikan Kabupaten/Kota asal untuk divalidasi ke Dinas Pendidikan dan Kebudayaan Kab. Madiun.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 6: Kebudayaan & Cagar Budaya -->
+                    <div class="faq-item bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-sm transition-all hover:border-teal-300 dark:hover:border-teal-700" data-category="budaya">
+                        <button type="button" onclick="window.toggleFaq(this)" class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-amber-100 dark:bg-amber-950/70 text-amber-700 dark:text-amber-300 flex items-center justify-center font-black text-xs shrink-0">
+                                    06
+                                </span>
+                                <span class="font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+                                    Bagaimana mekanisme perizinan kegiatan seni tradisi (Dongkrek) dan pemanfaatan situs cagar budaya?
+                                </span>
+                            </div>
+                            <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shrink-0 transition-transform duration-200 faq-icon">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 leading-relaxed">
+                            <p class="mb-2">Bidang Kebudayaan memfasilitasi pelestarian seni dan perlindungan cagar budaya:</p>
+                            <ul class="list-disc pl-5 space-y-1 mb-2">
+                                <li>Penggiat sanggar seni atau perguruan silat yang hendak mengadakan festival tradisi dapat mengajukan surat pemberitahuan/rekomendasi kegiatan ke Bidang Kebudayaan Disdikbud Kab. Madiun sekurang-kurangnya 14 hari sebelum hari pelaksanaan.</li>
+                                <li>Pemanfaatan situs cagar budaya untuk riset, film dokumenter, atau edukasi wajib menjaga keaslian struktur fisik cagar budaya serta didampingi oleh Pamong Budaya resmi.</li>
+                                <li>Semua layanan konsultasi dan rekomendasi pemajuan kebudayaan tidak dipungut biaya.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 7: Sarpras & Kerusakan Sekolah -->
+                    <div class="faq-item bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-sm transition-all hover:border-teal-300 dark:hover:border-teal-700" data-category="sarpras">
+                        <button type="button" onclick="window.toggleFaq(this)" class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 flex items-center justify-center font-black text-xs shrink-0">
+                                    07
+                                </span>
+                                <span class="font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+                                    Bagaimana prosedur pengaduan atau usulan rehabilitasi ruang kelas/toilet sekolah yang rusak?
+                                </span>
+                            </div>
+                            <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shrink-0 transition-transform duration-200 faq-icon">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 leading-relaxed">
+                            <p class="mb-2">Kerusakan sarpras sekolah (ruang kelas bocor, toilet rusak, pagar ambruk) dapat ditangani melalui jalur:</p>
+                            <ul class="list-disc pl-5 space-y-1 mb-2">
+                                <li><strong>Pemutakhiran Dapodik Sarpras:</strong> Operator sekolah wajib memperbarui data tingkat kerusakan ruang (rusak ringan, sedang, berat) beserta dokumentasi foto terkini.</li>
+                                <li><strong>Proposal DAK Fisik & APBD:</strong> Sekolah mengajukan proposal resmi yang diverifikasi oleh tim sarpras Bidang Pembinaan SD / SMP.</li>
+                                <li><strong>Aduan Kedaruratan Bencana:</strong> Jika terjadi roboh mendadak akibat angin puting beliung atau bencana alam, gunakan formulir di bawah ini agar tim teknis segera diterjunkan untuk asesmen darurat.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 8: Layanan Konsultasi PTK (Guru) -->
+                    <div class="faq-item bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-sm transition-all hover:border-teal-300 dark:hover:border-teal-700" data-category="ijazah">
+                        <button type="button" onclick="window.toggleFaq(this)" class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-purple-100 dark:bg-purple-950/70 text-purple-700 dark:text-purple-300 flex items-center justify-center font-black text-xs shrink-0">
+                                    08
+                                </span>
+                                <span class="font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+                                    Bagaimana alur konsultasi NUPTK, sertifikasi pendidik (PPG), dan kenaikan pangkat guru?
+                                </span>
+                            </div>
+                            <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shrink-0 transition-transform duration-200 faq-icon">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 leading-relaxed">
+                            <p class="mb-2">Bagi Pendidik dan Tenaga Kependidikan (PTK) jenjang PAUD, SD, dan SMP:</p>
+                            <ul class="list-disc pl-5 space-y-1 mb-2">
+                                <li>Pengajuan penerbitan NUPTK baru dilakukan melalui sistem VervalPTK oleh operator sekolah dengan syarat memiliki SK pengangkatan resmi dan kualifikasi S1/D4 relevan.</li>
+                                <li>Pemanggilan PPG Dalam Jabatan dikelola langsung oleh Kemendikbudristek melalui akun SIMPKB masing-masing guru yang telah lulus seleksi administrasi.</li>
+                                <li>Konsultasi administrasi kepegawaian dapat dilayani di Loket Bidang Pembinaan Ketenagaan (PTK) Disdikbud Kab. Madiun pada hari kerja.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banner Jika Pencarian Tidak Menemukan Hasil -->
+                <div id="faq-empty-state" class="hidden py-10 px-4 text-center bg-white dark:bg-slate-900 rounded-2xl border border-dashed border-slate-300 dark:border-slate-800 my-4">
+                    <div class="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 flex items-center justify-center mx-auto mb-3 text-lg">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h5 class="text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">Pertanyaan tidak ditemukan dalam FAQ</h5>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-4">
+                        Topik yang Anda cari belum tersedia dalam daftar FAQ populer. Silakan gunakan formulir di bawah ini untuk mengirimkan pertanyaan langsung ke email resmi dinas.
+                    </p>
+                    <a href="#form-pelaporan-box" onclick="window.scrollToLayananSection('form-pelaporan-box', event);" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition cursor-pointer">
+                        <i class="fas fa-pen-to-square"></i> Buat Pertanyaan Baru
+                    </a>
+                </div>
+            </div>
+
+            <!-- BAGIAN 2: FORMULIR PELAPORAN & KONSULTASI ONLINE (TERHUBUNG KE EMAIL DINAS) -->
+            <div id="form-pelaporan-box" class="scroll-mt-40">
+                <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-xl overflow-hidden">
+                    
+                    <!-- Header Form -->
+                    <div class="p-6 sm:p-8 bg-gradient-to-r from-teal-900 via-slate-900 to-blue-950 text-white border-b border-teal-500/20">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-teal-500/20 text-teal-300 border border-teal-400/30 flex items-center justify-center text-xl shrink-0 mt-0.5">
+                                    <i class="fas fa-paper-plane"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-400/30">
+                                        Formulir Resmi Pelayanan Terpadu
+                                    </span>
+                                    <h3 class="text-xl sm:text-2xl font-black text-white mt-1">
+                                        Kirim Pertanyaan, Konsultasi atau Pengaduan Anda
+                                    </h3>
+                                    <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
+                                        Data yang diisikan akan terhubung langsung ke kotak surat resmi Dinas Pendidikan dan Kebudayaan Kabupaten Madiun: <strong class="text-teal-300 underline underline-offset-2">dikbud@madiunkab.go.id</strong>. Petugas kami akan memproses dan merespons via email atau nomor kontak Anda.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-2 self-start sm:self-auto shrink-0 bg-white/10 px-3 py-2 rounded-xl border border-white/10 text-xs">
+                                <i class="fas fa-shield-halved text-teal-400"></i>
+                                <span class="text-slate-200">Verifikasi Resmi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Body Form -->
+                    <form id="form-pelaporan-layanan" onsubmit="window.handleLayananFormSubmit(event)" class="p-6 sm:p-8 space-y-6">
+                        
+                        <!-- Baris 1: Nama, Email, Nomor HP -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                            <!-- Nama Lengkap -->
+                            <div>
+                                <label for="layanan-nama" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
+                                    Nama Lengkap Pemohon <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <i class="fas fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                    <input type="text" id="layanan-nama" required placeholder="Contoh: Ahmad Fauzi, S.Pd" 
+                                        class="w-full pl-9 pr-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white dark:focus:bg-slate-800 transition">
+                                </div>
+                            </div>
+
+                            <!-- Alamat Email -->
+                            <div>
+                                <label for="layanan-email" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
+                                    Alamat Email Aktif <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <i class="fas fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                    <input type="email" id="layanan-email" required placeholder="Contoh: ahmad.fauzi@gmail.com" 
+                                        class="w-full pl-9 pr-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white dark:focus:bg-slate-800 transition">
+                                </div>
+                                <span class="text-[10px] text-slate-400 mt-1 block">Tanggapan tertulis akan dikirimkan ke alamat ini.</span>
+                            </div>
+
+                            <!-- Nomor HP / WhatsApp -->
+                            <div>
+                                <label for="layanan-telepon" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
+                                    Nomor HP / WhatsApp Aktif <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <i class="fab fa-whatsapp absolute left-3.5 top-1/2 -translate-y-1/2 text-emerald-500 text-sm"></i>
+                                    <input type="tel" id="layanan-telepon" required placeholder="Contoh: 081234567890" pattern="[0-9+ -]{9,16}" 
+                                        class="w-full pl-9 pr-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white dark:focus:bg-slate-800 transition">
+                                </div>
+                                <span class="text-[10px] text-slate-400 mt-1 block">Untuk konfirmasi cepat via panggilan/WA.</span>
+                            </div>
+                        </div>
+
+                        <!-- Baris 2: Kategori Layanan & Status Pemohon -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <!-- Kategori Layanan -->
+                            <div>
+                                <label for="layanan-kategori" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
+                                    Kategori Layanan / Topik <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <i class="fas fa-tag absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                    <select id="layanan-kategori" required 
+                                        class="w-full pl-9 pr-8 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white dark:focus:bg-slate-800 transition appearance-none">
+                                        <option value="" disabled selected>-- Pilih Kategori Permohonan --</option>
+                                        <option value="Penerimaan Peserta Didik Baru (PPDB / SPMB)">Penerimaan Peserta Didik Baru (PPDB / SPMB)</option>
+                                        <option value="Beasiswa, KIP & Bantuan Pendidikan">Beasiswa, KIP & Bantuan Pendidikan</option>
+                                        <option value="Legalisir Ijazah & Mutasi Siswa">Legalisir Ijazah & Mutasi Siswa</option>
+                                        <option value="Laporan Temuan Anak Putus Sekolah (Zero ATS)">Laporan Temuan Anak Putus Sekolah (Zero ATS)</option>
+                                        <option value="Cagar Budaya, Kesenian & Dongkrek">Cagar Budaya, Kesenian & Dongkrek</option>
+                                        <option value="Sarana Prasarana Sekolah & BOSP">Sarana Prasarana Sekolah & BOSP</option>
+                                        <option value="Layanan PTK, Guru & Tenaga Kependidikan">Layanan PTK, Guru & Tenaga Kependidikan</option>
+                                        <option value="Pertanyaan / Informasi Umum Lainnya">Pertanyaan / Informasi Umum Lainnya</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
+                                </div>
+                            </div>
+
+                            <!-- Status / Peran Pemohon -->
+                            <div>
+                                <label for="layanan-status" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
+                                    Status / Peran Anda
+                                </label>
+                                <div class="relative">
+                                    <i class="fas fa-id-badge absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                    <select id="layanan-status" 
+                                        class="w-full pl-9 pr-8 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white dark:focus:bg-slate-800 transition appearance-none">
+                                        <option value="Orang Tua / Wali Siswa" selected>Orang Tua / Wali Siswa</option>
+                                        <option value="Siswa / Warga Belajar">Siswa / Warga Belajar</option>
+                                        <option value="Pendidik / Tenaga Kependidikan (Guru/Staf)">Pendidik / Tenaga Kependidikan (Guru/Staf)</option>
+                                        <option value="Masyarakat Umum / Tokoh Warga">Masyarakat Umum / Tokoh Warga</option>
+                                        <option value="Komite Sekolah / Mitra Pendidikan">Komite Sekolah / Mitra Pendidikan</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Baris 3: Judul / Subjek & Lokasi/Sekolah Terkait -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                            <div class="md:col-span-2">
+                                <label for="layanan-subjek" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
+                                    Subjek / Judul Permohonan <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <i class="fas fa-heading absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                    <input type="text" id="layanan-subjek" required placeholder="Contoh: Konsultasi persyaratan mutasi siswa dari SMP luar kabupaten" 
+                                        class="w-full pl-9 pr-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white dark:focus:bg-slate-800 transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="layanan-catatan" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
+                                    Lokasi / Sekolah Terkait (Opsional)
+                                </label>
+                                <div class="relative">
+                                    <i class="fas fa-school-flag absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                    <input type="text" id="layanan-catatan" placeholder="Contoh: SMPN 1 Mejayan / Desa Sugihwaras" 
+                                        class="w-full pl-9 pr-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white dark:focus:bg-slate-800 transition">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Baris 4: Rincian Pertanyaan / Pesan -->
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <label for="layanan-pesan" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                                    Rincian Pertanyaan / Uraian Aduan <span class="text-rose-500">*</span>
+                                </label>
+                                <span class="text-[10px] text-slate-400">Minimal 20 karakter</span>
+                            </div>
+                            <textarea id="layanan-pesan" required rows="5" minlength="20" placeholder="Jelaskan pertanyaan atau kendala Anda secara runtut dan jelas agar petugas kami dapat memberikan jawaban dan solusi yang akurat..." 
+                                class="w-full p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white dark:focus:bg-slate-800 transition"></textarea>
+                        </div>
+
+                        <!-- Pernyataan Kerahasiaan & Disclaimer -->
+                        <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800 flex items-start gap-3">
+                            <i class="fas fa-shield-alt text-teal-600 dark:text-teal-400 text-base mt-0.5 shrink-0"></i>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                                <strong>Jaminan Privasi & Keterbukaan Informasi:</strong> Informasi identitas, email, dan nomor telepon Anda akan dijaga kerahasiaannya dan hanya dipergunakan untuk kepentingan verifikasi serta penyampaian jawaban resmi oleh Unit Layanan Terpadu Dinas Pendidikan dan Kebudayaan Kabupaten Madiun.
+                            </p>
+                        </div>
+
+                        <!-- Tombol Aksi -->
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-3 border-t border-slate-100 dark:border-slate-800">
+                            <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                                <i class="fas fa-envelope text-teal-600"></i>
+                                <span>Tujuan Otomatis: <strong class="text-slate-700 dark:text-slate-200">dikbud@madiunkab.go.id</strong></span>
+                            </div>
+
+                            <div class="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
+                                <button type="reset" class="flex-1 sm:flex-initial px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold transition cursor-pointer">
+                                    <i class="fas fa-rotate-left mr-1"></i> Reset Form
+                                </button>
+                                <button type="submit" class="flex-1 sm:flex-initial px-7 py-3 rounded-xl bg-gradient-to-r from-teal-600 via-teal-700 to-blue-700 hover:from-teal-500 hover:to-blue-600 text-white text-xs font-black shadow-lg shadow-teal-700/25 flex items-center justify-center gap-2 transition duration-200 cursor-pointer">
+                                    <i class="fas fa-paper-plane"></i>
+                                    <span>Kirim ke Email Resmi Dinas</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <!-- Footer Kontak Alternatif Bantuan Cepat -->
+                    <div class="p-4 sm:p-5 bg-slate-50 dark:bg-slate-800/40 border-t border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+                        <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                            <i class="fas fa-phone-volume text-teal-600 dark:text-teal-400"></i>
+                            <span>Butuh respon cepat saat jam kerja? Hubungi Unit Layanan Terpadu:</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <a href="https://wa.me/6281234567890?text=Halo%20Unit%20Layanan%20Terpadu%20Dinas%20Pendidikan%20dan%20Kebudayaan%20Kabupaten%20Madiun,%20saya%20ingin%20berkonsultasi." target="_blank" rel="noopener noreferrer" class="font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1">
+                                <i class="fab fa-whatsapp"></i> WhatsApp ULT: 0812-3456-7890
+                            </a>
+                            <span class="text-slate-300 dark:text-slate-700">•</span>
+                            <span class="font-semibold text-slate-700 dark:text-slate-300"><i class="fas fa-phone mr-1"></i>(0351) 1234567</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Tombol Bawah Selesai & Kembali ke Beranda -->
+            <div class="mt-14 text-center pt-8 border-t border-slate-200 dark:border-slate-800 no-print">
+                <button type="button" onclick="window.closeLayananTerpadu('beranda')" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-slate-900 hover:bg-blue-900 dark:bg-slate-800 dark:hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg cursor-pointer">
+                    <i class="fas fa-arrow-left"></i> Selesai & Kembali ke Beranda
+                </button>
+            </div>
+
+        </div>
+
+        <!-- MODAL KONFIRMASI PENGIRIMAN & NOMOR TIKET -->
+        <div id="modal-layanan-success" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm hidden" onclick="window.closeLayananModal()">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 max-w-lg w-full p-6 sm:p-7 relative view-transition-fade" onclick="event.stopPropagation()">
+                <button type="button" onclick="window.closeLayananModal()" class="absolute right-5 top-5 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center transition cursor-pointer">
+                    <i class="fas fa-times text-xs"></i>
+                </button>
+
+                <div class="text-center pt-2">
+                    <div class="w-16 h-16 rounded-3xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center text-3xl mx-auto mb-4 shadow-sm">
+                        <i class="fas fa-check"></i>
+                    </div>
+
+                    <span class="text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">
+                        Tiket Berhasil Dibuat
+                    </span>
+
+                    <h4 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white mt-2 mb-1">
+                        Pertanyaan / Pengaduan Siap Terkirim!
+                    </h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mb-5 leading-relaxed">
+                        Data Anda telah diformat secara resmi dan aplikasi email default perangkat Anda telah disiapkan untuk mengirim pesan langsung ke <strong>dikbud@madiunkab.go.id</strong>.
+                    </p>
+
+                    <!-- Kartu Ringkasan Tiket -->
+                    <div class="bg-slate-50 dark:bg-slate-800/80 rounded-2xl p-4 border border-slate-200 dark:border-slate-700 text-left text-xs space-y-2 mb-5">
+                        <div class="flex items-center justify-between pb-2 border-b border-slate-200/80 dark:border-slate-700">
+                            <span class="text-slate-400 font-bold uppercase text-[10px]">Nomor Tiket Registrasi:</span>
+                            <span id="modal-tiket-id" class="font-mono font-black text-teal-700 dark:text-teal-300 text-sm bg-teal-50 dark:bg-teal-950/80 px-2 py-0.5 rounded border border-teal-200 dark:border-teal-800">ULT-MKD-0000</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-400">Email Tujuan Dinas:</span>
+                            <span class="font-bold text-slate-800 dark:text-slate-200">dikbud@madiunkab.go.id</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-400">Email Pemohon:</span>
+                            <span id="modal-tiket-email" class="font-bold text-slate-800 dark:text-slate-200 truncate max-w-[200px]">-</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-400">Nomor HP/WA:</span>
+                            <span id="modal-tiket-phone" class="font-bold text-slate-800 dark:text-slate-200">-</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-400">Kategori:</span>
+                            <span id="modal-tiket-kategori" class="font-bold text-slate-800 dark:text-slate-200 truncate max-w-[200px]">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Aksi Modal -->
+                    <div class="flex flex-col sm:flex-row gap-2.5">
+                        <button type="button" id="btn-copy-ticket" onclick="window.copyTicketNumber()" class="flex-1 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer">
+                            <i class="fas fa-copy"></i>
+                            <span id="btn-copy-ticket-text">Salin Nomor Tiket</span>
+                        </button>
+                        <button type="button" onclick="window.closeLayananModal(); window.closeLayananTerpadu('beranda');" class="flex-1 px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-black transition flex items-center justify-center gap-1.5 cursor-pointer shadow-md">
+                            <i class="fas fa-home"></i> Selesai & Beranda
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ========================================================
+         HALAMAN ARSIP INFORMASI PUBLIK: SEMUA BERITA & PENGUMUMAN
+         (Tampilan mandiri terpisah dari dasbor utama)
+         ======================================================== -->
+    <section class="hidden pt-28 pb-20 bg-slate-50 dark:bg-slate-900 relative view-transition-fade min-h-screen" id="halaman-semua-berita">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Navigasi Bar Kembali ke Beranda -->
+            <div class="mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-slate-200/80 dark:border-slate-800 pb-5 no-print">
+                <button type="button" onclick="window.closeAllNewsSection('berita')" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-blue-900 dark:hover:bg-slate-700 text-white font-bold text-xs sm:text-sm shadow-md transition group cursor-pointer">
+                    <i class="fas fa-arrow-left text-xs transform group-hover:-translate-x-1 transition duration-200"></i>
+                    <span>Kembali ke Beranda</span>
+                </button>
+                <div class="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
+                    <span class="hover:text-blue-600 dark:hover:text-teal-400 cursor-pointer" onclick="window.closeAllNewsSection('beranda')">Beranda</span>
+                    <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
+                    <span class="hover:text-blue-600 dark:hover:text-teal-400 cursor-pointer" onclick="window.closeAllNewsSection('berita')">Informasi Publik</span>
+                    <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
+                    <span class="text-blue-900 dark:text-teal-300 font-bold">Semua Berita &amp; Pengumuman</span>
+                </div>
+                <button type="button" onclick="window.closeAllNewsSection('berita')" class="w-9 h-9 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white border border-slate-200 dark:border-slate-700 shadow-xs flex items-center justify-center transition cursor-pointer" title="Tutup Tampilan">
+                    <i class="fas fa-times text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Header Section -->
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-100 dark:bg-teal-900/50 text-teal-800 dark:text-teal-300 text-xs font-bold uppercase tracking-wider mb-3">
+                    <i class="far fa-newspaper text-teal-600 dark:text-teal-400"></i> Informasi Publik Terkini
+                </div>
+                <h3 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+                    Berita &amp; Pengumuman Resmi
+                </h3>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-blue-600 via-teal-500 to-amber-500 mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-600 dark:text-slate-300 mt-4 text-sm sm:text-base leading-relaxed">
+                    Arsip lengkap warta informasi kedinasan, siaran pers, pengumuman seleksi, dan dokumentasi agenda kegiatan resmi Dinas Pendidikan dan Kebudayaan Kabupaten Madiun.
+                </p>
+            </div>
+
+            <!-- Filter & Pencarian Bar -->
+            <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-4 sm:p-5 border border-slate-200 dark:border-slate-700/80 shadow-xs mb-8 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+                <!-- Tab Kategori Filter -->
+                <div class="flex flex-wrap items-center gap-2" id="all-news-filter-tabs">
+                    <button type="button" onclick="window.filterAllNewsCategory('semua')" data-category="semua" class="news-cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-900 text-white shadow-xs cursor-pointer">
+                        Semua Kategori
+                    </button>
+                    <button type="button" onclick="window.filterAllNewsCategory('Berita')" data-category="Berita" class="news-cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 cursor-pointer">
+                        <i class="far fa-newspaper mr-1 text-blue-600 dark:text-blue-400"></i> Berita
+                    </button>
+                    <button type="button" onclick="window.filterAllNewsCategory('Pengumuman')" data-category="Pengumuman" class="news-cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 cursor-pointer">
+                        <i class="fas fa-bullhorn mr-1 text-amber-500"></i> Pengumuman
+                    </button>
+                    <button type="button" onclick="window.filterAllNewsCategory('Kegiatan')" data-category="Kegiatan" class="news-cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 cursor-pointer">
+                        <i class="fas fa-calendar-check mr-1 text-teal-500"></i> Kegiatan
+                    </button>
+                </div>
+
+                <!-- Input Pencarian & Counter -->
+                <div class="flex items-center gap-3 w-full md:w-auto">
+                    <div class="relative flex-1 md:w-72">
+                        <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="all-news-search-input" oninput="window.handleAllNewsSearch(this.value)" placeholder="Cari berita atau pengumuman..." 
+                            class="w-full pl-9 pr-8 py-2 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <button type="button" id="all-news-search-clear" onclick="window.clearAllNewsSearch()" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs cursor-pointer">
+                            <i class="fas fa-times-circle"></i>
+                        </button>
+                    </div>
+                    <span id="all-news-count-badge" class="hidden sm:inline-block px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-[11px] font-bold text-slate-600 dark:text-slate-300 shrink-0 whitespace-nowrap">
+                        0 Berita
+                    </span>
+                </div>
+            </div>
+
+            <!-- Grid Kontainer Seluruh Berita -->
+            <div id="all-news-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dirender dinamis oleh script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         HALAMAN KHUSUS: LAPORAN RPJMD 2025 - 2029
+         (Dokumen Perencanaan & Laporan Kinerja Dinas Pendidikan dan Kebudayaan)
+         ======================================================== -->
+    <section class="hidden pt-28 pb-20 bg-slate-50 dark:bg-slate-900 relative view-transition-fade min-h-screen" id="halaman-rpjmd">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Navigasi Bar Kembali ke Beranda -->
+            <div class="mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-slate-200/80 dark:border-slate-800 pb-5 no-print">
+                <button type="button" onclick="window.closeRpjmdSection('beranda')" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-blue-900 dark:hover:bg-slate-700 text-white font-bold text-xs sm:text-sm shadow-md transition group cursor-pointer">
+                    <i class="fas fa-arrow-left text-xs transform group-hover:-translate-x-1 transition duration-200"></i>
+                    <span>Kembali ke Beranda</span>
+                </button>
+                <div class="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
+                    <span class="hover:text-blue-600 dark:hover:text-cyan-400 cursor-pointer" onclick="window.closeRpjmdSection('beranda')">Beranda</span>
+                    <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
+                    <span class="text-cyan-700 dark:text-cyan-300 font-bold">Laporan RPJMD 2025 - 2029</span>
+                </div>
+                <button type="button" onclick="window.closeRpjmdSection('beranda')" class="w-9 h-9 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white border border-slate-200 dark:border-slate-700 shadow-xs flex items-center justify-center transition cursor-pointer" title="Tutup Tampilan">
+                    <i class="fas fa-times text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Header Banner Section -->
+            <div class="text-center max-w-4xl mx-auto mb-10">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-100 dark:bg-cyan-950/60 text-cyan-800 dark:text-cyan-300 text-xs font-bold uppercase tracking-wider mb-3 border border-cyan-200 dark:border-cyan-800/60 shadow-xs">
+                    <i class="fas fa-file-contract text-cyan-600 dark:text-cyan-400"></i> Dokumen Perencanaan &amp; Akuntabilitas Kinerja Daerah
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
+                    RPJMD ( Rencana Pembangunan Jangka Menengah Daerah )<br class="hidden sm:inline"> Tahun 2025 - 2029
+                </h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-600 dark:text-slate-300 mt-4 text-xs sm:text-sm leading-relaxed max-w-3xl mx-auto">
+                    Kompilasi dokumen resmi perencanaan strategis jangka menengah, rencana kerja tahunan, indikator kinerja utama, serta laporan akuntabilitas kinerja instansi pemerintah (SAKIP) Dinas Pendidikan dan Kebudayaan Kabupaten Madiun.
+                </p>
+            </div>
+
+            <!-- Filter & Pencarian Bar -->
+            <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-4 sm:p-5 border border-slate-200 dark:border-slate-700/80 shadow-xs mb-8 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+                <!-- Tab Kategori Filter -->
+                <div class="flex flex-wrap items-center gap-2" id="rpjmd-filter-tabs">
+                    <button type="button" onclick="window.filterRpjmdCategory('semua')" data-category="semua" class="rpjmd-cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-900 text-white shadow-xs cursor-pointer">
+                        Semua Dokumen (<span id="count-rpjmd-all">16</span>)
+                    </button>
+                    <button type="button" onclick="window.filterRpjmdCategory('perencanaan')" data-category="perencanaan" class="rpjmd-cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 cursor-pointer">
+                        <i class="fas fa-layer-group mr-1.5 text-blue-600 dark:text-blue-400"></i> Dokumen Perencanaan (8)
+                    </button>
+                    <button type="button" onclick="window.filterRpjmdCategory('kinerja')" data-category="kinerja" class="rpjmd-cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 cursor-pointer">
+                        <i class="fas fa-chart-line mr-1.5 text-teal-600 dark:text-teal-400"></i> Laporan Kinerja (8)
+                    </button>
+                </div>
+
+                <!-- Input Pencarian Dokumen -->
+                <div class="flex items-center gap-3 w-full md:w-auto">
+                    <div class="relative flex-1 md:w-80">
+                        <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="rpjmd-search-input" oninput="window.handleRpjmdSearch(this.value)" placeholder="Cari dokumen, Renstra, LKPJ, IKU..." 
+                            class="w-full pl-9 pr-8 py-2 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                        <button type="button" id="rpjmd-search-clear" onclick="window.clearRpjmdSearch()" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs cursor-pointer">
+                            <i class="fas fa-times-circle"></i>
+                        </button>
+                    </div>
+                    <span id="rpjmd-count-badge" class="hidden sm:inline-block px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-[11px] font-bold text-slate-600 dark:text-slate-300 shrink-0 whitespace-nowrap">
+                        16 Dokumen
+                    </span>
+                </div>
+            </div>
+
+            <!-- Grid Kontainer Seluruh Dokumen RPJMD (Berjajar 4 di Layar Besar) -->
+            <div id="rpjmd-cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 items-stretch">
+                <!-- Dirender dinamis oleh script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Pratinjau / Baca Berita Selengkapnya -->
+    <div id="modal-news-detail" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/75 backdrop-blur-xs hidden" onclick="window.closeNewsModal()">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden view-transition-fade" onclick="event.stopPropagation()">
+            <div class="relative h-56 sm:h-64 overflow-hidden shrink-0 bg-slate-800">
+                <img id="modal-news-img" src="" alt="Foto Berita" class="w-full h-full object-cover" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80';">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute top-4 right-4 flex items-center gap-2 z-10">
+                    <a id="modal-news-img-zoom" href="#" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition cursor-pointer backdrop-blur-xs shadow-md" title="Buka Gambar Asli di Tab Baru">
+                        <i class="fas fa-arrow-up-right-from-square text-xs"></i>
+                    </a>
+                    <button type="button" onclick="window.closeNewsModal()" class="w-9 h-9 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition cursor-pointer backdrop-blur-xs shadow-md" title="Tutup">
+                        <i class="fas fa-times text-sm"></i>
+                    </button>
+                </div>
+                <div class="absolute bottom-4 left-5 right-5 text-white">
+                    <div class="flex items-center gap-2 mb-1.5">
+                        <span id="modal-news-badge" class="px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-teal-600 text-white shadow-xs">Berita</span>
+                        <span id="modal-news-date" class="text-xs text-white/80 font-medium"><i class="far fa-calendar-alt mr-1"></i> -</span>
+                    </div>
+                    <h3 id="modal-news-title" class="text-lg sm:text-xl font-black leading-snug text-white line-clamp-3 sm:line-clamp-none">Judul Berita</h3>
+                </div>
+            </div>
+            <div class="p-5 sm:p-7 overflow-y-auto flex-1 text-slate-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed space-y-4">
+                <p id="modal-news-content" class="whitespace-pre-line leading-relaxed text-justify"></p>
+                <div id="modal-news-link-wrapper" class="pt-3 border-t border-slate-200 dark:border-slate-800 hidden">
+                    <a id="modal-news-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs shadow-xs transition">
+                        <span>Buka Tautan Sumber Lengkap</span> <i class="fas fa-external-link-alt text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="bg-slate-50 dark:bg-slate-800/80 px-6 py-3.5 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center text-xs text-slate-500 shrink-0">
+                <span class="flex items-center gap-1.5"><i class="fas fa-info-circle text-teal-600"></i> Publikasi Resmi Dindikbud</span>
+                <button type="button" onclick="window.closeNewsModal()" class="px-4 py-1.5 rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-white font-bold transition cursor-pointer">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Pratinjau Dokumen RPJMD & Laporan Kinerja -->
+    <div id="modal-rpjmd-preview" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-xs hidden" onclick="window.closeRpjmdPreviewModal()">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 max-w-4xl w-full max-h-[92vh] flex flex-col overflow-hidden view-transition-fade" onclick="event.stopPropagation()">
+            <!-- Header Modal -->
+            <div class="bg-gradient-to-r from-slate-900 via-cyan-950 to-slate-900 p-4 sm:p-5 text-white flex items-center justify-between gap-3 shrink-0 border-b border-cyan-800/40">
+                <div class="flex items-center gap-3 overflow-hidden">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 flex items-center justify-center text-lg shrink-0">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="overflow-hidden">
+                        <div class="flex items-center gap-2 mb-0.5">
+                            <span id="rpjmd-preview-badge" class="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-cyan-500 text-slate-950 shadow-xs">RPJMD</span>
+                            <span id="rpjmd-preview-cat" class="text-[11px] text-cyan-200 font-semibold truncate">Dokumen Perencanaan</span>
+                        </div>
+                        <h3 id="rpjmd-preview-title" class="text-sm sm:text-base font-black truncate leading-tight">Judul Dokumen</h3>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                    <a id="rpjmd-preview-external" href="#" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition cursor-pointer" title="Buka PDF di Tab Baru">
+                        <i class="fas fa-arrow-up-right-from-square text-xs"></i>
+                    </a>
+                    <button type="button" onclick="window.closeRpjmdPreviewModal()" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition cursor-pointer" title="Tutup">
+                        <i class="fas fa-times text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Body Modal -->
+            <div class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
+                <!-- Info Banner Dokumen -->
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 space-y-2">
+                    <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
+                            <i class="fas fa-info-circle text-cyan-600 dark:text-cyan-400"></i>
+                            <span id="rpjmd-preview-fulltitle">Judul Lengkap Dokumen</span>
+                        </span>
+                        <div class="flex items-center gap-2 font-mono text-[11px] text-slate-500 dark:text-slate-400">
+                            <span id="rpjmd-preview-year"><i class="far fa-calendar-alt mr-1"></i>2025 - 2029</span>
+                            <span>&bull;</span>
+                            <span id="rpjmd-preview-size" class="text-rose-500 font-bold"><i class="far fa-file-pdf mr-1"></i>5.4 MB</span>
+                        </div>
+                    </div>
+                    <p id="rpjmd-preview-desc" class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed text-justify pt-1 border-t border-slate-200/60 dark:border-slate-700/60">
+                        Deskripsi lengkap penjelasan dokumen.
+                    </p>
+                </div>
+
+                <!-- Frame Viewer PDF -->
+                <div class="rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden bg-slate-100 dark:bg-slate-950 shadow-inner">
+                    <div id="rpjmd-preview-iframe-wrapper" class="relative w-full h-[55vh] min-h-[350px]">
+                        <iframe id="rpjmd-preview-iframe" src="" class="w-full h-full border-0" title="Pratinjau PDF"></iframe>
+                        <!-- Fallback jika iframe tidak memuat langsung -->
+                        <div id="rpjmd-preview-fallback" class="hidden absolute inset-0 bg-slate-100 dark:bg-slate-800 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                            <div class="w-14 h-14 rounded-2xl bg-cyan-100 dark:bg-slate-700 flex items-center justify-center text-cyan-700 dark:text-cyan-400 text-2xl">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800 dark:text-slate-200">Pratinjau File PDF Siap</h4>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 max-w-sm">
+                                Jika file PDF tidak langsung tampil di peramban, Anda dapat membukanya langsung di tab baru atau mengunduh dokumen.
+                            </p>
+                            <a id="rpjmd-preview-fallback-btn" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs transition inline-flex items-center gap-1.5 shadow-md">
+                                <i class="fas fa-external-link-alt"></i> Buka Dokumen PDF di Tab Baru
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Modal -->
+            <div class="bg-slate-50 dark:bg-slate-800/80 px-4 sm:px-6 py-3.5 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 shrink-0">
+                <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                    <i class="fas fa-shield-alt text-teal-600"></i>
+                    <span>Dokumen Akuntabilitas Kinerja Resmi Pemerintah Kabupaten Madiun</span>
+                </span>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <button type="button" onclick="window.closeRpjmdPreviewModal()" class="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-white font-bold text-xs transition cursor-pointer">
+                        Tutup
+                    </button>
+                    <a id="rpjmd-preview-download-btn" href="#" target="_blank" rel="noopener noreferrer" download="" class="flex-1 sm:flex-none px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-500 hover:to-teal-500 text-white font-bold text-xs shadow-md transition inline-flex items-center justify-center gap-1.5 cursor-pointer">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>Download PDF</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-slate-900 text-slate-300 pt-16 pb-8 border-t border-slate-800" id="kontak">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <!-- Kolom 1: Profil -->
+            <div>
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-11 h-11 rounded-xl bg-white/10 p-1 border border-white/10 flex items-center justify-center shrink-0">
+                        <img src="logo-kabupaten-madiun.svg" alt="Logo Kabupaten Madiun" class="w-full h-full object-contain filter drop-shadow-sm">
+                    </div>
+                    <h4 class="text-base font-extrabold text-white leading-tight">DIKBUD<br>KAB. MADIUN</h4>
+                </div>
+                <p class="text-xs sm:text-sm mb-5 text-slate-400 leading-relaxed">
+                    Pusat informasi, layanan pendidikan inklusif, pembinaan olahraga, dan pelestarian kebudayaan Pemerintah Kabupaten Madiun.
+                </p>
+                <div class="flex space-x-3">
+                    <a href="#" class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition"><i class="fab fa-facebook-f text-xs"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition"><i class="fab fa-instagram text-xs"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-blue-400 hover:text-white transition"><i class="fab fa-twitter text-xs"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fab fa-youtube text-xs"></i></a>
+                </div>
+            </div>
+
+            <!-- Kolom 2: Tautan Cepat -->
+            <div>
+                <h4 class="text-white font-bold mb-5 uppercase tracking-wider text-xs">Layanan & Informasi</h4>
+                <ul class="space-y-2.5 text-xs text-slate-400">
+                    <li><a href="#fitur-unggulan" class="hover:text-teal-400 transition flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2"></i> Fitur & Program Unggulan</a></li>
+                    <li><a href="#layanan-terpadu" onclick="window.openLayananTerpadu(event)" class="text-teal-300 hover:text-teal-200 font-bold transition flex items-center"><i class="fas fa-headset text-[10px] mr-2 text-teal-400"></i> Layanan & FAQ Online</a></li>
+                    <li><a href="#struktur-organisasi" onclick="window.openOrgSection(event)" class="hover:text-teal-400 transition flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2"></i> Struktur Organisasi & Bagan</a></li>
+                    <li><a href="#fitur-unggulan" class="hover:text-teal-400 transition flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2"></i> SPM (IKK, IKU & Beasiswa)</a></li>
+                    <li><a href="#fitur-unggulan" class="hover:text-teal-400 transition flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2"></i> Lembaga Formal & Non-Formal</a></li>
+                    <li><a href="#fitur-unggulan" class="hover:text-teal-400 transition flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2"></i> Kurikulum Kampung Pesilat</a></li>
+                    <li><a href="#inovasi" class="text-amber-300 hover:text-amber-200 transition flex items-center font-bold"><i class="fas fa-lightbulb text-[10px] mr-2 text-amber-400"></i> Inovasi Layanan (SiLebah, KIPP, ODL)</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 3: Layanan Terkait -->
+            <div>
+                <h4 class="text-white font-bold mb-5 uppercase tracking-wider text-xs">Portal Terkait</h4>
+                <ul class="space-y-2.5 text-xs text-slate-400">
+                    <li><a href="https://silebahedu.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-orange-400 hover:text-orange-300 font-bold transition flex items-center"><i class="fas fa-external-link-alt text-[10px] mr-2"></i> Aplikasi SiLebah EDU</a></li>
+                    <li><a href="https://kippmadiun.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 font-bold transition flex items-center"><i class="fas fa-external-link-alt text-[10px] mr-2"></i> Portal KIPP Madiun</a></li>
+                    <li><a href="https://odl.madiunkab.go.id/" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 font-bold transition flex items-center"><i class="fas fa-external-link-alt text-[10px] mr-2"></i> Izin Outdoor Learning</a></li>
+                    <li><a href="https://madiunkab.go.id" target="_blank" rel="noopener noreferrer" class="hover:text-teal-400 transition flex items-center"><i class="fas fa-link text-[10px] mr-2"></i> Pemkab Madiun</a></li>
+                    <li><a href="https://kemdikbud.go.id" target="_blank" rel="noopener noreferrer" class="hover:text-teal-400 transition flex items-center"><i class="fas fa-link text-[10px] mr-2"></i> Kemdikbudristek RI</a></li>
+                    <li><a href="https://dapo.kemdikbud.go.id" target="_blank" rel="noopener noreferrer" class="hover:text-teal-400 transition flex items-center"><i class="fas fa-link text-[10px] mr-2"></i> Dapodik Kemdikbud</a></li>
+                    <li><a href="admin.html" class="text-teal-400 font-bold hover:underline flex items-center"><i class="fas fa-tools text-[10px] mr-2"></i> Panel Admin Kelola Konten</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 4: Kontak -->
+            <div>
+                <h4 class="text-white font-bold mb-5 uppercase tracking-wider text-xs">Hubungi Kami</h4>
+                <ul class="space-y-3.5 text-xs text-slate-400">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt mt-1 mr-2.5 text-teal-400"></i>
+                        <span>Pusat Pemerintahan Kab. Madiun<br>Jl. Alun-Alun Utara No. X, Caruban - Mejayan<br>Kabupaten Madiun, Jawa Timur</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-phone-alt mr-2.5 text-teal-400"></i>
+                        <span>(0351) 1234567 / 7654321</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope mr-2.5 text-teal-400"></i>
+                        <span>dikbud@madiunkab.go.id</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-slate-800 text-xs text-center text-slate-500 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="space-y-1 md:text-left text-center">
+                <p>&copy; 2026 Dinas Pendidikan dan Kebudayaan Kabupaten Madiun. Hak Cipta Dilindungi.</p>
+                <p class="text-[11px] text-slate-400">
+                    created By : <a href="https://portofoliowindu.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-teal-400 hover:text-teal-300 font-bold transition hover:underline">Fudak Winduko, SH. , MPd.</a>
+                </p>
+            </div>
+            
+            <!-- Fitur Menghitung Kunjungan (Harian, Bulanan, Tahunan) di Sebelah Tulisan Portal Edukasi & Kebudayaan Terpadu -->
+            <div class="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3.5 text-center sm:text-right">
+                <p class="text-slate-400 font-medium">Portal Edukasi &amp; Kebudayaan Terpadu</p>
+                <div class="inline-flex items-center gap-1.5 sm:gap-2 bg-slate-950/80 border border-slate-800/90 px-3 py-1.5 rounded-xl shadow-inner text-[11px]">
+                    <span class="text-teal-400 font-bold flex items-center gap-1 mr-0.5" title="Statistik Kunjungan Portal">
+                        <i class="fas fa-chart-line text-[10px]"></i>
+                        <span>Kunjungan:</span>
+                    </span>
+                    <span class="bg-slate-900/90 text-slate-300 px-2 py-0.5 rounded-md border border-slate-800 font-medium flex items-center gap-1" title="Kunjungan Hari Ini">
+                        <span class="text-slate-400 text-[10px]">Hari</span>
+                        <strong id="visitor-count-daily" class="text-teal-300 font-mono font-bold">...</strong>
+                    </span>
+                    <span class="bg-slate-900/90 text-slate-300 px-2 py-0.5 rounded-md border border-slate-800 font-medium flex items-center gap-1" title="Kunjungan Bulan Ini">
+                        <span class="text-slate-400 text-[10px]">Bulan</span>
+                        <strong id="visitor-count-monthly" class="text-sky-300 font-mono font-bold">...</strong>
+                    </span>
+                    <span class="bg-slate-900/90 text-slate-300 px-2 py-0.5 rounded-md border border-slate-800 font-medium flex items-center gap-1" title="Kunjungan Tahun Ini">
+                        <span class="text-slate-400 text-[10px]">Tahun</span>
+                        <strong id="visitor-count-yearly" class="text-amber-300 font-mono font-bold">...</strong>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Data & Interaksi -->
+    <script src="data.js?v=2026.10.03.v8"></script>
+    <script src="dapodik-data.js?v=2026.10.03.v8"></script>
+    <script src="script.js?v=2026.10.03.v8"></script>
+</body>
+</html>

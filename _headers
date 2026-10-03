@@ -1,0 +1,18 @@
+# Netlify Headers: Mencegah browser/handphone menyimpan cache lama (Auto Revalidate)
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/script.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/data.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/dapodik-data.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/style.css
+  Cache-Control: public, max-age=0, must-revalidate

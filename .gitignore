@@ -1,0 +1,29 @@
+# ==============================================================================
+# .gitignore - Portal Resmi Dinas Pendidikan & Kebudayaan Kab. Madiun
+# Mencegah file backup, source map, testing, dan temporary ter-deploy ke production
+# ==============================================================================
+
+# Developer Phase Backups
+_backup_*/
+_backup*
+
+# Backup & Temporary files
+*.bak
+*.old
+*.tmp
+*.log
+*.map
+
+# Test and Audit scratch scripts
+scratch/
+test_*.py
+audit_*.py
+
+# Operating System & IDE metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.suo
+*.user

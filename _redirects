@@ -1,0 +1,13 @@
+# ==============================================================================
+# NETLIFY REDIRECTS & REWRITES CONFIGURATION
+# Dinas Pendidikan dan Kebudayaan Kabupaten Madiun
+# ==============================================================================
+
+# 1. Pintu Masuk Rahasia Admin & Sub Admin: Satu Pintu Bersama (/nirmala)
+# Browser tetap menampilkan alamat /nirmala (URL masking / rewrite status 200)
+/nirmala        /admin.html     200
+/nirmala/       /admin.html     200
+
+# 2. Pengalihan dari URL admin lama ke URL baru /nirmala
+/admin          /nirmala        301
+/admin/         /nirmala        301

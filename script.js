@@ -241,6 +241,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     curSpm.bagian.push(JSON.parse(JSON.stringify(defIndikator)));
                 }
                 needsSave = true;
+            } else if (defIndikator && curIndikator && (!curIndikator.baris || curIndikator.baris.length === 0)) {
+                curIndikator.baris = JSON.parse(JSON.stringify(defIndikator.baris));
+                needsSave = true;
             }
             const defEkinerja = (defSpm.bagian || []).find(b => b.id === 'ekinerja');
             const curEkinerja = (curSpm.bagian || []).find(b => b.id === 'ekinerja');
@@ -778,6 +781,19 @@ document.addEventListener('DOMContentLoaded', () => {
     window.showSubFeaturesList = function(featureId) {
         const feature = currentData.find(f => f.id === featureId);
         if (!feature || !viewSubFeaturesList) return;
+
+        // Failsafe Level 2: Pastikan kartu 15 Indikator Target Kinerja selalu ada pada modul SPM
+        if (feature.id === 'spm' && Array.isArray(feature.bagian) && !feature.bagian.some(b => b.id === 'indikator-spm-15')) {
+            if (typeof portalData !== 'undefined') {
+                const defSpm = portalData.find(f => f.id === 'spm');
+                const defInd = defSpm && defSpm.bagian ? defSpm.bagian.find(b => b.id === 'indikator-spm-15') : null;
+                if (defInd) {
+                    const ikuIdx = feature.bagian.findIndex(b => b.id === 'iku');
+                    if (ikuIdx !== -1) feature.bagian.splice(ikuIdx + 1, 0, JSON.parse(JSON.stringify(defInd)));
+                    else feature.bagian.push(JSON.parse(JSON.stringify(defInd)));
+                }
+            }
+        }
 
         currentFeatureId = featureId;
         currentSubIndex = null;
@@ -5789,6 +5805,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     const parsed = JSON.parse(currentDataRaw);
                     if (Array.isArray(parsed) && parsed.length > 0) {
                         currentData = parsed.filter(item => item.id !== 'kebudayaan' && item.id !== 'struktur-organisasi');
+                        // Failsafe: Pastikan 15 Indikator Target Kinerja tidak hilang pada modul SPM saat sync realtime
+                        const curSpm = currentData.find(f => f.id === 'spm');
+                        if (curSpm && Array.isArray(curSpm.bagian) && !curSpm.bagian.some(b => b.id === 'indikator-spm-15')) {
+                            if (typeof portalData !== 'undefined') {
+                                const defSpm = portalData.find(f => f.id === 'spm');
+                                const defInd = defSpm && defSpm.bagian ? defSpm.bagian.find(b => b.id === 'indikator-spm-15') : null;
+                                if (defInd) {
+                                    const ikuIdx = curSpm.bagian.findIndex(b => b.id === 'iku');
+                                    if (ikuIdx !== -1) curSpm.bagian.splice(ikuIdx + 1, 0, JSON.parse(JSON.stringify(defInd)));
+                                    else curSpm.bagian.push(JSON.parse(JSON.stringify(defInd)));
+                                }
+                            }
+                        }
                         window.currentData = currentData;
                         lastAppliedDataString = currentDataRaw;
                         changed = true;
@@ -5974,6 +6003,29 @@ document.addEventListener('DOMContentLoaded', () => {
                                 if (curPres.nama) freshPres.nama = curPres.nama;
                                 if (curPres.deskripsi != null) freshPres.deskripsi = curPres.deskripsi;
                                 if (curPres.baris && curPres.baris.length > 0) freshPres.baris = curPres.baris;
+                            }
+                        }
+
+                        // Proteksi 15 Indikator Target Kinerja (SPM) agar kartu tidak hilang saat fetch spreadsheet cloud
+                        const curIndikator = curSpm.bagian.find(b => b.id === 'indikator-spm-15');
+                        const freshIndikator = freshSpm.bagian.find(b => b.id === 'indikator-spm-15');
+                        if (curIndikator) {
+                            if (!freshIndikator) {
+                                const ikuIdx = freshSpm.bagian.findIndex(b => b.id === 'iku');
+                                if (ikuIdx !== -1) freshSpm.bagian.splice(ikuIdx + 1, 0, curIndikator);
+                                else freshSpm.bagian.push(curIndikator);
+                            } else {
+                                if (curIndikator.nama) freshIndikator.nama = curIndikator.nama;
+                                if (curIndikator.deskripsi != null) freshIndikator.deskripsi = curIndikator.deskripsi;
+                                if (curIndikator.baris && curIndikator.baris.length > 0) freshIndikator.baris = curIndikator.baris;
+                            }
+                        } else if (typeof portalData !== 'undefined') {
+                            const defSpm = portalData.find(f => f.id === 'spm');
+                            const defInd = defSpm && defSpm.bagian ? defSpm.bagian.find(b => b.id === 'indikator-spm-15') : null;
+                            if (defInd && !freshIndikator) {
+                                const ikuIdx = freshSpm.bagian.findIndex(b => b.id === 'iku');
+                                if (ikuIdx !== -1) freshSpm.bagian.splice(ikuIdx + 1, 0, JSON.parse(JSON.stringify(defInd)));
+                                else freshSpm.bagian.push(JSON.parse(JSON.stringify(defInd)));
                             }
                         }
                     }

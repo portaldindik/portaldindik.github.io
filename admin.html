@@ -1337,9 +1337,9 @@
     </div>
 
     <!-- Script Data & Logic Admin -->
-    <script src="data.js?v=2026.10.03.v11"></script>
-    <script src="google_spreadsheet_sync.js?v=2026.10.03.v11"></script>
-    <script src="google_accounts_sync.js?v=2026.10.03.v11"></script>
+    <script src="data.js?v=2026.10.03.v12"></script>
+    <script src="google_spreadsheet_sync.js?v=2026.10.03.v12"></script>
+    <script src="google_accounts_sync.js?v=2026.10.03.v12"></script>
     <script src="google_spreadsheet_modul_khusus_sync.js?v=2026.10.03.v10"></script>
     <script>
         // ========================================================
@@ -2708,6 +2708,9 @@
                     } else {
                         curSpm.bagian.push(JSON.parse(JSON.stringify(defIndikatorSpm)));
                     }
+                    needsSave = true;
+                } else if (defIndikatorSpm && curIndikatorSpm && (!curIndikatorSpm.baris || curIndikatorSpm.baris.length === 0)) {
+                    curIndikatorSpm.baris = JSON.parse(JSON.stringify(defIndikatorSpm.baris));
                     needsSave = true;
                 }
 

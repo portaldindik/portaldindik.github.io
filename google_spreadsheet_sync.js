@@ -375,6 +375,41 @@
                                 spmRemote.bagian.push(localPresensi);
                             }
                         }
+
+                        // Proteksi 15 Indikator Target Kinerja (SPM): Jangan sampai terhapus saat sinkronisasi Google Spreadsheet
+                        const hasIndikatorRemote = spmRemote.bagian.some(b => b.id === 'indikator-spm-15');
+                        if (!hasIndikatorRemote) {
+                            let localIndikator = null;
+                            if (typeof adminData !== 'undefined' && Array.isArray(adminData)) {
+                                const spmLocal = adminData.find(f => f.id === 'spm');
+                                if (spmLocal && spmLocal.bagian) {
+                                    localIndikator = spmLocal.bagian.find(b => b.id === 'indikator-spm-15');
+                                }
+                            }
+                            if (!localIndikator) {
+                                try {
+                                    const saved = JSON.parse(localStorage.getItem('portalDataCustom') || '[]');
+                                    const spmSaved = saved.find(f => f.id === 'spm');
+                                    if (spmSaved && spmSaved.bagian) {
+                                        localIndikator = spmSaved.bagian.find(b => b.id === 'indikator-spm-15');
+                                    }
+                                } catch (e) {}
+                            }
+                            if (!localIndikator && typeof portalData !== 'undefined') {
+                                const spmDef = portalData.find(f => f.id === 'spm');
+                                if (spmDef && spmDef.bagian) {
+                                    localIndikator = spmDef.bagian.find(b => b.id === 'indikator-spm-15');
+                                }
+                            }
+                            if (localIndikator) {
+                                const ikuIdx = spmRemote.bagian.findIndex(b => b.id === 'iku');
+                                if (ikuIdx !== -1) {
+                                    spmRemote.bagian.splice(ikuIdx + 1, 0, localIndikator);
+                                } else {
+                                    spmRemote.bagian.push(localIndikator);
+                                }
+                            }
+                        }
                     }
 
                     // Proteksi Ijin Operasional: Ijin Operasional berdiri sendiri dan jangan ditimpa/dihapus oleh data dari Google Spreadsheet lama
@@ -487,10 +522,10 @@
                 : (sessionStorage.getItem('portalAdminAuthToken') || '');
 
             // Pastikan data yang dikirim ke Google Spreadsheet lama HANYA 9 fitur utama biasa
-            // E-Kinerja, Presensi Online, Ijin Operasional & Berita berdiri sendiri dan tidak dicampurkan ke Spreadsheet lama
+            // E-Kinerja, Presensi Online, 15 Indikator SPM, Ijin Operasional & Berita berdiri sendiri dan tidak dicampurkan ke Spreadsheet lama
             const dataToPush = JSON.parse(JSON.stringify(dataToSend)).map(f => {
                 if (f.id === 'spm' && Array.isArray(f.bagian)) {
-                    f.bagian = f.bagian.filter(b => b.id !== 'ekinerja' && b.id !== 'presensi-online');
+                    f.bagian = f.bagian.filter(b => b.id !== 'ekinerja' && b.id !== 'presensi-online' && b.id !== 'indikator-spm-15');
                 }
                 if (f.id === 'lembaga-sekolah' && Array.isArray(f.bagian)) {
                     f.bagian = f.bagian.filter(b => b.id !== 'ijin-operasional');

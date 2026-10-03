@@ -1352,9 +1352,9 @@
     </div>
 
     <!-- Script Data & Logic Admin -->
-    <script src="data.js?v=2026.10.03.v10"></script>
-    <script src="google_spreadsheet_sync.js?v=2026.10.03.v10"></script>
-    <script src="google_accounts_sync.js?v=2026.10.03.v10"></script>
+    <script src="data.js?v=2026.10.03.v11"></script>
+    <script src="google_spreadsheet_sync.js?v=2026.10.03.v11"></script>
+    <script src="google_accounts_sync.js?v=2026.10.03.v11"></script>
     <script src="google_spreadsheet_modul_khusus_sync.js?v=2026.10.03.v10"></script>
     <script>
         // ========================================================
@@ -4701,48 +4701,6 @@
                 </div>
             `;
 
-            // Integrasi Google Sheets (Publish to Web / Embed)
-            let googleSheetHTML = `
-                <div class="mt-4 pt-3 border-t border-slate-200">
-                    <div class="flex items-center justify-between mb-2">
-                        <label class="block text-xs font-black uppercase text-slate-800 flex items-center gap-1.5">
-                            <i class="fab fa-google-drive text-blue-600 text-sm"></i>
-                            <span>Integrasi Google Sheets (Publish to Web / Embed)</span>
-                        </label>
-                        <span class="text-[10px] font-bold text-slate-500 bg-slate-200/80 px-2 py-0.5 rounded-full">Opsi Live Spreadsheet</span>
-                    </div>
-                    <p class="text-[11px] text-slate-500 mb-2 leading-relaxed">
-                        Anda dapat mengedit tabel di atas secara manual <strong>ATAU</strong> menyematkan tautan Google Sheets dari menu <em>File &gt; Share &gt; Publish to the web (Publikasikan ke web)</em>. Jika tautan diisi, pengunjung dapat melihat tampilan lembar kerja live Google Sheets di portal.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-2">
-                        <div class="relative flex-1">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
-                                <i class="fas fa-link text-xs"></i>
-                            </span>
-                            <input type="url" value="${(sub.googleSheetUrl || '').replace(/"/g, '&quot;')}"
-                                ${!canEdit ? 'disabled' : ''}
-                                placeholder="Contoh: https://docs.google.com/spreadsheets/d/e/2PACX-.../pubhtml"
-                                oninput="window.updateGoogleSheetUrl(${subIdx}, this.value)"
-                                onchange="window.updateGoogleSheetUrl(${subIdx}, this.value)"
-                                class="w-full pl-8 pr-3 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none ${!canEdit ? 'bg-slate-100 cursor-not-allowed opacity-75' : 'bg-white'}">
-                        </div>
-                        ${sub.googleSheetUrl ? `
-                            <a href="${sub.googleSheetUrl}" target="_blank" rel="noopener noreferrer"
-                                class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition shrink-0">
-                                <i class="fas fa-external-link-alt"></i> Uji Tautan
-                            </a>
-                            ${canEdit ? `
-                                <button type="button" onclick="window.clearGoogleSheetUrl(${subIdx})"
-                                    class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-red-50 text-slate-600 hover:text-red-600 border border-slate-200 text-xs font-bold transition flex items-center justify-center gap-1.5 shrink-0 cursor-pointer"
-                                    title="Kosongkan Tautan Spreadsheet">
-                                    <i class="fas fa-times"></i> Kosongkan Link
-                                </button>
-                            ` : ''}
-                        ` : ''}
-                    </div>
-                </div>
-            `;
-
             box.innerHTML = `
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-200">
                     <div class="flex-1">
@@ -4765,7 +4723,6 @@
                 </div>
                 ${tableHTML}
                 ${narasiOfficialHTML}
-                ${googleSheetHTML}
             `;
 
             subModulesEditor.appendChild(box);
